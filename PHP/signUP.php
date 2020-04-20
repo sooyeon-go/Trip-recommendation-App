@@ -19,7 +19,7 @@ $usersex = $_POST['Sex'];
 $useremail = $_POST['Email'];
 $userpw = $_POST['Pw'];
 
-$result = mysqli_query($con,"insert into User_Info (u_name,age,sex,u_email,u_pw) values ('$userid','$userage','$usersex','$useremail',$userpw')");
+$result = mysqli_query($con,"insert into User_Info (u_name,age,sex,u_email,u_pw) values ('$username','$userage','$usersex','$useremail',$userpw')");
   if($result){
 
     echo 'success';
