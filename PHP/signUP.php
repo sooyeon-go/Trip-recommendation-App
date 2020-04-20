@@ -1,6 +1,6 @@
 <?php
 
-$con=mysqli_connect("ssadola.caaqegau8sq4.ap-northeast-2.rds.amazonaws.com","admin","-Tkehfdk-","test");
+$con=mysqli_connect('ssadola.caaqegau8sq4.ap-northeast-2.rds.amazonaws.com','admin','-Tkehfdk-','test','3306');
 
 
 mysqli_set_charset($con,"utf8");
