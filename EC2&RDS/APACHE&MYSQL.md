@@ -18,8 +18,8 @@
 >sudo vi /etc/apache2/sites-available/000-default.conf
 
 -->루트 디렉토리를 /home/ubuntu/phps로 변경  
-![1](/apache2conf.png)  
-![2](/000-default.png)
+![1](./apache2conf.png)  
+![2](./000-default.png)
 
 3. PHP 설치 및 설정  
 
@@ -29,4 +29,4 @@
 
 4. 위 설정을 마친 후 EC2 IP 주소를 입력하면
 
-![3](/complete.png)
+![3](./complete.png)
