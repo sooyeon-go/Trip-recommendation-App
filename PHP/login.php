@@ -18,7 +18,7 @@ $pw=isset($_POST['Pw']) ? $_POST['Pw'] : '';
 
 if ($email !="" and $pw !=""){   
   
-    $sql="select if(strcmp(u_pw,'$pw'),0,1) as pw_chk from User_Info where u_email = '$email'";  
+    $sql="select if(strcmp(u_pw,'$pw'),0,1) as pw_chk, u_name,age,sex,u_email from User_Info where u_email = '$email'";  "select if(strcmp(u_pw,'$pw'),0,1) as pw_chk from User_Info where u_email = '$email'";  
     $result=mysqli_query($con,$sql);  
     $data=array();   
     if($result){  
