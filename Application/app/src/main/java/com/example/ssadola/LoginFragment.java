@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,29 +22,39 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
 public class LoginFragment extends Fragment implements ScreenShotable {
     private static String TAG = "User_Info";
+    private static String TAG_CHK = "pw_chk";
+    private static String TAG_NAME = "u_name";
+    private static String TAG_AGE = "age";
+    private static String TAG_SEX = "sex";
+    private static String TAG_EMAIL= "u_email";
+    ArrayList<HashMap<String,String>> mArrayList = new ArrayList<>();
     private View containerView;
-    protected ImageView mImageView;
     protected int res;
-    private Bitmap bitmap;
     ImageView imageView;
     TextView textView;
     int count = 0;
-    private EditText name,age,sex,email,password;
+    private EditText name,age,sex,et_email,et_password;
     private Button sign_in,sign_up;
     public static LoginFragment newInstance(int resId) {
         LoginFragment loginfragment = new LoginFragment();
@@ -102,15 +114,15 @@ public class LoginFragment extends Fragment implements ScreenShotable {
 
         });
 
-        email = rootView.findViewById(R.id.in_email);
-        password = rootView.findViewById(R.id.in_pswd);
+        et_email = rootView.findViewById(R.id.in_email);
+        et_password = rootView.findViewById(R.id.in_pswd);
 
         sign_in = rootView.findViewById(R.id.btn_signin);
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Email = email.getText().toString();
-                String Pw = password.getText().toString();
+                String Email = et_email.getText().toString();
+                String Pw = et_password.getText().toString();
                 LoginAsync login = new LoginAsync();
                 login.execute(Email,Pw);
 
@@ -148,19 +160,55 @@ public class LoginFragment extends Fragment implements ScreenShotable {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             loading.dismiss();
-            Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
 
             if (result == null){
 
                 //mTextViewResult.setText(errorString);
             }
             else {
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("User_Info");
 
-                //mJsonString = result;
-                //showResult();
+                    JSONObject item = jsonArray.getJSONObject(0);
+                    String chk = item.getString(TAG_CHK);
+                    String name = item.getString(TAG_NAME);
+                    String age = item.getString(TAG_AGE);
+                    String sex = item.getString(TAG_SEX);
+                    String email = item.getString(TAG_EMAIL);
+                    if(chk.equals("1")){
+                        //success to login
+                        HashMap<String,String> hashMap = new HashMap<>();
+
+                        hashMap.put(TAG_NAME,name);
+                        hashMap.put(TAG_AGE,age);
+                        hashMap.put(TAG_SEX,sex);
+                        hashMap.put(TAG_EMAIL,email);
+                        mArrayList.add(hashMap);
+
+                        SaveLoginData(mArrayList);
+                        Intent profile = new Intent(getActivity(),ProfileActivity.class);
+                        startActivity(profile);
+                    }else{
+                        //fail to login
+                        Toast.makeText(getActivity(), "로그인 실패", Toast.LENGTH_LONG).show();
+                        et_email.setText(null);
+                        et_password.setText(null);
+                    }
+                } catch (JSONException e) {
+                    Log.d(TAG, "showResult : ", e);
+                }
             }
         }
-
+        public void SaveLoginData(ArrayList<HashMap<String, String>> mArrayList) {
+            SharedPreferences preferences =PreferenceManager.getDefaultSharedPreferences(getContext());
+                    SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(mArrayList);
+            editor.putString("UserInfo", json);
+            editor.commit();
+        }
         @Override
         protected String doInBackground(String... params) {
 
@@ -209,4 +257,5 @@ public class LoginFragment extends Fragment implements ScreenShotable {
             }
         }
     }
+
 }

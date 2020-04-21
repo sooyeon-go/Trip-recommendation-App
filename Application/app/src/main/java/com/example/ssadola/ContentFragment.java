@@ -23,7 +23,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     public static final String THEME = "Theme";
     public static final String BOOKMARK = "Bookmark";
     public static final String LOGIN = "Login";
-
+    public static final String PROFILE = "Profile";
     private View containerView;
     protected ImageView mImageView;
     protected int res;

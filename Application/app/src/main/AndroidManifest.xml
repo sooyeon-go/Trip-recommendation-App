@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ssadola">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,12 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".BookmarkActivity"></activity>
+        <activity android:name=".ProfileActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCjY4kokK4Y2EcYT7no5T1CaO787UFLM6o"/>
+            android:value="AIzaSyCjY4kokK4Y2EcYT7no5T1CaO787UFLM6o" />
 
-        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".ResultDetailActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".Splash" />

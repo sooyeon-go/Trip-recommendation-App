@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem3);
         SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.LOGIN, R.drawable.ic_login);
         list.add(menuItem4);
+        /*SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.PROFILE, R.drawable.ic_profile);
+        list.add(menuItem5);*/
     }
 
 
@@ -137,7 +139,9 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
             return true;
         }
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_profile:
+                Intent profile = new Intent(this,ProfileActivity.class);
+                startActivity(profile);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -181,13 +185,18 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment2).commit();
                 return replaceFragment(fragment2, position);
             case ContentFragment.BOOKMARK:
-                BookmarkFragment fragment3 = BookmarkFragment.newInstance(primaryColorCanvas);
+                /*BookmarkFragment fragment3 = BookmarkFragment.newInstance(primaryColorCanvas);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment3).commit();
-                return replaceFragment(fragment3, position);
+                return replaceFragment(fragment3, position);*/
+                Intent bookmark = new Intent(this,BookmarkActivity.class);
+                startActivity(bookmark);
             case ContentFragment.LOGIN:
                 LoginFragment fragment4 = LoginFragment.newInstance(primaryColorCanvas);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment4).commit();
                 return replaceFragment(fragment4, position);
+            /*case ContentFragment.PROFILE:
+                Intent profile = new Intent(this,ProfileActivity.class);
+                startActivity(profile);*/
             default:
                 Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
                 return replaceFragment(screenShotable, position);

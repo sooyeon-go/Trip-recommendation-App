@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">싸돌아</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_profile">프로필</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="title_activity_custom">CustomActivity</string>
