@@ -1,10 +1,12 @@
 package com.example.ssadola;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -38,6 +40,14 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_theme, container, false);
+        Button studio = rootView.findViewById(R.id.btn_studoi_set);
+        studio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent studio_activity = new Intent(getActivity(),StudioActivity.class);
+                startActivity(studio_activity);
+            }
+        });
         return rootView;
     }
     @Override

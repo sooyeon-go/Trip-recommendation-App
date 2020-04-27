@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BookmarkActivity"></activity>
+        <activity android:name=".StudioActivity"></activity>
+        <activity android:name=".BookmarkActivity" />
         <activity android:name=".ProfileActivity" />
 
         <meta-data
@@ -22,14 +23,15 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ResultDetailActivity" />
         <activity android:name=".ResultActivity" />
-        <activity android:name=".Splash" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
+
     </application>
 
 </manifest>

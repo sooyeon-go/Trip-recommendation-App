@@ -10,7 +10,7 @@
             android:id="@+id/theme_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/rec_title">
+            android:src="@drawable/theme_title">
         </ImageView>
         <ScrollView
             android:layout_width="match_parent"
@@ -21,30 +21,35 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                <Button
+                   android:id="@+id/btn_season"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:text="계절별"
                    android:textSize="80sp">
                </Button>
                 <Button
+                    android:id="@+id/btn_studoi_set"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="드라마/영화   촬영 명소"
                     android:textSize="70sp">
                 </Button>
                 <Button
+                    android:id="@+id/btn_sol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="혼자 가기 좋은"
                     android:textSize="80sp">
                 </Button>
                 <Button
+                    android:id="@+id/btn_festival"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="축제 탐방"
                     android:textSize="80sp">
                 </Button>
                 <Button
+                    android:id="@+id/btn_special"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="이색적인"
