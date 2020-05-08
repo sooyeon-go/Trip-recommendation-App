@@ -15,4 +15,14 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+
+    <!-- 선호도 조사 질문지 -->
+    <string name="Q1">1. 맛있는 음식을 먹고 도시 야경을 보는 여행코스 </string>
+    <string name="Q2">2. 맛있는 음식을 먹고 호캉스를 즐기는 여행코스 </string>
+    <string name="Q3">3. 감성카페와 맛집투어 후 등산을 하는 여행코스 </string>
+    <string name="Q4">4. 재미있는 체험을 하는 여행코스 </string>
+    <string name="Q5">5. 맑은 숲속 공기를 마시며 걷는 여행코스 </string>
+    <string name="Q6">6. 유적지도 보고 해변도 걷는 여행코스 </string>
+    <string name="Q7">7. 바다 근처에서 맛집 투어하는 여행코스</string>
+    <string name="Q8">8. 드라마 세트장을 직접 가보는 여행코스  </string>
 </resources>

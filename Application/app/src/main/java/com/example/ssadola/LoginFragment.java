@@ -42,6 +42,7 @@ import java.util.HashMap;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
 public class LoginFragment extends Fragment implements ScreenShotable {
+    static String pub_ip = "http://52.79.226.131/";
     private static String TAG = "User_Info";
     private static String TAG_CHK = "pw_chk";
     private static String TAG_NAME = "u_name";
@@ -216,7 +217,7 @@ public class LoginFragment extends Fragment implements ScreenShotable {
                 String Email = (String) params[0];
                 String Pw = (String) params[1];
 
-                String link = "http://13.124.83.91/login.php";
+                String link = pub_ip+"login.php";
                 //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
                 //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
                 String data = "Email="+Email+"&Pw="+Pw;

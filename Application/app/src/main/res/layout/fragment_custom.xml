@@ -41,122 +41,147 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문1"
-                    android:textSize="30sp">
+                    android:text="@string/Q1"
+                    android:textSize="15sp">
                 </TextView>
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RatingBar
+                    android:id="@+id/Q1_rating"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <CheckedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:text="선택지 1">
-                    </CheckedTextView>
-                    <CheckedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:text="선택지 2">
-                    </CheckedTextView>
-                    <CheckedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:text="선택지 3">
-                    </CheckedTextView>
-                </LinearLayout>
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문2"
-                    android:textSize="30sp">
+                    android:text="@string/Q2"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q2_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문3"
-                    android:textSize="30sp">
+                    android:text="@string/Q3"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q3_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문4"
-                    android:textSize="30sp">
+                    android:text="@string/Q4"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q4_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문5"
-                    android:textSize="30sp">
+                    android:text="@string/Q5"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q5_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문5"
-                    android:textSize="30sp">
+                    android:text="@string/Q6"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q6_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문6"
-                    android:textSize="30sp">
+                    android:text="@string/Q7"
+                    android:textSize="15sp">
                 </TextView>
+                <RatingBar
+                    android:id="@+id/Q7_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="질문7"
-                    android:textSize="30sp">
+                    android:text="@string/Q8"
+                    android:textSize="15sp">
                 </TextView>
-                <TextView
-                    android:layout_width="match_parent"
+                <RatingBar
+                    android:id="@+id/Q8_rating"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="질문8"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문9"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문10"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문11"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문12"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문13"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문14"
-                    android:textSize="30sp">
-                </TextView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="질문15"
-                    android:textSize="30sp">
-                </TextView>
+                    android:layout_gravity="end"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                </RatingBar>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

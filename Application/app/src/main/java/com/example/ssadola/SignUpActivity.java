@@ -22,6 +22,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class SignUpActivity extends AppCompatActivity {
+    static String pub_ip = "http://52.79.226.131/";
     private EditText name;
     private EditText age;
     private EditText sex;
@@ -78,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String Email = (String) params[3];
                 String Pw = (String) params[4];
 
-                String link = "http://13.124.83.91/signUP.php";
+                String link = pub_ip+"signUP.php";
                 String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
                 data += "&" + URLEncoder.encode("Age", "UTF-8") + "=" + URLEncoder.encode(Age, "UTF-8");
                 data += "&" + URLEncoder.encode("Sex", "UTF-8") + "=" + URLEncoder.encode(Sex, "UTF-8");
@@ -111,73 +112,4 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
     }
-    /*public void insert(View view) {
-        String Name = name.getText().toString();
-        String Age = age.getText().toString();
-        String Sex = sex.getText().toString();
-        String Email = email.getText().toString();
-        String Pw = password.getText().toString();
-
-        insertToDB(Name,Age,Sex,Email, Pw);
-    }*/
-
-   /* private void insertToDB(String Name, String Age, String Sex, String Email, String Pw) {
-        class InsertData extends AsyncTask<String, Void, String> {
-            ProgressDialog loading;
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(SignUpActivity.this, "Please Wait", null, true, true);
-            }
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-            }
-            @Override
-            protected String doInBackground(String... params) {
-
-                try {
-                    String Name = (String) params[0];
-                    String Age = (String) params[1];
-                    String Sex = (String) params[2];
-                    String Email = (String) params[3];
-                    String Pw = (String) params[4];
-
-                    String link = "http://13.124.83.91/user/signUP.php";
-                    String data = URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
-                    data += "&" + URLEncoder.encode("Age", "UTF-8") + "=" + URLEncoder.encode(Age, "UTF-8");
-                    data += "&" + URLEncoder.encode("Sex", "UTF-8") + "=" + URLEncoder.encode(Sex, "UTF-8");
-                    data += "&" + URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
-                    data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
-
-                    URL url = new URL(link);
-                    URLConnection conn = url.openConnection();
-
-                    conn.setDoOutput(true);
-                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-
-                    wr.write(data);
-                    wr.flush();
-
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                    StringBuilder sb = new StringBuilder();
-                    String line = null;
-
-                    // Read Server Response
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line);
-                        break;
-                    }
-                    return sb.toString();
-                } catch (Exception e) {
-                    return new String("Exception: " + e.getMessage());
-                }
-            }
-        }
-        InsertData task = new InsertData();
-        task.execute(Name,Age,Sex,Email,Pw);
-    }*/
 }
