@@ -14,12 +14,20 @@
         android:textSize="40sp">
     </TextView>
     <Button
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈"
+        android:layout_below="@+id/btn_logout"
+        android:layout_alignRight="@+id/tv_profile">
+    </Button>
+    <Button
     android:id="@+id/btn_edit"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="수정"
     android:layout_alignRight="@+id/tv_profile">
-</Button>
+    </Button>
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
@@ -35,6 +43,11 @@
         android:layout_centerInParent="true"
         android:layout_marginHorizontal="30sp"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

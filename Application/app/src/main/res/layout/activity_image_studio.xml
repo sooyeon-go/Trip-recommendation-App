@@ -14,18 +14,16 @@
         android:id="@+id/img_search"
         android:layout_below="@+id/tv_test"
         android:layout_width="match_parent"
-        android:layout_height="400sp">
+        android:layout_height="300sp">
     </ImageView>
-        <!--<ImageView
-            android:id="@+id/img_search2"
-            android:layout_width="match_parent"
-            android:layout_height="400sp">
-        </ImageView>
-        <ImageView
-            android:id="@+id/img_search3"
-            android:layout_width="match_parent"
-            android:layout_height="400sp">
-        </ImageView>-->
+    <ImageButton
+        android:id="@+id/btn_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_search"
+        android:src="@drawable/star"
+        android:background="@android:color/transparent">
+    </ImageButton>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/map"

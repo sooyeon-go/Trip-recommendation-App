@@ -190,15 +190,19 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 return replaceFragment(fragment3, position);*/
                 Intent bookmark = new Intent(this,BookmarkActivity.class);
                 startActivity(bookmark);
+                return replaceFragment(screenShotable, position);
             case ContentFragment.LOGIN:
-                LoginFragment fragment4 = LoginFragment.newInstance(primaryColorCanvas);
+               /* LoginFragment fragment4 = LoginFragment.newInstance(primaryColorCanvas);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment4).commit();
-                return replaceFragment(fragment4, position);
+                return replaceFragment(fragment4, position);*/
+                Intent login = new Intent(this,LoginActivity.class);
+                startActivity(login);
+                return replaceFragment(screenShotable, position);
             /*case ContentFragment.PROFILE:
                 Intent profile = new Intent(this,ProfileActivity.class);
                 startActivity(profile);*/
             default:
-                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
+               // Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
                 return replaceFragment(screenShotable, position);
         }
     }

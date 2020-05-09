@@ -3,13 +3,18 @@ package com.example.ssadola;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.UriMatcher;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +24,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,12 +34,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ImageStudioActivity extends AppCompatActivity implements OnMapReadyCallback {
+    static String pub_ip = "http://52.79.226.131/";
+    StringBuilder sb;
     TextView test;
     GoogleMap mMap;
     Geocoder geocoder;
@@ -42,6 +58,11 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
     String[] img_link;
     Bitmap[] bitmap;
     int count;
+    ArrayList<HashMap<String, String>> chkArrayList;
+
+    private static String TAG_EMAIL= "u_email";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +72,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
         img_link = new String[5];
         test = findViewById(R.id.tv_test);
         img_search = findViewById(R.id.img_search);
-        /*img_search2 = findViewById(R.id.img_search2);
-        img_search3 = findViewById(R.id.img_search3);*/
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         work_nm = bundle.getString("work_nm");
@@ -65,7 +85,34 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
         mapFragment.getMapAsync(this);
         getImgAPI getimg = new getImgAPI();
         getimg.execute();
+        ImageButton btn_star=findViewById(R.id.btn_star);
+        btn_star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chkArrayList = GetLoginData();
+                if (chkArrayList == null) {
+                    Toast.makeText(ImageStudioActivity.this, "로그인 먼저 해주세요", Toast.LENGTH_SHORT).show();
+                    Intent login = new Intent(ImageStudioActivity.this, LoginActivity.class);
+                    startActivity(login);
+                    finish();
+                } else {
+                    //DB에 여행지 정보 저장하기
+                    //로그인 정보->chkArrayList
+                    // u_id / theme /addr /work_nm 보내서 저장
+                    HashMap<String, String> LoginhashMap = chkArrayList.get(0);
+                    String mu_email = LoginhashMap.get(TAG_EMAIL);
+                    String mtheme = "studio";
+                    String maddr = sigun_nm + plc_nm;
+                    String mwork_nm = work_nm;
 
+                    try {
+                        InsertBookmark(mu_email, mtheme, maddr, mwork_nm);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         img_search.setOnTouchListener(new OnSwipeTouchListener(ImageStudioActivity.this) {
             public void onSwipeTop() {
             }
@@ -183,8 +230,9 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
                 String query = URLEncoder.encode(sigun_nm+" "+plc_nm,"UTF-8");
                 String display = URLEncoder.encode("display","UTF-8");
                 String sort = URLEncoder.encode("sort","UTF-8");
+                String filter = URLEncoder.encode("filter","UTF-8");
                 String apiURL = "https://openapi.naver.com/v1/search/image?query="+query+"&"+display+"="+ URLEncoder.encode("5","UTF-8")
-                +"&"+sort+"="+URLEncoder.encode("sim","UTF-8");//display+sort;
+                +"&"+sort+"="+URLEncoder.encode("sim","UTF-8")+"&filter="+filter+ URLEncoder.encode("medium","UTF-8");//display+sort;
 
                 URL url = new URL(apiURL);
                 HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -275,6 +323,65 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
             img_search.setImageBitmap(bitmap[0]);
         }catch ( InterruptedException e){
                 e.printStackTrace();
+        }
+    }
+    public ArrayList<HashMap<String, String>> GetLoginData() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Gson gson = new Gson();
+        String json = sharedPrefs.getString("UserInfo", "EMPTY");
+        if (json.equals("EMPTY")) {
+            Toast.makeText(ImageStudioActivity.this, "로그인 먼저 해주세요", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        Type type = new TypeToken<ArrayList<HashMap<String, String>>>() {
+        }.getType();
+        return gson.fromJson(json, type);
+    }
+
+    public void InsertBookmark(String... params) throws UnsupportedEncodingException {
+        String u_email = (String) params[0];
+        String theme = (String) params[1];
+        String addr = (String) params[2];
+        String work_nm = (String) params[3];
+
+        final String link = pub_ip + "Bookmark_Theme.php";
+        final String data = "u_email=" + u_email + "&theme=" + theme + "&addr=" + addr + "&work_nm=" + work_nm;
+
+        Thread mThread = new Thread() {
+            public void run() {
+                try {
+                    URL url = new URL(link);
+                    URLConnection conn = url.openConnection();
+
+                    conn.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                    wr.write(data);
+                    wr.flush();
+                    wr.close();
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    sb = new StringBuilder();
+                    String line = null;
+
+                    // Read Server Response
+                    while ((line = reader.readLine()) != null) {
+                        sb.append(line);
+                        break;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        mThread.start();
+        try {
+            mThread.join();
+            Toast.makeText(ImageStudioActivity.this,sb.toString(),Toast.LENGTH_LONG).show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
