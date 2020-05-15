@@ -48,12 +48,12 @@ import java.util.List;
 public class ImageStudioActivity extends AppCompatActivity implements OnMapReadyCallback {
     static String pub_ip = "http://52.79.226.131/";
     StringBuilder sb;
-    TextView test;
+    TextView tv_work_nm,tv_addr;//,tv_year;
     GoogleMap mMap;
     Geocoder geocoder;
     String plc_nm;
     String sigun_nm;
-    String work_nm;
+    String work_nm,yy;
     ImageView img_search,img_search2,img_search3;
     String[] img_link;
     Bitmap[] bitmap;
@@ -70,7 +70,9 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
 
         bitmap = new Bitmap[5];
         img_link = new String[5];
-        test = findViewById(R.id.tv_test);
+        tv_work_nm = findViewById(R.id.tv_work_nm);
+        tv_addr = findViewById(R.id.tv_addr);
+
         img_search = findViewById(R.id.img_search);
 
         Intent intent = getIntent();
@@ -78,15 +80,18 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
         work_nm = bundle.getString("work_nm");
         plc_nm = bundle.getString("plc_nm");
         sigun_nm = bundle.getString("sigun_nm");
-        test.setText(sigun_nm+" "+plc_nm+" "+work_nm);
+        yy = bundle.getString("year");
 
+
+        tv_work_nm.setText(work_nm+" / "+yy);
+        tv_addr.setText(sigun_nm+" "+plc_nm);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         getImgAPI getimg = new getImgAPI();
         getimg.execute();
-        ImageButton btn_star=findViewById(R.id.btn_star);
-        btn_star.setOnClickListener(new View.OnClickListener() {
+        final ImageButton btn_heart=findViewById(R.id.btn_heart);
+        btn_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chkArrayList = GetLoginData();
@@ -99,12 +104,12 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
                     //DB에 여행지 정보 저장하기
                     //로그인 정보->chkArrayList
                     // u_id / theme /addr /work_nm 보내서 저장
+
                     HashMap<String, String> LoginhashMap = chkArrayList.get(0);
                     String mu_email = LoginhashMap.get(TAG_EMAIL);
                     String mtheme = "studio";
                     String maddr = sigun_nm + plc_nm;
                     String mwork_nm = work_nm;
-
                     try {
                         InsertBookmark(mu_email, mtheme, maddr, mwork_nm);
                     } catch (UnsupportedEncodingException e) {
@@ -208,7 +213,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
             }else{
                 try {
                     JSONObject jsonObject = new JSONObject(result);
-                    Toast.makeText( ImageStudioActivity.this,result,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText( ImageStudioActivity.this,result,Toast.LENGTH_SHORT).show();
                     JSONArray jsonArray = jsonObject.getJSONArray("items");
                     for(int i=0;i<5;i++){
                         JSONObject item = jsonArray.getJSONObject(i);

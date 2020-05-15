@@ -65,7 +65,7 @@ public class StudioActivity extends AppCompatActivity {
     ListView mListView;
     String sigun_nm;
 
-    TextView plc_nm, work_nm;
+    TextView plc_nm, work_nm,yy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +94,12 @@ public class StudioActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 work_nm = view.findViewById(R.id.list_work_nm);
                 plc_nm = view.findViewById(R.id.list_plc_nm);
-
+                yy = view.findViewById(R.id.list_yy);
                 Bundle bundle = new Bundle();
                 bundle.putString("work_nm", work_nm.getText().toString());
                 bundle.putString("plc_nm", plc_nm.getText().toString());
                 bundle.putString("sigun_nm", sigun_nm);
+                bundle.putString("year",yy.getText().toString());
                 Intent img = new Intent(StudioActivity.this, ImageStudioActivity.class);
                 img.putExtras(bundle);
                 startActivity(img);
