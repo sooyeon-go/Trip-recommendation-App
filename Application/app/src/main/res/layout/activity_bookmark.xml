@@ -21,12 +21,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="16dp"
+    android:orientation="vertical"
     >
-    <TextView
+    <ImageView
+        android:id="@+id/iv_title_theme"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ttt">
-    </TextView>
+        android:layout_height="wrap_content"
+        android:src="@drawable/bookmark_title">
+    </ImageView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_height="match_parent"
         android:layout_width="match_parent"

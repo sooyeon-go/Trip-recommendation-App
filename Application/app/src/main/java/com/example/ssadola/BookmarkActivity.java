@@ -46,7 +46,7 @@ public class BookmarkActivity extends AppCompatActivity {
     private static final String TAG_THEME = "theme";
     private static final String TAG_ADDR = "addr";
     private static final String TAG_WOKR = "work_nm";
-
+    private static final String TAG_COUNT = "count";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class BookmarkActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(mLinearLayoutManager);
         arrayList = GetLoginData();
-        test = findViewById(R.id.ttt);
+
         if(arrayList == null){
             Toast.makeText(BookmarkActivity.this,"로그인 먼저 해주세요",Toast.LENGTH_LONG).show();
             Intent login = new Intent(BookmarkActivity.this,LoginActivity.class);
@@ -124,6 +124,7 @@ public class BookmarkActivity extends AppCompatActivity {
                         hashMap.put(TAG_THEME,i_theme);
                         hashMap.put(TAG_ADDR,i_addr);
                         hashMap.put(TAG_WOKR,i_worknm);
+                        hashMap.put(TAG_COUNT,Integer.toString(i+1));
 
                         BookmarkList.add(hashMap);
                     }
@@ -177,7 +178,6 @@ public class BookmarkActivity extends AppCompatActivity {
                 // Read Server Response
                 while ((line = reader.readLine()) != null) {
                     sb.append(line);
-                    break;
                 }
                 reader.close();
                 return sb.toString();
