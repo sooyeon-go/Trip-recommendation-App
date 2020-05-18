@@ -88,8 +88,10 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         getImgAPI getimg = new getImgAPI();
         getimg.execute();
+
         final ImageButton btn_heart=findViewById(R.id.btn_heart);
         btn_heart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,7 +220,6 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
                     for(int i=0;i<5;i++){
                         JSONObject item = jsonArray.getJSONObject(i);
                         img_link[i] = item.getString("link");
-                        //Toast.makeText(ImageStudioActivity.this,link,Toast.LENGTH_LONG).show();
                     }
                     getImgfromURL(img_link);
                 } catch (JSONException e) {
@@ -351,7 +352,6 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
 
         final String link = pub_ip + "Bookmark_Theme.php";
         final String data = "u_email=" + u_email + "&theme=" + theme + "&addr=" + addr + "&work_nm=" + work_nm;
-
         Thread mThread = new Thread() {
             public void run() {
                 try {
@@ -386,6 +386,39 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
             mThread.join();
             Toast.makeText(ImageStudioActivity.this,sb.toString(),Toast.LENGTH_LONG).show();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        InsertImgLink(u_email,img_link);
+    }
+    public void InsertImgLink(final String email, final String[] insert_imglink){
+        //email + link1 link2...
+        Thread mThread = new Thread(){
+            public void run(){
+                try {
+                    for(int i = 0; i< insert_imglink.length;i++){
+                        URL url = new URL(pub_ip+"insert_imglink.php");
+                        String data = "u_email=" + email+"&link="+insert_imglink[i];
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoOutput(true);
+                        conn.connect();
+                        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                        wr.write(data);
+                        wr.flush();
+                        wr.close();
+
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        mThread.start();
+        try {
+            mThread.join();
+            Toast.makeText(ImageStudioActivity.this,"InsertImgLink",Toast.LENGTH_SHORT).show();
+        }catch ( InterruptedException e){
             e.printStackTrace();
         }
     }
