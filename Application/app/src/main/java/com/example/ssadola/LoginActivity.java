@@ -1,26 +1,20 @@
 package com.example.ssadola;
 
-import android.annotation.SuppressLint;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 
@@ -29,7 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -38,10 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-import yalantis.com.sidemenu.interfaces.ScreenShotable;
-
-public class LoginFragment extends Fragment implements ScreenShotable {
+public class LoginActivity extends AppCompatActivity {
     static String pub_ip = "http://52.79.226.131/";
     private static String TAG = "User_Info";
     private static String TAG_CHK = "pw_chk";
@@ -57,32 +47,14 @@ public class LoginFragment extends Fragment implements ScreenShotable {
     int count = 0;
     private EditText name,age,sex,et_email,et_password;
     private Button sign_in,sign_up;
-    public static LoginFragment newInstance(int resId) {
-        LoginFragment loginfragment = new LoginFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(Integer.class.getName(), resId);
-        loginfragment.setArguments(bundle);
-        return loginfragment;
-    }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        this.containerView = view.findViewById(R.id.container);
-    }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        res = getArguments().getInt(Integer.class.getName());
-    }
+        setContentView(R.layout.activity_login);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-
-        imageView = rootView.findViewById(R.id.imageView);
-        textView = rootView.findViewById(R.id.textView);
-        imageView.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+        imageView = findViewById(R.id.imageView);
+        textView = findViewById(R.id.textView);
+        imageView.setOnTouchListener(new OnSwipeTouchListener(LoginActivity.this) {
             public void onSwipeTop() {
             }
 
@@ -115,10 +87,10 @@ public class LoginFragment extends Fragment implements ScreenShotable {
 
         });
 
-        et_email = rootView.findViewById(R.id.in_email);
-        et_password = rootView.findViewById(R.id.in_pswd);
+        et_email = findViewById(R.id.in_email);
+        et_password = findViewById(R.id.in_pswd);
 
-        sign_in = rootView.findViewById(R.id.btn_signin);
+        sign_in = findViewById(R.id.btn_signin);
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,24 +102,14 @@ public class LoginFragment extends Fragment implements ScreenShotable {
             }
         });
 
-        sign_up = rootView.findViewById(R.id.btn_signup);
+        sign_up = findViewById(R.id.btn_signup);
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signup = new Intent(getActivity(),SignUpActivity.class);
+                Intent signup = new Intent(LoginActivity.this,SignUpActivity.class);
                 startActivity(signup);
             }
         });
-        return rootView;
-    }
-    @Override
-    public void takeScreenShot() {
-
-    }
-
-    @Override
-    public Bitmap getBitmap() {
-        return null;
     }
 
     public class LoginAsync extends AsyncTask<String, Void, String> {
@@ -155,7 +117,7 @@ public class LoginFragment extends Fragment implements ScreenShotable {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading = ProgressDialog.show(getActivity(), "Please Wait", null, true, true);
+            loading = ProgressDialog.show(LoginActivity.this, "Please Wait", null, true, true);
         }
         @Override
         protected void onPostExecute(String result) {
@@ -189,11 +151,11 @@ public class LoginFragment extends Fragment implements ScreenShotable {
                         mArrayList.add(hashMap);
 
                         SaveLoginData(mArrayList);
-                        Intent profile = new Intent(getActivity(),ProfileActivity.class);
+                        Intent profile = new Intent(LoginActivity.this,ProfileActivity.class);
                         startActivity(profile);
                     }else{
                         //fail to login
-                        Toast.makeText(getActivity(), "로그인 실패", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_LONG).show();
                         et_email.setText(null);
                         et_password.setText(null);
                     }
@@ -203,8 +165,8 @@ public class LoginFragment extends Fragment implements ScreenShotable {
             }
         }
         public void SaveLoginData(ArrayList<HashMap<String, String>> mArrayList) {
-            SharedPreferences preferences =PreferenceManager.getDefaultSharedPreferences(getContext());
-                    SharedPreferences.Editor editor = preferences.edit();
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+            SharedPreferences.Editor editor = preferences.edit();
             Gson gson = new Gson();
             String json = gson.toJson(mArrayList);
             editor.putString("UserInfo", json);
@@ -258,5 +220,4 @@ public class LoginFragment extends Fragment implements ScreenShotable {
             }
         }
     }
-
 }

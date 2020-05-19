@@ -20,9 +20,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView tv_name,tv_email,tv_age,tv_sex;
-    Button btn_edit,btn_logout;
+    TextView tv_id,tv_name,tv_email,tv_age,tv_sex;
+    Button btn_edit,btn_logout,btn_home;
     ArrayList<HashMap<String, String>> arrayList;
+
     private static String TAG_NAME = "u_name";
     private static String TAG_AGE = "age";
     private static String TAG_SEX = "sex";
@@ -31,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         tv_name = (TextView)findViewById(R.id.tv_name);
         tv_age = (TextView)findViewById(R.id.tv_age);
         tv_sex = (TextView)findViewById(R.id.tv_sex);
@@ -58,9 +60,19 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        btn_home = findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(ProfileActivity.this,MainActivity.class);
+                startActivity(home);
+                finish();
+            }
+        });
         arrayList = GetLoginData();
         if(arrayList != null){
             HashMap<String,String> hashMap = arrayList.get(0);
+
             tv_name.setText(hashMap.get(TAG_NAME));
             tv_age.setText(hashMap.get(TAG_AGE));
             tv_sex.setText(hashMap.get(TAG_SEX));
