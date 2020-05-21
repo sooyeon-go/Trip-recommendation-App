@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="textInputLayout">#96ffffff</color>
     <color name="colorRed">#FF0000</color>
+    <color name="menu">#A9D0F5</color>
 </resources>

@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -108,6 +109,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signup = new Intent(LoginActivity.this,SignUpActivity.class);
                 startActivity(signup);
+            }
+        });
+
+        TextView no_login = findViewById(R.id.tv_NoLogin);
+        no_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nologin = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(nologin);
             }
         });
     }

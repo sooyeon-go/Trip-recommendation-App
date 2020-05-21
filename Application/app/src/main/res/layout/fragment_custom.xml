@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/fragment_custom">
+    android:id="@+id/fragment_custom"
+    android:background="@drawable/bg2">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

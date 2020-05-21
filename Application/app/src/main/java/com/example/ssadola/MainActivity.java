@@ -185,12 +185,11 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment2).commit();
                 return replaceFragment(fragment2, position);
             case ContentFragment.BOOKMARK:
-                /*BookmarkFragment fragment3 = BookmarkFragment.newInstance(primaryColorCanvas);
+                BookmarkFragment fragment3 = BookmarkFragment.newInstance(primaryColorCanvas);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment3).commit();
-                return replaceFragment(fragment3, position);*/
-                Intent bookmark = new Intent(this,BookmarkActivity.class);
-                startActivity(bookmark);
-                return replaceFragment(screenShotable, position);
+                return replaceFragment(fragment3, position);
+                /*Intent bookmark = new Intent(this,BookmarkActivity.class);
+                startActivity(bookmark);*/
             case ContentFragment.LOGIN:
                /* LoginFragment fragment4 = LoginFragment.newInstance(primaryColorCanvas);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment4).commit();

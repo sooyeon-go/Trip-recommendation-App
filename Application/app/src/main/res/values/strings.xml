@@ -25,4 +25,7 @@
     <string name="Q6">6. 유적지도 보고 해변도 걷는 여행코스 </string>
     <string name="Q7">7. 바다 근처에서 맛집 투어하는 여행코스</string>
     <string name="Q8">8. 드라마 세트장을 직접 가보는 여행코스  </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

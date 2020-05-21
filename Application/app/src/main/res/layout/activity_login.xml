@@ -200,14 +200,17 @@
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:text="Forgot Password?"-->
-        <!--            android:textAlignment="center"-->
-        <!--            android:textColor="#96ffffff"-->
-        <!--            android:textSize="16sp">-->
-        <!--        </TextView>-->
+        <TextView
+            android:id="@+id/tv_NoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="로그인 없이 둘러보기"
+            android:textAlignment="center"
+            android:textColor="#96ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/buttonshapewhitebg">
+        </TextView>
     </LinearLayout>
 </RelativeLayout>

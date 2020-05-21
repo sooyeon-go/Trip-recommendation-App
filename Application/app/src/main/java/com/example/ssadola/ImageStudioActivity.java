@@ -109,7 +109,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnMapReady
 
                     HashMap<String, String> LoginhashMap = chkArrayList.get(0);
                     String mu_email = LoginhashMap.get(TAG_EMAIL);
-                    String mtheme = "studio";
+                    String mtheme = "영화/드라마";
                     String maddr = sigun_nm + plc_nm;
                     String mwork_nm = work_nm;
                     try {
