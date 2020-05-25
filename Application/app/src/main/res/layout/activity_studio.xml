@@ -6,15 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".StudioActivity">
 
+    <TextView
+        android:id="@+id/tv_recent_film"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="최근 화제작 놀러가기!"
+        android:textStyle="bold"
+        android:textSize="40dp">
+    </TextView>
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_below="@+id/tv_recent_film"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_gravity="bottom"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="30dp"
+        android:paddingEnd="@dimen/card_padding"
+        android:paddingLeft="@dimen/card_padding"
+        android:paddingRight="@dimen/card_padding"
+        android:paddingStart="@dimen/card_padding">
+    </androidx.viewpager.widget.ViewPager>
     <SearchView
         android:id="@+id/searchView"
+        android:layout_below="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
         android:iconifiedByDefault="false"
         android:queryHint="지역명 검색">
     </SearchView>
+    <LinearLayout
+        android:id="@+id/topTitle"
+        android:layout_below="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:text="작품명"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="8"
+            android:padding="5dp" />
+
+        <TextView
+            android:text="장소"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:text="촬영년도"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+    </LinearLayout>
     <ListView
         android:id="@+id/listViewStudio"
         android:layout_width="match_parent"
@@ -31,38 +84,5 @@
         android:textSize="19.0sp"
         android:visibility="gone">
     </TextView>
-    <LinearLayout
-        android:id="@+id/topTitle"
-        android:layout_below="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="작품명"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="8"
-            android:padding="5dp" />
-
-
-        <TextView
-            android:text="장소"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:layout_margin="5dp"
-            android:padding="5dp" />
-
-
-        <TextView
-            android:text="촬영년도"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_margin="5dp"
-            android:padding="5dp" />
-    </LinearLayout>
 
 </RelativeLayout>

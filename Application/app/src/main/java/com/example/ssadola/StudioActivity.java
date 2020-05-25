@@ -1,6 +1,7 @@
 package com.example.ssadola;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -61,6 +62,7 @@ public class StudioActivity extends AppCompatActivity {
 
     private static final String open_gg_api_key = "=ebdf40781aa946c6af58a9e4ee3a91c6";
 
+    private KKViewPager mPager;
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mListView;
     String sigun_nm;
@@ -72,7 +74,17 @@ public class StudioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studio);
 
-        SearchView searchView = findViewById(R.id.searchView);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        StudioFragmentAdapter pagerAdapter = new StudioFragmentAdapter(getSupportFragmentManager(), dpToPixels(2, this));
+        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, pagerAdapter);
+        fragmentCardShadowTransformer.enableScaling(true);
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);
+        viewPager.setOffscreenPageLimit(3);
+
+        /*SearchView searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -105,9 +117,11 @@ public class StudioActivity extends AppCompatActivity {
                 startActivity(img);
             }
         });
-        mArrayList = new ArrayList<>();
+        mArrayList = new ArrayList<>();*/
     }
-
+    public static float dpToPixels(int dp, Context context) {
+        return dp * (context.getResources().getDisplayMetrics().density);
+    }
     protected void showResult(String result) {
         try {
             JSONObject jsonObject = new JSONObject(result);

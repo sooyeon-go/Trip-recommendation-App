@@ -119,7 +119,7 @@ public class CustomFragment extends Fragment implements ScreenShotable {
             public void run(){
                 try {
 
-                    URL url = new URL(pub_ip+"Survey_insert.php");
+                    URL url = new URL(pub_ip+"user_Survey.php");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);;
                     conn.connect();
@@ -134,7 +134,6 @@ public class CustomFragment extends Fragment implements ScreenShotable {
                     data += "&" + URLEncoder.encode("Q8", "UTF-8") + "=" + URLEncoder.encode(Float.toString(mq8),"UTF-8");
 
 
-
                     OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
                     wr.write(data);
                     wr.flush();
@@ -147,7 +146,6 @@ public class CustomFragment extends Fragment implements ScreenShotable {
                     // Read Server Response
                     while ((line = reader.readLine()) != null) {
                         sb.append(line);
-                        break;
                     }
                 }catch (MalformedURLException e) {
                     e.printStackTrace();

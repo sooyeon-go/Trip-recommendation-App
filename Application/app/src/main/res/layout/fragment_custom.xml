@@ -55,7 +55,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -145,7 +145,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -163,7 +163,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
                 <TextView
                     android:layout_width="match_parent"
@@ -181,7 +181,7 @@
                     android:stepSize="0.5"
                     android:max="10"
                     android:isIndicator="false"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator">
+                    style="@style/customRatingBar">
                 </RatingBar>
             </LinearLayout>
         </ScrollView>
