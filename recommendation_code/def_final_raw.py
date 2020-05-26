@@ -35,35 +35,35 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
         return rating_pred
     rating_pred = predict_rating(rating_matrix.values, item_sim_df.values)
     rating_pred_matrix = pd.DataFrame(data = rating_pred, index = rating_matrix.index, columns = rating_matrix.columns)
-    def get_mse(pred, actual): #?¬ìš©?ê? ?‰ì ??ë¶€?¬í•œ ?í™”???€?´ì„œë§??ˆì¸¡ ?±ëŠ¥ ?‰ê? MSE êµ¬í•˜ê¸?        pred = pred[actual.nonzero()].flatten() #?‰ì ???ˆëŠ” ?¤ì œ ?í™”ë§?ì¶”ì¶œ
+    def get_mse(pred, actual): #?¬ìš©?ê? ?‰ì ??ë¶€?¬í•œ ?í™”???€?´ì„œë§??ˆì¸¡ ?±ëŠ¥ ?‰ê? MSE êµ¬í•˜ê¸?        pred = pred[actual.nonzero()].flatten() #?‰ì ???ˆëŠ” ?¤ì œ ?í™”ë§?ì¶”ì¶œ
         actual = actual[actual.nonzero()].flatten()
         return mean_squared_error(pred, actual)
     def predict_rating_topsim(rating_arr, item_sim_arr, n = 20):
-        pred = np.zeros(rating_arr.shape) #?ˆì¸¡ ?‰ë ¬ ì´ˆê¸°??    
-        for col in range(rating_arr.shape[1]): #?¬ìš©???„ì´???‰ì  ?‰ë ¬ ???¬ê¸°ë§Œí¼ ë£¨í”„ ?˜í–‰
-            top_n_items = [np.argsort(item_sim_arr[:, col])[: -n-1 : -1]] #? ì‚¬???‰ë ¬?ì„œ ? ì‚¬?„ê? ???œìœ¼ë¡?nê°??°ì´???‰ë ¬ ?¸ë±??ë°˜í™˜
-            for row in range(rating_arr.shape[0]): #ê°œì¸?”ëœ ?ˆì¸¡ ?‰ì  ê³„ì‚°
+        pred = np.zeros(rating_arr.shape) #?ˆì¸¡ ?‰ë ¬ ì´ˆê¸°??    
+        for col in range(rating_arr.shape[1]): #?¬ìš©???„ì´???‰ì  ?‰ë ¬ ???¬ê¸°ë§Œí¼ ë£¨í”„ ?˜í–‰
+            top_n_items = [np.argsort(item_sim_arr[:, col])[: -n-1 : -1]] #? ì‚¬???‰ë ¬?ì„œ ? ì‚¬?„ê? ???œìœ¼ë¡?nê°??°ì´???‰ë ¬ ?¸ë±??ë°˜í™˜
+            for row in range(rating_arr.shape[0]): #ê°œì¸?”ëœ ?ˆì¸¡ ?‰ì  ê³„ì‚°
                 pred[row, col] = item_sim_arr[col, :][top_n_items].dot(rating_arr[row, :][top_n_items].T)
                 pred[row, col] /= np.sum(np.abs(item_sim_arr[col, :][top_n_items]))
         return pred
     rating_pred = predict_rating_topsim(rating_matrix.values, item_sim_df.values, n = 20)
     rating_pred_matrix = pd.DataFrame(data = rating_pred, index = rating_matrix.index, columns = rating_matrix.columns)
     user_rating_id = rating_matrix.loc[8, :]
-    def get_unseen_course1(rating_matrix, userid): #?´ë? rating ì¤€ ì½”ìŠ¤ ?œì™¸?˜ê³  ì¶”ì²œ?????ˆë„ë¡? rating ?ˆì? ì½”ìŠ¤ ë°˜í™˜ ?¨ìˆ˜
+    def get_unseen_course1(rating_matrix, userid): #?´ë? rating ì¤€ ì½”ìŠ¤ ?œì™¸?˜ê³  ì¶”ì²œ?????ˆë„ë¡? rating ?ˆì? ì½”ìŠ¤ ë°˜í™˜ ?¨ìˆ˜
         user_rating = rating_matrix.loc[userid, :] #ë°˜í™˜??user_rating?€ ì½”ìŠ¤ë¥?indexë¡?ê°€ì§€??Series ê°ì²´
         already_go = user_rating[ user_rating > 0 ].index.tolist()
         course_list = rating_matrix.columns.tolist()
         un_list = [ course for course in course_list if course not in already_go ]
         return un_list
     def recomm_course_by_userid1(pred_df, userid, un_list, top_n):
-        # unseen course ì½”ìŠ¤ë¥?ì¶”ì¶œ??ê°€???ˆì¸¡ ?‰ì  ?’ì? ?œìœ¼ë¡??•ë ¬
+        # unseen course ì½”ìŠ¤ë¥?ì¶”ì¶œ??ê°€???ˆì¸¡ ?‰ì  ?’ì? ?œìœ¼ë¡??•ë ¬
         recomm_course = pred_df.loc[userid, un_list].sort_values(ascending = False)[: top_n]
         return recomm_course
     un_list = get_unseen_course1(rating_matrix, 8)
     recomm_course = recomm_course_by_userid1(rating_pred_matrix, 8, un_list, 30)
     recomm_course = pd.DataFrame(data = recomm_course.values, index = recomm_course.index, columns = ['pred_score'])
-    def get_rmse(R, P, Q, non_zeros): #?¤ì œ R ?‰ë ¬ê³??ˆì¸¡ ?‰ë ¬???¤ì°¨ êµ¬í•˜ê¸?        error = 0
-        full_pred_matrix = np.dot(P, Q.T) #??ê°œì˜ ë¶„í•´???‰ë ¬ P?€ Q.T???´ì ?¼ë¡œ ?ˆì¸¡ R ?‰ë ¬ ?ì„±(np.dot?¨ìˆ˜???´ì  ?¨ìˆ˜)
+    def get_rmse(R, P, Q, non_zeros): #?¤ì œ R ?‰ë ¬ê³??ˆì¸¡ ?‰ë ¬???¤ì°¨ êµ¬í•˜ê¸?        error = 0
+        full_pred_matrix = np.dot(P, Q.T) #??ê°œì˜ ë¶„í•´???‰ë ¬ P?€ Q.T???´ì ?¼ë¡œ ?ˆì¸¡ R ?‰ë ¬ ?ì„±(np.dot?¨ìˆ˜???´ì  ?¨ìˆ˜)
         x_non_zero_ind = [non_zero[0] for non_zero in non_zeros]
         y_non_zero_ind = [non_zero[1] for non_zero in non_zeros]
         R_non_zeros = R[x_non_zero_ind, y_non_zero_ind]
@@ -72,8 +72,8 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
         rmse = np.sqrt(mse)
         return rmse
     def matrix_factorization(R, K, steps, learning_rate, r_lambda):
-        #R : ?ë³¸ ?¬ìš©???„ì´???‰ì  ?‰ë ¬
-        #K : ? ìž¬?”ì¸??ì°¨ì› ??        #step : SGD??ë°˜ë³µ ?Ÿìˆ˜
+        #R : ?ë³¸ ?¬ìš©???„ì´???‰ì  ?‰ë ¬
+        #K : ? ìž¬?”ì¸??ì°¨ì› ??        #step : SGD??ë°˜ë³µ ?Ÿìˆ˜
         num_users, num_items = R.shape
         np.random.seed(1)
         P = np.random.normal(scale = 1./K, size = (num_users, K))
@@ -99,14 +99,14 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
     P, Q = matrix_factorization(rating_matrix.values, 50, 200, 0.01, 0.01)
     pred_matrix = np.dot(P, Q.T)
     rating_pred_matrix = pd.DataFrame(data = pred_matrix, index = rating_matrix.index, columns = rating_matrix.columns)
-    def get_unseen_course2(rating_matrix, userid): #?´ë? rating ì¤€ ì½”ìŠ¤ ?œì™¸?˜ê³  ì¶”ì²œ?????ˆë„ë¡? rating ?ˆì? ì½”ìŠ¤ ë°˜í™˜ ?¨ìˆ˜
+    def get_unseen_course2(rating_matrix, userid): #?´ë? rating ì¤€ ì½”ìŠ¤ ?œì™¸?˜ê³  ì¶”ì²œ?????ˆë„ë¡? rating ?ˆì? ì½”ìŠ¤ ë°˜í™˜ ?¨ìˆ˜
         user_rating = rating_matrix.loc[userid, :] #ë°˜í™˜??user_rating?€ ì½”ìŠ¤ë¥?indexë¡?ê°€ì§€??Series ê°ì²´
         already_go = user_rating[ user_rating > 0 ].index.tolist()
         course_list = rating_matrix.columns.tolist()
         un_list = [ course for course in course_list if course not in already_go ]
         return un_list
     def recomm_course_by_userid2(pred_df, userid, un_list, top_n):
-        # unseen course ì½”ìŠ¤ë¥?ì¶”ì¶œ??ê°€???ˆì¸¡ ?‰ì  ?’ì? ?œìœ¼ë¡??•ë ¬
+        # unseen course ì½”ìŠ¤ë¥?ì¶”ì¶œ??ê°€???ˆì¸¡ ?‰ì  ?’ì? ?œìœ¼ë¡??•ë ¬
         recomm_course = pred_df.loc[userid, un_list].sort_values(ascending = False)[: top_n]
         return recomm_course
     un_list = get_unseen_course2(rating_matrix, 8)
@@ -144,3 +144,7 @@ def_final(0.5, 1, 2, 3, 5, 7, 8, 10)
 
 
 # In[ ]:
+
+
+
+

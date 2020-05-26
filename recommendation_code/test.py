@@ -3,7 +3,7 @@
 
 # In[5]:
 
-
+import sys
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -14,10 +14,12 @@ from sklearn.metrics import mean_squared_error
 # In[6]:
 
 
-def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
+def def_final(*d):
     data = pd.read_csv('data_fin_.csv',encoding = 'cp949')
     user = pd.read_csv('user_data.csv',encoding = 'cp949')
-    user['rating'] = [d1, d2, d3, d4, d5, d6, d7, d8]
+    for i in d:
+        user['rating'] = i;
+    #user['rating'] = [d1, d2, d3, d4, d5, d6, d7, d8]
     new = data[['userid','courseid','rating']]
     user_new = user[['userid','courseid','rating']]
     new = new.append(user_new)
@@ -140,7 +142,8 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
 # In[7]:
 
 
-def_final(0.5, 1, 2, 3, 5, 7, 8, 10)
+#def_final(0.5, 1, 2, 3, 5, 7, 8, 10)
 
+def_final(*(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.arg[8])
 
 # In[ ]:
