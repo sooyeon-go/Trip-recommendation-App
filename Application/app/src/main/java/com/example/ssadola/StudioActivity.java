@@ -62,7 +62,6 @@ public class StudioActivity extends AppCompatActivity {
 
     private static final String open_gg_api_key = "=ebdf40781aa946c6af58a9e4ee3a91c6";
 
-    private KKViewPager mPager;
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mListView;
     String sigun_nm;

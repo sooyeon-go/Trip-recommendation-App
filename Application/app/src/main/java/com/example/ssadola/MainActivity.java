@@ -65,16 +65,16 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private void createMenuList() {
         SlideMenuItem menuItem0 = new SlideMenuItem(ContentFragment.CLOSE, R.drawable.icn_close);
         list.add(menuItem0);
-        SlideMenuItem menuItem = new SlideMenuItem(ContentFragment.CUSTOM, R.drawable.ic_search);
+        SlideMenuItem menuItem = new SlideMenuItem(ContentFragment.CUSTOM, R.drawable.zoom);
         list.add(menuItem);
-        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.THEME, R.drawable.ic_theme);
+        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.THEME, R.drawable.icn_7);
         list.add(menuItem2);
-        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.BOOKMARK, R.drawable.ic_bookmark);
+        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.BOOKMARK, R.drawable.bookmark);
         list.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.LOGIN, R.drawable.ic_login);
+        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.LOGIN, R.drawable.user);
         list.add(menuItem4);
-        /*SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.PROFILE, R.drawable.ic_profile);
-        list.add(menuItem5);*/
+        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.PROFILE, R.drawable.review);
+        list.add(menuItem5);
     }
 
 

@@ -3,6 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash">
-
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="170dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="@mipmap/running">
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="싸돌아"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal|center_vertical">
+    </TextView>
 </LinearLayout>
