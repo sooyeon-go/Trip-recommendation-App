@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[5]:
 
 
 import tensorflow as tf
@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import mean_squared_error
 
 
-# In[12]:
+# In[6]:
 
 
 def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
@@ -117,10 +117,10 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
     inputId = course_df[course_df['course'].isin(user_df['course'].tolist())]
     result = pd.merge(inputId, user_df)
     result_df = result[['courseid', 'course', 'rating']]
-    result_detail = result[['?¹ìƒ‰', 'ë¬?, '?˜ë¬´', '? ì ì§€', 'ë§›ì§‘?¬í–‰', '?¸ìº‰??, 'ê°ì„±ì¹´í˜', '? ê²¬?™ë°˜??, 'ë´?, '?¬ë¦„', 'ê°€??, 'ê²¨ìš¸']]
+    result_detail = result[['specific', 'water', 'tree', 'ruins', 'eat', 'hotel', 'cafe', 'pet', 'spring', 'summer', 'fall', 'winter']]
     userProfile = result_detail.transpose().dot(result_df['rating'])
     courseTable = course_df.set_index(course_df['courseid'])
-    courseTable = courseTable[['?¹ìƒ‰', 'ë¬?, '?˜ë¬´', '? ì ì§€', 'ë§›ì§‘?¬í–‰', '?¸ìº‰??, 'ê°ì„±ì¹´í˜', '? ê²¬?™ë°˜??, 'ë´?, '?¬ë¦„', 'ê°€??, 'ê²¨ìš¸']]
+    courseTable = courseTable[['specific', 'water', 'tree', 'ruins', 'eat', 'hotel', 'cafe', 'pet', 'spring', 'summer', 'fall', 'winter']]
     recoTable_df = ((courseTable * userProfile).sum(axis = 1)) / (userProfile.sum())
     recoTable_df = recoTable_df.sort_values(ascending = False) # ?´ë¦¼ì°¨ìˆœ
     rank = course_df.loc[course_df['courseid'].isin(recoTable_df.head(20).keys())]
@@ -137,7 +137,7 @@ def def_final(d1, d2, d3, d4, d5, d6, d7, d8):
     return dupli
 
 
-# In[14]:
+# In[7]:
 
 
 def_final(0.5, 1, 2, 3, 5, 7, 8, 10)
