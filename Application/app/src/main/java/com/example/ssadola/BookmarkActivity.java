@@ -66,16 +66,16 @@ public class BookmarkActivity extends AppCompatActivity {
             startActivity(login);
             finish();
         }else{
-            //db에서 즐찾한 여행지 정보들 가져와서 보여주기
-            //유저정보를 인자로 넘겨주고 디비에서 셀렉해오기
+        //db에서 즐찾한 여행지 정보들 가져와서 보여주기
+        //유저정보를 인자로 넘겨주고 디비에서 셀렉해오기
             HashMap<String, String> LoginhashMap = arrayList.get(0);
             String mu_email = LoginhashMap.get(TAG_EMAIL);
-            //Toast.makeText(BookmarkActivity.this,mu_email,Toast.LENGTH_LONG).show();
-            //String mu_name = LoginhashMap.get(TAG_NAME);
+        //Toast.makeText(BookmarkActivity.this,mu_email,Toast.LENGTH_LONG).show();
+        //String mu_name = LoginhashMap.get(TAG_NAME);
             GetBookmark getbm = new GetBookmark();
             getbm.execute(mu_email);
+            }
         }
-    }
 
 
     public ArrayList<HashMap<String, String>> GetLoginData() {
