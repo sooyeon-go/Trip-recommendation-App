@@ -33,7 +33,7 @@ import yalantis.com.sidemenu.util.ViewAnimator;
 
 
 public class CustomFragment extends Fragment implements ScreenShotable {
-    static String pub_ip = "http://52.79.226.131/";
+    static String pub_ip = "http://15.165.95.187/";
     private View containerView;
     protected ImageView mImageView;
     protected int res;

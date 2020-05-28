@@ -22,7 +22,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class SignUpActivity extends AppCompatActivity {
-    static String pub_ip = "http://52.79.226.131/";
+    static String pub_ip = "http://15.165.95.187/";
     private EditText name;
     private EditText age;
     private EditText sex;

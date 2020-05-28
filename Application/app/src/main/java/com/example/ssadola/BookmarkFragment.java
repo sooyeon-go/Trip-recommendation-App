@@ -54,7 +54,7 @@ public class BookmarkFragment extends Fragment implements ScreenShotable {
     protected int res;
     private View containerView;
 
-    static String pub_ip = "http://52.79.226.131/";
+    static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
     private static final String TAG_EMAIL="u_email";
     private static final String TAG_NAME = "u_name";
