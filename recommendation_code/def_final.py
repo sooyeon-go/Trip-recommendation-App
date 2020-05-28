@@ -121,14 +121,14 @@ def def_final(*d):
     rankId = data[data['course'].isin(rank['course'].tolist())]
     final = pd.merge(rankId, rank)
     fi_result = final[['courseid', 'course', 'rating']].sort_values('rating', ascending = False)
-    fi_result = fi_result.drop_duplicates('courseid', keep='first')
-    #fi_result.to_csv("content_based.csv")
-    recomm_course.to_csv("item_based.csv")
-    matrix_recomm_course.to_csv("matrix_factorization.csv")
+    fi_result.to_csv("content_based.csv",mode="w")
+    recomm_course.to_csv("item_based.csv",mode="w")
+    matrix_recomm_course.to_csv("matrix_factorization.csv",mode="w")
     item_based = pd.read_csv('item_based.csv', encoding = 'utf-8')
     matrix_factorization = pd.read_csv('matrix_factorization.csv', encoding = 'utf-8')
     dupli = item_based[item_based['course'].isin(matrix_factorization['course'].tolist())]
     #return dupli, fi_result
+    dupli.to_csv("dupli.csv",mode="w");
     print(dupli.course)
     print(fi_result.course)
 
