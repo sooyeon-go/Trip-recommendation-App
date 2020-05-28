@@ -17,9 +17,20 @@ $Q8=isset($_POST['Q8']) ? $_POST['Q8'] : '';
 
 if ($Q1 !="" and $Q2 !="" and $Q3 !="" and $Q4 !="" and $Q5 !=""){   
   
-  $command = "sudo /usr/bin/python3 ../python/test.py '$Q1' '$Q2' '$Q3' '$Q4' '$Q5' '$Q6' '$Q7' '$Q8'";
-  exec($command,$out,$result);
-  print_r($out);
+  $python = "sudo /usr/bin/python3 ../python/def_final.py '$Q1' '$Q2' '$Q3' '$Q4' '$Q5' '$Q6' '$Q7' '$Q8'";
+ $command1 = "sudo cat ../python/content_based.csv";
+ $command2 = "sudo cat ../python/dupli.csv";
+ exec($python);
+
+ exec($command1,$output1,$result);
+ #print_r($output1);
+ header('Content-Type: application/json; charset=utf8');
+ $json1 = json_encode(array("dupli"=>$output1), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+ echo $json1;
+ exec($command2,$output2,$result);
+ #print_r($output2);
+ $json2 = json_encode(array("content_based"=>$output2),JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+ echo $json2;
  
 } else {
     echo "데이터를 입력하세요 ";

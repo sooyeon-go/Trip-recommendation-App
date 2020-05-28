@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
-    static String pub_ip = "http://52.79.226.131/";
+    static String pub_ip = "http://15.165.95.187/";
     private static String TAG = "User_Info";
     private static String TAG_CHK = "pw_chk";
     private static String TAG_NAME = "u_name";

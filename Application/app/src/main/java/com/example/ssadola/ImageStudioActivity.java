@@ -46,7 +46,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ImageStudioActivity extends AppCompatActivity implements OnMapReadyCallback {
-    static String pub_ip = "http://52.79.226.131/";
+    static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
     TextView tv_work_nm,tv_addr;//,tv_year;
     GoogleMap mMap;
