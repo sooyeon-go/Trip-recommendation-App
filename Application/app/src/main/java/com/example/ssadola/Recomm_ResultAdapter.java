@@ -3,18 +3,16 @@ package com.example.ssadola;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter{
+public class Recomm_ResultAdapter extends BaseAdapter {
     /* 아이템을 세트로 담기 위한 어레이 */
     private ArrayList<MyItem> mItems = new ArrayList<>();
 
@@ -38,41 +36,41 @@ public class MyAdapter extends BaseAdapter{
 
         final Context context = parent.getContext();
 
-        /* 'listview_custom' Layout을 inflate하여 convertView 참조 획득 */
+        /* 'listview_recomm' Layout을 inflate하여 convertView 참조 획득 */
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_custom, parent, false);
+            convertView = inflater.inflate(R.layout.listview_recomm, parent, false);
         }
 
-        /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
-        ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
-        TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name) ;
-        TextView tv_contents = (TextView) convertView.findViewById(R.id.tv_contents) ;
+        /* 'listview_recomm'에 정의된 위젯에 대한 참조 획득 */
+        //ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
+        TextView tv_class = (TextView) convertView.findViewById(R.id.tv_classfi) ;
+        TextView tv_course = (TextView) convertView.findViewById(R.id.tv_course) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         MyItem myItem = getItem(position);
 
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
-        iv_img.setImageDrawable(myItem.getIcon());
-        tv_name.setText(myItem.getName());
-        tv_contents.setText(myItem.getContents());
+        //iv_img.setImageDrawable(myItem.getIcon());
+        tv_class.setText(myItem.getCalssfi());
+        tv_course.setText(myItem.getCourse());
 
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
-        iv_img.setOnClickListener(new View.OnClickListener() {
+        /*iv_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detail = new Intent(context,ResultDetailActivity.class);
+                context.startActivity(detail);
+            }
+        });*/
+        tv_class.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(context,ResultDetailActivity.class);
                 context.startActivity(detail);
             }
         });
-        tv_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent detail = new Intent(context,ResultDetailActivity.class);
-                context.startActivity(detail);
-            }
-        });
-        tv_contents.setOnClickListener(new View.OnClickListener() {
+        tv_course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(context,ResultDetailActivity.class);
@@ -84,14 +82,13 @@ public class MyAdapter extends BaseAdapter{
     }
 
     /* 아이템 데이터 추가를 위한 함수. 자신이 원하는대로 작성 */
-    public void addItem(Drawable img, String name, String contents) {
+    public void addItem(String classfi, String course) {
 
         MyItem mItem = new MyItem();
 
-        /* MyItem에 아이템을 setting한다. */
-        mItem.setIcon(img);
-        mItem.setName(name);
-        mItem.setContents(contents);
+
+        mItem.setClassfi(classfi);
+        mItem.setCourse(course);
 
         /* mItems에 MyItem을 추가한다. */
         mItems.add(mItem);

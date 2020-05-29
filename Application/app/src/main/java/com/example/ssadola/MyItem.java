@@ -16,19 +16,19 @@ public class MyItem {
         this.icon = icon;
     }
 
-    public String getName() {
+    public String getCalssfi() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setClassfi(String name) {
         this.name = name;
     }
 
-    public String getContents() {
+    public String getCourse() {
         return contents;
     }
 
-    public void setContents(String contents) {
+    public void setCourse(String contents) {
         this.contents = contents;
     }
 
