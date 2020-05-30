@@ -17,6 +17,7 @@
         <activity android:name=".StudioActivity" />
         <activity android:name=".BookmarkActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".ReviewInput" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -24,16 +25,16 @@
 
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ResultDetailActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<activity android:name=".ResultActivity" />
+<activity android:name=".Splash">
+<intent-filter>
+    <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivity" />
+    <category android:name="android.intent.category.LAUNCHER" />
+</intent-filter>
+</activity>
+<activity android:name=".LoginActivity"/>
+<activity android:name=".MainActivity" />
     </application>
 
-</manifest>
+    </manifest>
