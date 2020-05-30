@@ -11,11 +11,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.CheckBox;
 import android.widget.ScrollView;
+import android.widget.Button;
+import android.view.View;
+import android.widget.Toast;
+import android.content.Intent;
 
 
 import java.util.ArrayList;
 
 public class ReviewInput extends AppCompatActivity {
+    static String pub_ip = "http://15.165.95.187/";
     private Spinner spinner;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -23,6 +28,7 @@ public class ReviewInput extends AppCompatActivity {
     private EditText A1, A2, A3;
     private RatingBar ratingBar;
     private CheckBox check1, check2, check3, check4, check5;
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,6 +50,7 @@ public class ReviewInput extends AppCompatActivity {
         check3 = (CheckBox)findViewById(R.id.check3);
         check4 = (CheckBox)findViewById(R.id.check4);
         check5 = (CheckBox)findViewById(R.id.check5);
+        button = (Button)findViewById(R.id.button);
 
         arrayList = new ArrayList<>();
         arrayList.add("경기도");
@@ -63,5 +70,13 @@ public class ReviewInput extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, arrayList);
 
         spinner.setAdapter(arrayAdapter);
+        button.setOnClickListener(new View.OnClickListener() {//버튼 이벤트 처리
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(ReviewInput.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
