@@ -35,13 +35,10 @@ public class ResultActivity extends AppCompatActivity {
     private void SetData(String result){
         Recomm_ResultAdapter resultAdapter_dupli = new Recomm_ResultAdapter();
         Recomm_ResultAdapter resultAdapter_content = new Recomm_ResultAdapter();
-        //setDupli(result,resultAdapter_dupli);
-        //setContentBased(result,resultAdapter_content);
+        setDupli(result,resultAdapter_dupli);
+        setContentBased(result,resultAdapter_content);
 
-        /*for (int i=0; i<10; i++) {
-            resultAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_launcher_background), "name_" + i, "contents_" + result);
-        }*/
-        //listView.setAdapter(setDupli(result,resultAdapter_dupli));
+        listView.setAdapter(setDupli(result,resultAdapter_dupli));
         listView2.setAdapter(setContentBased(result,resultAdapter_content));
     }
 
@@ -56,7 +53,7 @@ public class ResultActivity extends AppCompatActivity {
             }
             return resultAdapter_dupli;
         } catch (JSONException e) {
-            Log.d("ResultActivity", "getDupli : ", e);
+            Log.d("ResultActivity", "setDupli : ", e);
             return null;
         }
     }
@@ -72,7 +69,7 @@ public class ResultActivity extends AppCompatActivity {
             }
             return resultAdapter_content;
         } catch (JSONException e) {
-            Log.d("ResultActivity", "getContentBased : ", e);
+            Log.d("ResultActivity", "setContentBased : ", e);
             return null;
         }
     }

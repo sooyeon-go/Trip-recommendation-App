@@ -23,14 +23,13 @@ if ($Q1 !="" and $Q2 !="" and $Q3 !="" and $Q4 !="" and $Q5 !=""){
  exec($python);
 
  exec($command1,$output1,$result);
- #print_r($output1);
- header('Content-Type: application/json; charset=utf8');
- $json1 = json_encode(array("dupli"=>$output1), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
- echo $json1;
  exec($command2,$output2,$result);
- #print_r($output2);
- $json2 = json_encode(array("content_based"=>$output2),JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
- echo $json2;
+
+
+ $data=array("dupli"=>$output1,"content_based"=>$output2);
+ header('Content-Type: application/json; charset=utf8');
+ $json = json_encode($data,JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+ echo $json;
  
 } else {
     echo "데이터를 입력하세요 ";
