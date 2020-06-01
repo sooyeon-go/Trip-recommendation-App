@@ -29,7 +29,7 @@
         $result=mysqli_query($con,$sql);  
 
         if($result){  
-           echo "결과를 추가했습니다.";  
+           echo "리뷰를 추가했습니다.";  
         }  
         else{  
            echo "SQL문 처리중 에러 발생 : "; 
