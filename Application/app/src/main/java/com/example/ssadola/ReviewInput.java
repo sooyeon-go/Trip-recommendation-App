@@ -137,7 +137,7 @@ public class ReviewInput extends AppCompatActivity {
                 String rating = (String) params[4];
                 String result = (String) params[5];
 
-                String link = pub_ip+"signUP.php";
+                String link = pub_ip+"review.php";
                 String data = URLEncoder.encode("hotel", "UTF-8") + "=" + URLEncoder.encode(hotel, "UTF-8");
                 data += "&" + URLEncoder.encode("sight", "UTF-8") + "=" + URLEncoder.encode(sight, "UTF-8");
                 data += "&" + URLEncoder.encode("eat", "UTF-8") + "=" + URLEncoder.encode(eat, "UTF-8");
