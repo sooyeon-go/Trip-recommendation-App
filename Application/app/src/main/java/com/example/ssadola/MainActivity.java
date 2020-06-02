@@ -73,8 +73,10 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem3);
         SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.LOGIN, R.drawable.user);
         list.add(menuItem4);
-        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.PROFILE, R.drawable.review);
+        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.REVIEW_INPUT, R.drawable.review);
         list.add(menuItem5);
+        SlideMenuItem menuItem6 = new SlideMenuItem(ContentFragment.REVIEW_RESULT, R.drawable.rating_star);
+        list.add(menuItem6);
     }
 
 
@@ -197,9 +199,12 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 Intent login = new Intent(this,LoginActivity.class);
                 startActivity(login);
                 return replaceFragment(screenShotable, position);
-            /*case ContentFragment.PROFILE:
-                Intent profile = new Intent(this,ProfileActivity.class);
-                startActivity(profile);*/
+            case ContentFragment.REVIEW_INPUT:
+                Intent review_input = new Intent(this,ReviewInput.class);
+                startActivity(review_input);
+            case ContentFragment.REVIEW_RESULT:
+                Intent review_result= new Intent(this,Reviewresult.class);
+                startActivity(review_result);
             default:
                // Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
                 return replaceFragment(screenShotable, position);

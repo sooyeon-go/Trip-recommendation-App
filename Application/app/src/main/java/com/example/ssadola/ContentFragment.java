@@ -24,6 +24,8 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     public static final String BOOKMARK = "Bookmark";
     public static final String LOGIN = "Login";
     public static final String PROFILE = "Profile";
+    public static final String REVIEW_INPUT = "ReviewInput";
+    public static final String REVIEW_RESULT ="ReviewResult";
     private View containerView;
     protected ImageView mImageView;
     protected int res;

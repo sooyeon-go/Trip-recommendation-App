@@ -18,7 +18,7 @@
         <activity android:name=".BookmarkActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ReviewInput" />
-
+        <activity android:name=".Reviewresult"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCjY4kokK4Y2EcYT7no5T1CaO787UFLM6o" />
