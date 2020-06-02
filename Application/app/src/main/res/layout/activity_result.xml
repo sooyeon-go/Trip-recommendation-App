@@ -25,7 +25,7 @@
     <ListView
         android:id="@+id/lv_dupli"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="250dp">
     </ListView>
     <View
         android:layout_width="match_parent"
@@ -36,6 +36,6 @@
     <ListView
         android:id="@+id/lv_content"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="250dp">
     </ListView>
 </LinearLayout>
