@@ -19,23 +19,54 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/black">
     </View>
-    <ListView
-        android:id="@+id/lv_dupli"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
-    </ListView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="43dp"
-        android:background="@android:color/black">
-    </View>
-    <ListView
-        android:id="@+id/lv_content"
-        android:layout_width="match_parent"
-        android:layout_height="250dp">
-    </ListView>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_dupli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="나와 비슷한 사람들이 다녀온 곳"
+                android:textSize="40dp">
+            </TextView>
+            <ListView
+                android:id="@+id/lv_dupli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_below="@+id/ll_dupli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="43dp"
+                android:background="@android:color/black">
+            </View>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내 성향과 일치하는 여행지"
+                android:textSize="40dp">
+            </TextView>
+            <ListView
+                android:id="@+id/lv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+        </LinearLayout>
+
+    </RelativeLayout>
 </LinearLayout>
