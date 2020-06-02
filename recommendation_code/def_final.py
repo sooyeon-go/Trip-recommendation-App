@@ -1,4 +1,3 @@
-#import tensorflow as tf
 import sys
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -31,15 +30,15 @@ def def_final(*d):
     rating_pred = predict_rating(rating_matrix.values, item_sim_df.values)
     rating_pred_matrix = pd.DataFrame(data = rating_pred, index = rating_matrix.index, columns = rating_matrix.columns)
     def get_mse(pred, actual):
-        pred = pred[actual.nonzero()].flatten()
+        pred = pred[actual.nonzero()].flatten() 
         actual = actual[actual.nonzero()].flatten()
         return mean_squared_error(pred, actual)
     def predict_rating_topsim(rating_arr, item_sim_arr, n = 20):
-        pred = np.zeros(rating_arr.shape)
-
-        for col in range(rating_arr.shape[1]):
-            top_n_items = [np.argsort(item_sim_arr[:, col])[: -n-1 : -1]]
-            for row in range(rating_arr.shape[0]):
+        pred = np.zeros(rating_arr.shape) 
+    
+        for col in range(rating_arr.shape[1]): 
+            top_n_items = [np.argsort(item_sim_arr[:, col])[: -n-1 : -1]] 
+            for row in range(rating_arr.shape[0]): 
                 pred[row, col] = item_sim_arr[col, :][top_n_items].dot(rating_arr[row, :][top_n_items].T)
                 pred[row, col] /= np.sum(np.abs(item_sim_arr[col, :][top_n_items]))
         return pred
@@ -47,7 +46,7 @@ def def_final(*d):
     rating_pred_matrix = pd.DataFrame(data = rating_pred, index = rating_matrix.index, columns = rating_matrix.columns)
     user_rating_id = rating_matrix.loc[8, :]
     def get_unseen_course1(rating_matrix, userid):
-        user_rating = rating_matrix.loc[userid, :]
+        user_rating = rating_matrix.loc[userid, :] 
         already_go = user_rating[ user_rating > 0 ].index.tolist()
         course_list = rating_matrix.columns.tolist()
         un_list = [ course for course in course_list if course not in already_go ]
@@ -60,7 +59,7 @@ def def_final(*d):
     recomm_course = pd.DataFrame(data = recomm_course.values, index = recomm_course.index, columns = ['pred_score'])
     def get_rmse(R, P, Q, non_zeros):
         error = 0
-        full_pred_matrix = np.dot(P, Q.T)
+        full_pred_matrix = np.dot(P, Q.T) 
         x_non_zero_ind = [non_zero[0] for non_zero in non_zeros]
         y_non_zero_ind = [non_zero[1] for non_zero in non_zeros]
         R_non_zeros = R[x_non_zero_ind, y_non_zero_ind]
@@ -73,12 +72,12 @@ def def_final(*d):
         np.random.seed(1)
         P = np.random.normal(scale = 1./K, size = (num_users, K))
         Q = np.random.normal(scale = 1./K, size = (num_items, K))
-
+    
         prev_rmse = 10000
         break_count = 0
-
+    
         non_zeros = [ (i, j, R[i,j]) for i in range(num_users) for j in range(num_items) if R[i, j] > 0]
-
+     
         for step in range(steps):
             for i, j, r in non_zeros:
                 eij = r - np.dot(P[i, :], Q[j, :].T)
@@ -91,7 +90,7 @@ def def_final(*d):
     rating = new[['userid', 'courseid', 'rating']]
     rating_matrix = rating.pivot_table('rating', index = 'userid', columns = 'courseid')
     rating_matrix = data_matrix.pivot_table('rating', index = 'userid', columns = 'course')
-    P, Q = matrix_factorization(rating_matrix.values, 50, 200, 0.01, 0.01)
+    P, Q = matrix_factorization(rating_matrix.values, 50, 100, 0.01, 0.01)
     pred_matrix = np.dot(P, Q.T)
     rating_pred_matrix = pd.DataFrame(data = pred_matrix, index = rating_matrix.index, columns = rating_matrix.columns)
     def get_unseen_course2(rating_matrix, userid):
@@ -100,7 +99,7 @@ def def_final(*d):
         course_list = rating_matrix.columns.tolist()
         un_list = [ course for course in course_list if course not in already_go ]
         return un_list
-        def recomm_course_by_userid2(pred_df, userid, un_list, top_n):
+    def recomm_course_by_userid2(pred_df, userid, un_list, top_n):
         recomm_course = pred_df.loc[userid, un_list].sort_values(ascending = False)[: top_n]
         return recomm_course
     un_list = get_unseen_course2(rating_matrix, 8)
@@ -121,15 +120,18 @@ def def_final(*d):
     rankId = data[data['course'].isin(rank['course'].tolist())]
     final = pd.merge(rankId, rank)
     fi_result = final[['courseid', 'course', 'rating']].sort_values('rating', ascending = False)
-    fi_result.to_csv("content_based.csv",mode="w",header=False)
+    fi_result = fi_result.drop_duplicates('courseid', keep='first')
+    fi_result = fi_result.reset_index(drop = True)
+    fi_result.course.to_csv("content_based.csv",mode="w",header=False)
     recomm_course.to_csv("item_based.csv",mode="w")
     matrix_recomm_course.to_csv("matrix_factorization.csv",mode="w")
     item_based = pd.read_csv('item_based.csv', encoding = 'utf-8')
     matrix_factorization = pd.read_csv('matrix_factorization.csv', encoding = 'utf-8')
     dupli = item_based[item_based['course'].isin(matrix_factorization['course'].tolist())]
-    #return dupli, fi_result
-    dupli.to_csv("dupli.csv",mode="w",header=False)
-    print(dupli.course)
-    print(fi_result.course)
+    dupli = dupli.reset_index(drop = True)
+    dupli.course.to_csv("dupli.csv",mode="w",header=False)
+    return dupli, fi_result
 
-def_final(*(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]))
+dupli, fi_result = def_final(*(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]))
+print(dupli.course)
+print(fi_result.course)
