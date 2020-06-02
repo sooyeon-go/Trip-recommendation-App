@@ -18,8 +18,9 @@ $Q8=isset($_POST['Q8']) ? $_POST['Q8'] : '';
 if ($Q1 !="" and $Q2 !="" and $Q3 !="" and $Q4 !="" and $Q5 !=""){   
   
   $python = "sudo /usr/bin/python3 ../python/def_final.py '$Q1' '$Q2' '$Q3' '$Q4' '$Q5' '$Q6' '$Q7' '$Q8'";
- $command1 = "sudo cat ../python/content_based.csv";
- $command2 = "sudo cat ../python/dupli.csv";
+ $command1 = "sudo cat ../python/dupli.csv";
+ $command2 = "sudo cat ../python/content_based.csv";
+
  exec($python);
 
  exec($command1,$output1,$result);
