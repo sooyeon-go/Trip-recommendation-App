@@ -20,13 +20,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-               <Button
-                   android:id="@+id/btn_season"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="계절별"
-                   android:textSize="80sp">
-               </Button>
+
+                <Button
+                    android:id="@+id/btn_season"
+                    android:layout_width="match_parent"
+                    android:layout_height="224dp"
+                    android:background="@drawable/season"
+
+                    android:text="계절별 지역 축제"
+                    android:layout_marginTop="11dp"
+                    android:textSize="50sp"></Button>
                 <Button
                     android:id="@+id/btn_studoi_set"
                     android:layout_width="match_parent"
