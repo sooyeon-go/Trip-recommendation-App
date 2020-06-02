@@ -3,6 +3,7 @@ package com.example.ssadola;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,8 @@ public class Recomm_ResultAdapter extends BaseAdapter {
 
         /* 'listview_recomm'에 정의된 위젯에 대한 참조 획득 */
         //ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
-        TextView tv_class = (TextView) convertView.findViewById(R.id.tv_classfi) ;
-        TextView tv_course = (TextView) convertView.findViewById(R.id.tv_course) ;
+        final TextView tv_class = (TextView) convertView.findViewById(R.id.tv_classfi) ;
+        final TextView tv_course = (TextView) convertView.findViewById(R.id.tv_course) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         MyItem myItem = getItem(position);
@@ -63,17 +64,21 @@ public class Recomm_ResultAdapter extends BaseAdapter {
                 context.startActivity(detail);
             }
         });*/
-        tv_class.setOnClickListener(new View.OnClickListener() {
+        /*tv_class.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(context,ResultDetailActivity.class);
                 context.startActivity(detail);
             }
-        });
+        });*/
+
         tv_course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(context,ResultDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("course", tv_course.getText().toString());
+                detail.putExtras(bundle);
                 context.startActivity(detail);
             }
         });

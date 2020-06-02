@@ -16,10 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="400sp"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:id="@+id/map"
+        android:id="@+id/map_course"
         android:layout_below="@+id/tv_title">
     </fragment>
-    <LinearLayout
+    <ListView
+        android:id="@+id/listView_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/map_course">
+    </ListView>
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/map"
@@ -42,5 +48,5 @@
             android:text="test3"
             android:textSize="20sp">
         </TextView>
-    </LinearLayout>
+    </LinearLayout>-->
 </RelativeLayout>
