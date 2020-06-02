@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="226dp">
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -33,7 +32,6 @@
                     android:layout_marginTop="50dp" />
             </LinearLayout>
         </ScrollView>
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
