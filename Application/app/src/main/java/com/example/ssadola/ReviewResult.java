@@ -2,7 +2,10 @@ package com.example.ssadola;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.ScrollView;
+import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.os.Bundle;
 import android.content.Intent;
 import android.widget.ListView;
@@ -18,9 +21,9 @@ import android.util.Log;
 
 
 public class ReviewResult extends AppCompatActivity {
-    private ImageButton imageButton;
+    private Button button2;
     private final String dbName = "review_db";
-    private final String tableName = "review_table";
+    private final String tableName = "reviewtable";
     private static final String TAG_HOTEL = "hotel";
     private static final String TAG_SIGHT ="sight";
     private static final String TAG_EAT ="eat";
@@ -37,9 +40,8 @@ public class ReviewResult extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_list);
-        imageButton = (ImageButton)findViewById(R.id.imageButton);
         personList = new ArrayList<HashMap<String,String>>();
-        list = (ListView)findViewById(R.id.listview);
+        button2 = (Button)findViewById(R.id.button2);
 
         try{
             SQLiteDatabase ReadDB = this.openOrCreateDatabase(dbName, MODE_PRIVATE, null);
@@ -79,15 +81,14 @@ public class ReviewResult extends AppCompatActivity {
             list.setAdapter(adapter);}
             catch (SQLiteException se) {
                 Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e("", se.getMessage());
-            }
+                        Log.e("", se.getMessage());
+                        }
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(ReviewResult.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+                        button2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(ReviewResult.this,MainActivity.class);
+        startActivity(intent);
+        }});
     }
 }
