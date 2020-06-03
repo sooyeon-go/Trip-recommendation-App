@@ -200,10 +200,10 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 startActivity(login);
                 return replaceFragment(screenShotable, position);
             case ContentFragment.REVIEW_INPUT:
-                Intent review_input = new Intent(this,ReviewInput.class);
+                Intent review_input = new Intent(MainActivity.this,ReviewInput.class);
                 startActivity(review_input);
             case ContentFragment.REVIEW_RESULT:
-                Intent review_result= new Intent(this,ReviewResult.class);
+                Intent review_result= new Intent(MainActivity.this,ReviewResult.class);
                 startActivity(review_result);
             default:
                // Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
