@@ -75,20 +75,20 @@ public class ReviewResult extends AppCompatActivity {
             ReadDB.close();
             adapter = new SimpleAdapter(
                     this, personList, R.layout.review_list_item,
-                    new String[]{"호텔", "명소", "맛집", "지역", "별점", "특색"},
+                    new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_RESULT},
                     new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.result}
             );
             list.setAdapter(adapter);}
             catch (SQLiteException se) {
                 Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
                         Log.e("", se.getMessage());
-                        }
+            }
 
-                        button2.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent=new Intent(ReviewResult.this,MainActivity.class);
-        startActivity(intent);
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+            Intent intent=new Intent(ReviewResult.this,MainActivity.class);
+            startActivity(intent);
         }});
     }
 }
