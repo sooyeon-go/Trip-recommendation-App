@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,7 +45,8 @@ public class StudioFragment extends Fragment {
         cardView = (CardView) view.findViewById(R.id.cardView);
         cardView.setMaxCardElevation(cardView.getCardElevation() * CardAdapter.MAX_ELEVATION_FACTOR);
 
-        TextView title = (TextView) view.findViewById(R.id.title);
+        TextView title = (TextView) view.findViewById(R.id.tv_work_name);
+        ImageView img = view.findViewById(R.id.iv_studio);
         Button button = (Button)view.findViewById(R.id.button);
 
         title.setText(String.format("Card %d", getArguments().getInt("position")));
