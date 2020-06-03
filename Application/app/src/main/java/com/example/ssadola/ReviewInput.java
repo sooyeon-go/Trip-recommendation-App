@@ -141,7 +141,7 @@ public class ReviewInput extends AppCompatActivity {
                 data += "&" + URLEncoder.encode("eat", "UTF-8") + "=" + URLEncoder.encode(eat, "UTF-8");
                 data += "&" + URLEncoder.encode("place", "UTF-8") + "=" + URLEncoder.encode(place, "UTF-8");
                 data += "&" + URLEncoder.encode("rating", "UTF-8") + "=" + URLEncoder.encode(rating, "UTF-8");
-                data += "&" + URLEncoder.encode("result", "UTF-8") + "=" + URLEncoder.encode(spec, "UTF-8");
+                data += "&" + URLEncoder.encode("spec", "UTF-8") + "=" + URLEncoder.encode(spec, "UTF-8");
 
                 URL url = new URL(link);
                 URLConnection conn = url.openConnection();
