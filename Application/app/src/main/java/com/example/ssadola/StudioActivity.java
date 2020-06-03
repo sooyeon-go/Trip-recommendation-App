@@ -121,7 +121,7 @@ public class StudioActivity extends AppCompatActivity {
     public static float dpToPixels(int dp, Context context) {
         return dp * (context.getResources().getDisplayMetrics().density);
     }
-    protected void showResult(String result) {
+    /*protected void showResult(String result) {
         try {
             JSONObject jsonObject = new JSONObject(result);
             JSONArray tmp = jsonObject.getJSONArray("PhotographySupport");
@@ -155,61 +155,62 @@ public class StudioActivity extends AppCompatActivity {
         );
 
         mListView.setAdapter(adapter);
-    }
-    class OpenApiExplorer extends AsyncTask<String, Void, String> {
-        ProgressDialog loading;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loading = ProgressDialog.show(StudioActivity.this, "Please Wait", null, true, true);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            loading.dismiss();
-            if (result == null) {
-                Toast.makeText(StudioActivity.this, "resut is null", Toast.LENGTH_LONG).show();
-            } else {
-                showResult(result);
-            }
-        }
-
-        protected String doInBackground(String... params) {
-            try {
-                String SIGUN_NM = params[0];
-
-                StringBuilder urlBuilder = new StringBuilder("https://openapi.gg.go.kr/PhotographySupport"); /*URL*/
-                urlBuilder.append("?" + URLEncoder.encode("KEY", "UTF-8") + open_gg_api_key); /*Service Key*/
-                //urlBuilder.append("&" + URLEncoder.encode("KEY","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
-                urlBuilder.append("&" + URLEncoder.encode("Type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*페이지번호*/
-                urlBuilder.append("&" + URLEncoder.encode("pIndex", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*한 페이지 결과 수*/
-                urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("20", "UTF-8"));
-                urlBuilder.append("&" + URLEncoder.encode("SIGUN_NM", "UTF-8") + "=" + URLEncoder.encode(SIGUN_NM, "UTF-8"));
-                URL url = new URL(urlBuilder.toString());
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("Content-type", "application/json");
-                System.out.println("Response code: " + conn.getResponseCode());
-                BufferedReader rd;
-                if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-                    rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                } else {
-                    rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-                }
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = rd.readLine()) != null) {
-                    sb.append(line);
-                }
-                rd.close();
-                conn.disconnect();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-    }
+    }*/
+    //
+//    class OpenApiExplorer extends AsyncTask<String, Void, String> {
+//        ProgressDialog loading;
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            loading = ProgressDialog.show(StudioActivity.this, "Please Wait", null, true, true);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String result) {
+//            super.onPostExecute(result);
+//            loading.dismiss();
+//            if (result == null) {
+//                Toast.makeText(StudioActivity.this, "resut is null", Toast.LENGTH_LONG).show();
+//            } else {
+//                showResult(result);
+//            }
+//        }
+//
+//        protected String doInBackground(String... params) {
+//            try {
+//                String SIGUN_NM = params[0];
+//
+//                StringBuilder urlBuilder = new StringBuilder("https://openapi.gg.go.kr/PhotographySupport");
+//                urlBuilder.append("?" + URLEncoder.encode("KEY", "UTF-8") + open_gg_api_key);
+//                urlBuilder.append("&" + URLEncoder.encode("Type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
+//                urlBuilder.append("&" + URLEncoder.encode("pIndex", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+//                urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("20", "UTF-8"));
+//                urlBuilder.append("&" + URLEncoder.encode("SIGUN_NM", "UTF-8") + "=" + URLEncoder.encode(SIGUN_NM, "UTF-8"));
+//    URL url = new URL(urlBuilder.toString());
+//    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                conn.setRequestMethod("GET");
+//                conn.setRequestProperty("Content-type", "application/json");
+//                System.out.println("Response code: " + conn.getResponseCode());
+//    BufferedReader rd;
+//                if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+//        rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//    } else {
+//        rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+//    }
+//    StringBuilder sb = new StringBuilder();
+//    String line;
+//                while ((line = rd.readLine()) != null) {
+//        sb.append(line);
+//    }
+//                rd.close();
+//                conn.disconnect();
+//                return sb.toString();
+//} catch (Exception e) {
+//        return new String("Exception: " + e.getMessage());
+//        }
+//        }
+//        }
+//    *
 }
 

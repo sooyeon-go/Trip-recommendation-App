@@ -19,7 +19,7 @@
         android:id="@+id/viewPager"
         android:layout_below="@+id/tv_recent_film"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:clipToPadding="false"
         android:overScrollMode="never"
@@ -29,7 +29,7 @@
         android:paddingRight="@dimen/card_padding"
         android:paddingStart="@dimen/card_padding">
     </androidx.viewpager.widget.ViewPager>
-    <SearchView
+    <!--<SearchView
         android:id="@+id/searchView"
         android:layout_below="@+id/viewPager"
         android:layout_width="match_parent"
@@ -83,6 +83,6 @@
         android:textColor="#525252"
         android:textSize="19.0sp"
         android:visibility="gone">
-    </TextView>
+    </TextView>-->
 
 </RelativeLayout>
