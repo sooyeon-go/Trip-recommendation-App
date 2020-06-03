@@ -6,87 +6,148 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.os.Bundle;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.widget.Toast;
-import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.util.Log;
+import android.os.AsyncTask;
+import android.app.ProgressDialog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class ReviewResult extends AppCompatActivity {
     private static String pub_ip = "http://15.165.95.187/";
     private Button button;
-    private final String dbName = "review_db";
-    private final String tableName = "reviewtable";
     private static final String TAG_HOTEL = "hotel";
-    private static final String TAG_SIGHT ="sight";
-    private static final String TAG_EAT ="eat";
-    private static final String TAG_PLACE ="place";
-    private static final String TAG_RATING ="rating";
-    private static final String TAG_SPEC ="spec";
+    private static final String TAG_SIGHT = "sight";
+    private static final String TAG_EAT = "eat";
+    private static final String TAG_PLACE = "place";
+    private static final String TAG_RATING = "rating";
+    private static final String TAG_SPEC = "spec";
     ArrayList<HashMap<String, String>> personList;
-    ListView list;
 
-    ListAdapter adapter;
+    private static final String TAG_JSON="webnautes";
+    private static String TAG = "리뷰 테스트";
+
+    ListView listview;
+    String mJsonString;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_list);
-        personList = new ArrayList<HashMap<String,String>>();
-        button = (Button)findViewById(R.id.button);
+        personList = new ArrayList<HashMap<String, String>>();
+        button = (Button) findViewById(R.id.button);
+        listview = (ListView) findViewById(R.id.listview);
+        personList = new ArrayList<>();
+        GetData task = new GetData();
+        task.execute(pub_ip + "Review_get.php");
+    }
+    private class GetData extends AsyncTask<String, Void, String>{
+        ProgressDialog progressDialog;
+        String errorString = null;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
 
-        try{
-            SQLiteDatabase ReadDB = this.openOrCreateDatabase(dbName, MODE_PRIVATE, null);
-            Cursor c = ReadDB.rawQuery("SELECT * FROM " + tableName, null);
-            if (c != null) {
+            progressDialog = ProgressDialog.show(ReviewResult.this,
+                    "Please Wait", null, true, true);
+        }
+        @Override
+        protected String doInBackground(String... params){
+            String serverURL = params[0];
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-                if (c.moveToFirst()) {
-                    do {
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
 
-                        String hotel = c.getString(c.getColumnIndex("hotel"));
-                        String sight = c.getString(c.getColumnIndex("sight"));
-                        String eat = c.getString(c.getColumnIndex("eat"));
-                        String place = c.getString(c.getColumnIndex("place"));
-                        String rating = c.getString(c.getColumnIndex("rating"));
-                        String spec = c.getString(c.getColumnIndex("spec"));
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
 
-                        HashMap<String,String> persons = new HashMap<String,String>();
-
-                        persons.put(TAG_HOTEL,hotel);
-                        persons.put(TAG_SIGHT,sight);
-                        persons.put(TAG_EAT,eat);
-                        persons.put(TAG_PLACE,place);
-                        persons.put(TAG_RATING,rating);
-                        persons.put(TAG_SPEC,spec);
-
-                        personList.add(persons);
-
-                    } while (c.moveToNext());
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
                 }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString().trim();
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+                return null;
             }
-            ReadDB.close();
-            adapter = new SimpleAdapter(
-                    this, personList, R.layout.review_list_item,
+        }
+    }
+    private void showResult() {
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String hotel = item.getString(TAG_HOTEL);
+                String sight = item.getString(TAG_SIGHT);
+                String eat = item.getString(TAG_EAT);
+                String place = item.getString(TAG_PLACE);
+                String rating = item.getString(TAG_RATING);
+                String spec = item.getString(TAG_SPEC);
+
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put(TAG_HOTEL, hotel);
+                hashMap.put(TAG_SIGHT, sight);
+                hashMap.put(TAG_EAT, eat);
+                hashMap.put(TAG_PLACE, place);
+                hashMap.put(TAG_RATING, rating);
+                hashMap.put(TAG_SPEC, spec);
+
+                personList.add(hashMap);
+            }
+            ListAdapter adapter = new SimpleAdapter(
+                    ReviewResult.this, personList, R.layout.review_list_item,
                     new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_SPEC},
                     new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.spec}
             );
-            list.setAdapter(adapter);
-        }catch (SQLiteException se) {
-                Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.e("", se.getMessage());
+            listview.setAdapter(adapter);
+        } catch (JSONException e) {
+            Log.d(TAG, "showResult : ", e);
+        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReviewResult.this, MainActivity.class);
+                startActivity(intent);
             }
-
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-            Intent intent=new Intent(ReviewResult.this,MainActivity.class);
-            startActivity(intent);
-        }});
+        });
     }
 }
+
