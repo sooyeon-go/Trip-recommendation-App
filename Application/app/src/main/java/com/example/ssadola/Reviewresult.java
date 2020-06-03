@@ -3,12 +3,9 @@ package com.example.ssadola;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.ListView;
-import android.widget.LinearLayout;
 import android.os.Bundle;
 import android.content.Intent;
-import android.widget.ListView;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.widget.Toast;
@@ -22,7 +19,7 @@ import android.util.Log;
 
 public class ReviewResult extends AppCompatActivity {
     private static String pub_ip = "http://15.165.95.187/";
-    private Button button2;
+    private Button button;
     private final String dbName = "review_db";
     private final String tableName = "reviewtable";
     private static final String TAG_HOTEL = "hotel";
@@ -30,7 +27,7 @@ public class ReviewResult extends AppCompatActivity {
     private static final String TAG_EAT ="eat";
     private static final String TAG_PLACE ="place";
     private static final String TAG_RATING ="rating";
-    private static final String TAG_RESULT ="result";
+    private static final String TAG_SPEC ="spec";
     ArrayList<HashMap<String, String>> personList;
     ListView list;
 
@@ -42,7 +39,7 @@ public class ReviewResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_list);
         personList = new ArrayList<HashMap<String,String>>();
-        button2 = (Button)findViewById(R.id.button2);
+        button = (Button)findViewById(R.id.button);
 
         try{
             SQLiteDatabase ReadDB = this.openOrCreateDatabase(dbName, MODE_PRIVATE, null);
@@ -57,7 +54,7 @@ public class ReviewResult extends AppCompatActivity {
                         String eat = c.getString(c.getColumnIndex("eat"));
                         String place = c.getString(c.getColumnIndex("place"));
                         String rating = c.getString(c.getColumnIndex("rating"));
-                        String result = c.getString(c.getColumnIndex("result"));
+                        String spec = c.getString(c.getColumnIndex("spec"));
 
                         HashMap<String,String> persons = new HashMap<String,String>();
 
@@ -66,7 +63,7 @@ public class ReviewResult extends AppCompatActivity {
                         persons.put(TAG_EAT,eat);
                         persons.put(TAG_PLACE,place);
                         persons.put(TAG_RATING,rating);
-                        persons.put(TAG_RESULT,result);
+                        persons.put(TAG_SPEC,spec);
 
                         personList.add(persons);
 
@@ -76,8 +73,8 @@ public class ReviewResult extends AppCompatActivity {
             ReadDB.close();
             adapter = new SimpleAdapter(
                     this, personList, R.layout.review_list_item,
-                    new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_RESULT},
-                    new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.result}
+                    new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_SPEC},
+                    new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.spec}
             );
             list.setAdapter(adapter);
         }catch (SQLiteException se) {
@@ -85,7 +82,7 @@ public class ReviewResult extends AppCompatActivity {
                         Log.e("", se.getMessage());
             }
 
-            button2.setOnClickListener(new View.OnClickListener() {
+            button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
             Intent intent=new Intent(ReviewResult.this,MainActivity.class);
