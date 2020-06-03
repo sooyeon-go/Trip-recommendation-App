@@ -83,6 +83,8 @@ public class ReviewInput extends AppCompatActivity {
             sampleDB = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
             sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
                     + " (hotel TEXT, sight TEXT, eat TEXT, place TEXT, rating TEXT, result TEXT);");
+            sampleDB.execSQL("INSERT INTO " + tableName
+                    + "(hotel, sight, eat, place, rating, result)  Values ('신라 호텔', '광장 시장', '더 파크뷰', '서울', '7', '호캉스')");
 
         }catch (SQLiteException se) {
             Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
