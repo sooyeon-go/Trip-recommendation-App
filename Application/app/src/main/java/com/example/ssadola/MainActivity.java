@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 Intent review_input = new Intent(this,ReviewInput.class);
                 startActivity(review_input);
             case ContentFragment.REVIEW_RESULT:
-                Intent review_result= new Intent(this,Reviewresult.class);
+                Intent review_result= new Intent(this,ReviewResult.class);
                 startActivity(review_result);
             default:
                // Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
