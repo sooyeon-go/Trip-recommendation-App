@@ -1,12 +1,8 @@
 package com.example.ssadola;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,23 +14,14 @@ import android.widget.Button;
 import android.view.View;
 import android.widget.Toast;
 import android.content.Intent;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 
 public class ReviewInput extends AppCompatActivity {
-    private static String pub_ip = "http://15.165.95.187/";
     private Spinner spinner;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -43,6 +30,19 @@ public class ReviewInput extends AppCompatActivity {
     private RatingBar ratingBar;
     private CheckBox check1, check2, check3, check4, check5;
     private Button button;
+
+    private final String dbName = "review_db";
+    private final String tableName = "review_table";
+    private static final String TAG_HOTEL = "hotel";
+    private static final String TAG_SIGHT ="sight";
+    private static final String TAG_EAT ="eat";
+    private static final String TAG_PLACE ="place";
+    private static final String TAG_RATING ="rating";
+    private static final String TAG_RESULT ="result";
+
+    SQLiteDatabase sampleDB = null;
+    ListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -100,73 +100,17 @@ public class ReviewInput extends AppCompatActivity {
                 if(check4.isChecked() == true) result += check4.getText().toString();
                 if(check5.isChecked() == true) result += check5.getText().toString();
 
-                InsertAsync task = new InsertAsync();
-                task.execute(hotel, sight, eat, place, String.valueOf(rating), result);
+                sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
+                        + " (hotel VARCHAR(20), sight VARCHAR(20), eat VARCHAR(20), place VARCHAR(20), rating VARCHAR(20), result VARCHAR(20));");
+                sampleDB.execSQL("INSERT INTO " + tableName
+                        + " (hotel, sight, eat, place, rating, result)  Values ('"+hotel+"','"+sight+"','"+eat+"','"+place+"','"+rating+"','"+result+"');");
+                sampleDB.close();
 
                 Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(ReviewInput.this,MainActivity.class);
                 startActivity(intent);
             }
         });
-    }
-    private class InsertAsync extends AsyncTask<String, Void, String> {
-        ProgressDialog loading;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loading = ProgressDialog.show(ReviewInput.this, "Please Wait", null, true, true);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            loading.dismiss();
-            Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-        }
-        @Override
-        protected String doInBackground(String... params) {
-
-            try {
-                String hotel = (String) params[0];
-                String sight = (String) params[1];
-                String eat = (String) params[2];
-                String place = (String) params[3];
-                String rating = (String) params[4];
-                String result = (String) params[5];
-
-                String link = pub_ip+"review.php";
-                String data = URLEncoder.encode("hotel", "UTF-8") + "=" + URLEncoder.encode(hotel, "UTF-8");
-                data += "&" + URLEncoder.encode("sight", "UTF-8") + "=" + URLEncoder.encode(sight, "UTF-8");
-                data += "&" + URLEncoder.encode("eat", "UTF-8") + "=" + URLEncoder.encode(eat, "UTF-8");
-                data += "&" + URLEncoder.encode("place", "UTF-8") + "=" + URLEncoder.encode(place, "UTF-8");
-                data += "&" + URLEncoder.encode("rating", "UTF-8") + "=" + URLEncoder.encode(rating, "UTF-8");
-                data += "&" + URLEncoder.encode("result", "UTF-8") + "=" + URLEncoder.encode(result, "UTF-8");
-
-                URL url = new URL(link);
-                URLConnection conn = url.openConnection();
-
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-
-                wr.write(data);
-                wr.flush();
-                wr.close();
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-                // Read Server Response
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                    break;
-                }
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Exception: " + e.getMessage());
-            }
-        }
     }
 }
 
