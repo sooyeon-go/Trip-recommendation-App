@@ -18,7 +18,6 @@ import android.util.Log;
 
 
 public class ReviewResult extends AppCompatActivity {
-    private static String pub_ip = "http://15.165.95.187/";
     private ImageButton imageButton;
     private final String dbName = "review_db";
     private final String tableName = "review_table";
