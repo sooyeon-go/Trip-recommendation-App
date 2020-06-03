@@ -48,6 +48,8 @@ public class ResultActivity extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray("dupli");
             for(int i=0;i<jsonArray.length();i++){
                 String course = jsonArray.get(i).toString();
+                course = course.substring(course.indexOf(",")+1);
+                course = course.replaceAll("\"","");
                 resultAdapter_dupli.addItem("dupli_" + i,  course);
 
             }
@@ -64,6 +66,8 @@ public class ResultActivity extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray("content_based");
             for(int i=0;i<jsonArray.length();i++){
                 String course = jsonArray.get(i).toString();
+                course = course.substring(course.indexOf(",")+1);
+                course = course.replaceAll("\"","");
                 resultAdapter_content.addItem("content_based" + i, course);
 
             }
