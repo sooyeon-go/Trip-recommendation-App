@@ -92,16 +92,16 @@ public class ReviewInput extends AppCompatActivity {
                 String eat = A3.getText().toString();
                 String place = spinner.getSelectedItem().toString();
                 float rating = ratingBar.getRating();
-                String result = "";
+                String spec = "";
 
-                if(check1.isChecked() == true) result += check1.getText().toString();
-                if(check2.isChecked() == true) result += check2.getText().toString();
-                if(check3.isChecked() == true) result += check3.getText().toString();
-                if(check4.isChecked() == true) result += check4.getText().toString();
-                if(check5.isChecked() == true) result += check5.getText().toString();
+                if(check1.isChecked() == true) spec += check1.getText().toString();
+                if(check2.isChecked() == true) spec += check2.getText().toString();
+                if(check3.isChecked() == true) spec += check3.getText().toString();
+                if(check4.isChecked() == true) spec += check4.getText().toString();
+                if(check5.isChecked() == true) spec += check5.getText().toString();
 
                 InsertAsync task = new InsertAsync();
-                task.execute(hotel, sight, eat, place, String.valueOf(rating), result);
+                task.execute(hotel, sight, eat, place, String.valueOf(rating), spec);
 
                 Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(ReviewInput.this,MainActivity.class);
@@ -133,7 +133,7 @@ public class ReviewInput extends AppCompatActivity {
                 String eat = (String) params[2];
                 String place = (String) params[3];
                 String rating = (String) params[4];
-                String result = (String) params[5];
+                String spec = (String) params[5];
 
                 String link = pub_ip + "Review_data.php";
                 String data = URLEncoder.encode("hotel", "UTF-8") + "=" + URLEncoder.encode(hotel, "UTF-8");
@@ -141,7 +141,7 @@ public class ReviewInput extends AppCompatActivity {
                 data += "&" + URLEncoder.encode("eat", "UTF-8") + "=" + URLEncoder.encode(eat, "UTF-8");
                 data += "&" + URLEncoder.encode("place", "UTF-8") + "=" + URLEncoder.encode(place, "UTF-8");
                 data += "&" + URLEncoder.encode("rating", "UTF-8") + "=" + URLEncoder.encode(rating, "UTF-8");
-                data += "&" + URLEncoder.encode("result", "UTF-8") + "=" + URLEncoder.encode(result, "UTF-8");
+                data += "&" + URLEncoder.encode("result", "UTF-8") + "=" + URLEncoder.encode(spec, "UTF-8");
 
                 URL url = new URL(link);
                 URLConnection conn = url.openConnection();
