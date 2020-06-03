@@ -15,7 +15,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-
+    <string name="clear_cache_menu">Clear Caches</string>
+    <string name="clear_cache_complete_toast">Caches have been cleared</string>
+    <string name="imageview_description">Image Thumbnail</string>
+    <string name="no_network_connection_toast">No network connection found</string>
     <!-- 선호도 조사 질문지 -->
     <string name="Q1">1. 맛있는 음식을 먹고 도시 야경을 보는 여행코스 </string>
     <string name="Q2">2. 맛있는 음식을 먹고 호캉스를 즐기는 여행코스 </string>
