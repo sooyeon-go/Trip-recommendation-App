@@ -21,6 +21,7 @@ import android.util.Log;
 
 
 public class ReviewResult extends AppCompatActivity {
+    private static String pub_ip = "http://15.165.95.187/";
     private Button button2;
     private final String dbName = "review_db";
     private final String tableName = "reviewtable";
@@ -78,8 +79,8 @@ public class ReviewResult extends AppCompatActivity {
                     new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_RESULT},
                     new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.result}
             );
-            list.setAdapter(adapter);}
-            catch (SQLiteException se) {
+            list.setAdapter(adapter);
+        }catch (SQLiteException se) {
                 Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
                         Log.e("", se.getMessage());
             }
