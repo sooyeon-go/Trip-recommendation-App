@@ -8,6 +8,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,6 +30,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ResultDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -37,8 +41,9 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
     ArrayList<String> location = new ArrayList<>();
     ArrayList<LatLng> position = new ArrayList<>();
     ArrayList<LatLng> line_points = new ArrayList<>();
-    List<String> listView_loc = new ArrayList<>();
 
+    List<String> listView_loc = new ArrayList<>();
+    List<String> list_address = new ArrayList<>();
     int size;
     private  ListView mListView;
     @Override
@@ -49,7 +54,6 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         tmp = bundle.getString("course");
-        //tmp = tmp.replaceAll("\"","");
         for(int i =0; i< tmp.length();i++){
             course = tmp.split(",");
         }
@@ -57,8 +61,12 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         size = course.length;
 
         mListView = findViewById(R.id.listView_course);
-        /*ArrayAdapter adapter = new ArrayAdapter(ResultDetailActivity.this, android.R.layout.simple_list_item_1, listView_loc) ;
-        mListView.setAdapter(adapter);*/
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_course);
         mapFragment.getMapAsync(this); //getMapAsync must be called on the main thread.
     }
@@ -75,6 +83,7 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
             MarkerOptions makerOptions = new MarkerOptions();
             makerOptions // LatLng에 대한 어레이를 만들어서 이용할 수도 있다.
                     .position(position.get(i))
+                    .snippet(list_address.get(i))
                     .title(location.get(i)); // 타이틀.
 
             line_points.add(position.get(i));
@@ -94,29 +103,6 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         mListView.setAdapter(adapter);
     }
 
-    //마커정보창 클릭리스너는 다작동하나, 마커클릭리스너는 snippet정보가 있으면 중복되어 이벤트처리가 안되는거같다.
-    // oneMarker(); 는 동작하지않으나 manyMarker(); 는 snippet정보가 없어 동작이가능하다.
-
-    //정보창 클릭 리스너
-    GoogleMap.OnInfoWindowClickListener infoWindowClickListener = new GoogleMap.OnInfoWindowClickListener() {
-        @Override
-        public void onInfoWindowClick(Marker marker) {
-            String markerId = marker.getId();
-            Toast.makeText(ResultDetailActivity.this, "정보창 클릭 Marker ID : "+markerId, Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    //마커 클릭 리스너
-    GoogleMap.OnMarkerClickListener markerClickListener = new GoogleMap.OnMarkerClickListener() {
-        @Override
-        public boolean onMarkerClick(Marker marker) {
-            String markerId = marker.getId();
-            //선택한 타겟위치
-            LatLng location = marker.getPosition();
-            Toast.makeText(ResultDetailActivity.this, "마커 클릭 Marker ID : "+markerId+"("+location.latitude+" "+location.longitude+")", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    };
 
     public void GeoCoding(String loc){
         double lowerLeftLatitude,lowerLeftLongitude,upperRightLatitude,upperRightLongitude;
@@ -127,7 +113,7 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         try {
             addressList = geocoder.getFromLocationName(
                     loc,
-                    10,
+                    5,
                     lowerLeftLatitude,
                     lowerLeftLongitude,
                     upperRightLatitude,
@@ -155,7 +141,10 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
         position.add(point);
         location.add(loc);
+
         listView_loc.add(loc);
+
+        list_address.add(address);
     }
 
 }
