@@ -20,9 +20,10 @@
             android:orientation="vertical">
 
             <ListView
+                android:id="@+id/listview"
                 android:layout_width="match_parent"
-                android:layout_marginTop="45dp"
-                android:layout_height="719dp" />
+                android:layout_height="719dp"
+                android:layout_marginTop="45dp" />
         </LinearLayout>
     </ScrollView>
 
