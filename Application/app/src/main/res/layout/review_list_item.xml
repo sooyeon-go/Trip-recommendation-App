@@ -18,8 +18,7 @@
         <TextView
             android:id="@+id/result"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="특색" />
+            android:layout_height="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,15 +29,13 @@
                 android:id="@+id/place"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="8"
-                android:text="지역" />
+                android:layout_weight="8" />
 
             <TextView
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="2"
-                android:text="별점" />
+                android:layout_weight="2" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,22 +47,19 @@
                 android:id="@+id/hotel"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="1"
-                android:text="숙소" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/sight"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="1"
-                android:text="명소" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/eat"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="1"
-                android:text="맛집" />
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 
