@@ -38,8 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
-                    android:inputType="textPersonName"
-                    android:text="숙소 입력" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/Q2"
@@ -54,8 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
-                    android:inputType="textPersonName"
-                    android:text="명소 입력" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/Q3"
@@ -70,8 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
-                    android:inputType="textPersonName"
-                    android:text="맛집 입력" />
+                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/Q5"
@@ -100,9 +97,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:isIndicator="false"
-                    android:max="10"
                     android:numStars="5"
-                    android:stepSize="1" />
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10" />
 
                 <TextView
                     android:id="@+id/Q4"
