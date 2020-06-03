@@ -31,13 +31,7 @@ public class ReviewInput extends AppCompatActivity {
     private Button button;
 
     private final String dbName = "review_db";
-    private final String tableName = "review_table";
-    private static final String TAG_HOTEL = "hotel";
-    private static final String TAG_SIGHT ="sight";
-    private static final String TAG_EAT ="eat";
-    private static final String TAG_PLACE ="place";
-    private static final String TAG_RATING ="rating";
-    private static final String TAG_RESULT ="result";
+    private final String tableName = "reviewtable";
 
     SQLiteDatabase sampleDB = null;
     ListAdapter adapter;
@@ -84,12 +78,18 @@ public class ReviewInput extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, arrayList);
 
         spinner.setAdapter(arrayAdapter);
+        try {
 
-        sampleDB = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
-        sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
-                + " (hotel TEXT, sight TEXT, eat TEXT, place TEXT, rating TEXT, result TEXT);");
+            sampleDB = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
+            sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
+                    + " (hotel TEXT, sight TEXT, eat TEXT, place TEXT, rating TEXT, result TEXT);");
 
-        button.setOnClickListener(new View.OnClickListener() {//버튼 이벤트 처리
+        }catch (SQLiteException se) {
+            Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e("", se.getMessage());
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String hotel = A1.getText().toString();
@@ -105,9 +105,16 @@ public class ReviewInput extends AppCompatActivity {
                 if(check4.isChecked() == true) result += check4.getText().toString();
                 if(check5.isChecked() == true) result += check5.getText().toString();
 
-                sampleDB.execSQL("INSERT INTO " + tableName
-                        + "(hotel, sight, eat, place, rating, result)  Values ('" + hotel + "','" + sight + "','" + eat + "','" + place + "','" + rating + "','" + result + "');");
-                sampleDB.close();
+                try {
+
+                    sampleDB.execSQL("INSERT INTO " + tableName
+                            + "(hotel, sight, eat, place, rating, result)  Values ('" + hotel + "','" + sight + "','" + eat + "','" + place + "','" + rating + "','" + result + "');");
+                    sampleDB.close();
+
+                }catch (SQLiteException se) {
+                    Toast.makeText(getApplicationContext(), se.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("", se.getMessage());
+                }
 
         Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(ReviewInput.this,MainActivity.class);
