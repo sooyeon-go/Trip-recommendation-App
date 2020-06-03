@@ -7,9 +7,7 @@ import android.widget.Spinner;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.CheckBox;
-import android.widget.ScrollView;
 import android.widget.Button;
 import android.view.View;
 import android.widget.Toast;
@@ -18,6 +16,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.widget.ListAdapter;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -48,6 +47,7 @@ public class ReviewInput extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewinput);
+
         ratingBar =(RatingBar)findViewById(R.id.ratingBar);
         spinner = (Spinner)findViewById(R.id.spinner);
         Q1 = (TextView)findViewById(R.id.Q1);
@@ -84,6 +84,11 @@ public class ReviewInput extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, arrayList);
 
         spinner.setAdapter(arrayAdapter);
+
+        sampleDB = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
+        sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
+                + " (hotel TEXT, sight TEXT, eat TEXT, place TEXT, rating TEXT, result TEXT);");
+
         button.setOnClickListener(new View.OnClickListener() {//버튼 이벤트 처리
             @Override
             public void onClick(View view) {
@@ -100,15 +105,13 @@ public class ReviewInput extends AppCompatActivity {
                 if(check4.isChecked() == true) result += check4.getText().toString();
                 if(check5.isChecked() == true) result += check5.getText().toString();
 
-                sampleDB.execSQL("CREATE TABLE IF NOT EXISTS " + tableName
-                        + " (hotel VARCHAR(20), sight VARCHAR(20), eat VARCHAR(20), place VARCHAR(20), rating VARCHAR(20), result VARCHAR(20));");
                 sampleDB.execSQL("INSERT INTO " + tableName
-                        + " (hotel, sight, eat, place, rating, result)  Values ('"+hotel+"','"+sight+"','"+eat+"','"+place+"','"+rating+"','"+result+"');");
+                        + "(hotel, sight, eat, place, rating, result)  Values ('" + hotel + "','" + sight + "','" + eat + "','" + place + "','" + rating + "','" + result + "');");
                 sampleDB.close();
 
-                Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(ReviewInput.this,MainActivity.class);
-                startActivity(intent);
+        Toast.makeText(getApplicationContext(),"리뷰가 등록되었습니다",Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(ReviewInput.this,MainActivity.class);
+        startActivity(intent);
             }
         });
     }
