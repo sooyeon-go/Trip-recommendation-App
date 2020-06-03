@@ -3,6 +3,7 @@ package com.example.ssadola;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +36,9 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
     String[] course;
     ArrayList<String> location = new ArrayList<>();
     ArrayList<LatLng> position = new ArrayList<>();
+    ArrayList<LatLng> line_points = new ArrayList<>();
     List<String> listView_loc = new ArrayList<>();
+
     int size;
     private  ListView mListView;
     @Override
@@ -45,7 +49,7 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         tmp = bundle.getString("course");
-        tmp = tmp.replaceAll("\"","");
+        //tmp = tmp.replaceAll("\"","");
         for(int i =0; i< tmp.length();i++){
             course = tmp.split(",");
         }
@@ -65,7 +69,6 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         geocoder = new Geocoder(this);
         for(int i = 0; i < size; i++) {
            GeoCoding(course[i]);
-
         }
 
         for(int i = 0; i < position.size();i++){
@@ -74,10 +77,19 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
                     .position(position.get(i))
                     .title(location.get(i)); // 타이틀.
 
+            line_points.add(position.get(i));
             // 2. 마커 생성 (마커를 나타냄)
             mMap.addMarker(makerOptions);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position.get(i),15));
         }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position.get(0),12));
+
+        PolylineOptions line = new PolylineOptions();
+        line.color(Color.BLUE);
+        line.width(5);
+        line.addAll(line_points);
+        mMap.addPolyline(line);
+
+
         ArrayAdapter adapter = new ArrayAdapter(ResultDetailActivity.this, android.R.layout.simple_list_item_1, listView_loc) ;
         mListView.setAdapter(adapter);
     }
