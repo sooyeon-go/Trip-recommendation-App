@@ -45,8 +45,8 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
         studio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent studio_activity = new Intent(getActivity(), StudioActivity.class);
-                startActivity(studio_activity);
+                Intent studio_title = new Intent(getActivity(),TitleStudioActivity.class);
+                startActivity(studio_title);
             }
             }
 
@@ -67,18 +67,6 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
 
         return rootView;
     }
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public void takeScreenShot() {
 

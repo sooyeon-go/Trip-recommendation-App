@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".TitleStudioActivity"></activity>
         <activity android:name=".ImageStudioActivity" />
         <activity android:name=".StudioActivity" />
         <activity android:name=".BookmarkActivity" />
