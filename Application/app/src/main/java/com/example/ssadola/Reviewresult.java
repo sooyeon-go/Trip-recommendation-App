@@ -53,7 +53,7 @@ public class ReviewResult extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.listview);
         personList = new ArrayList<>();
         GetData task = new GetData();
-        task.execute(pub_ip + "Review_get.php");
+        task.execute(pub_ip + "review_get.php");
     }
     private class GetData extends AsyncTask<String, Void, String>{
         ProgressDialog progressDialog;
