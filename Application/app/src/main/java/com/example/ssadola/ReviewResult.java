@@ -3,13 +3,11 @@ package com.example.ssadola;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.content.Intent;
 import java.util.ArrayList;
-import java.util.HashMap;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.util.Log;
 import android.os.AsyncTask;
 import android.app.ProgressDialog;
@@ -30,29 +28,35 @@ import java.net.URL;
 public class ReviewResult extends AppCompatActivity {
     private static String pub_ip = "http://15.165.95.187/";
     private Button button;
+
     private static final String TAG_HOTEL = "hotel";
     private static final String TAG_SIGHT = "sight";
     private static final String TAG_EAT = "eat";
     private static final String TAG_PLACE = "place";
     private static final String TAG_RATING = "rating";
     private static final String TAG_SPEC = "spec";
-    ArrayList<HashMap<String, String>> personList;
+
+    private ArrayList<PersonalData> personList;
+    private UsersAdapter newAdapter;
+    private RecyclerView newRecycle;
 
     private static final String TAG_JSON="webnautes";
     private static String TAG = "리뷰 테스트";
-
-    ListView listview;
-    String mJsonString;
+    private String mJsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_list);
-        personList = new ArrayList<HashMap<String, String>>();
         button = (Button) findViewById(R.id.button);
-        listview = (ListView) findViewById(R.id.listview);
+        newAdapter = new UsersAdapter(this, personList);
         personList = new ArrayList<>();
+        newRecycle = (RecyclerView) findViewById(R.id.recycle);
+        newRecycle.setLayoutManager(new LinearLayoutManager(this));
         GetData task = new GetData();
+
+        newAdapter = new UsersAdapter(this, personList);
+        newRecycle.setAdapter(newAdapter);
         task.execute(pub_ip + "review_get.php");
     }
     private class GetData extends AsyncTask<String, Void, String>{
@@ -64,7 +68,14 @@ public class ReviewResult extends AppCompatActivity {
 
             progressDialog = ProgressDialog.show(ReviewResult.this,
                     "Please Wait", null, true, true);
-            showResult();
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (result == null) {
+            } else {
+                showResult();
+            }
         }
         @Override
         protected String doInBackground(String... params){
@@ -122,23 +133,19 @@ public class ReviewResult extends AppCompatActivity {
                 String rating = item.getString(TAG_RATING);
                 String spec = item.getString(TAG_SPEC);
 
-                HashMap<String, String> hashMap = new HashMap<>();
+                PersonalData personalData = new PersonalData();
 
-                hashMap.put(TAG_HOTEL, hotel);
-                hashMap.put(TAG_SIGHT, sight);
-                hashMap.put(TAG_EAT, eat);
-                hashMap.put(TAG_PLACE, place);
-                hashMap.put(TAG_RATING, rating);
-                hashMap.put(TAG_SPEC, spec);
+                personalData.setMember_hotel(hotel);
+                personalData.setMember_sight(sight);
+                personalData.setMember_eat(eat);
+                personalData.setMember_place(place);
+                personalData.setMember_rating(rating);
+                personalData.setMember_spec(spec);
 
-                personList.add(hashMap);
+                personList.add(personalData);
+                System.out.println(personList);
+                newAdapter.notifyDataSetChanged();
             }
-            ListAdapter adapter = new SimpleAdapter(
-                    ReviewResult.this, personList, R.layout.review_list_item,
-                    new String[]{TAG_HOTEL, TAG_SIGHT, TAG_EAT, TAG_PLACE, TAG_RATING, TAG_SPEC},
-                    new int[]{R.id.hotel, R.id.sight, R.id.eat, R.id.place, R.id.rating, R.id.spec}
-            );
-            listview.setAdapter(adapter);
         } catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);
         }
