@@ -150,4 +150,3 @@ public class ReviewResult extends AppCompatActivity {
         });
     }
 }
-
