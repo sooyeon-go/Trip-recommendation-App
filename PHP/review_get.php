@@ -42,21 +42,6 @@ $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 if (!$android){
 ?>
 
-<html>
-   <body>
-   
-      <form action="<?php $_PHP_SELF ?>" method="POST">
-         hotel: <input type = "text" name = "review" />
-         sight: <input type = "text" name = "sight" />
-         eat: <input type = "text" name = "eat" />
-         place: <input type = "text" name = "place" />
-         rating: <input type = "text" name = "rating" />
-         spec: <input type = "text" name = "spec" />
-         <input type = "submit" />
-      </form>
-   
-   </body>
-</html>
 <?php
 }
 
