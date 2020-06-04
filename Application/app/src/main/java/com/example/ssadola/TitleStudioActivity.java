@@ -25,7 +25,7 @@ public class TitleStudioActivity extends AppCompatActivity {
 
         //mButton = (Button) findViewById(R.id.cardTypeBtn);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
+        //CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
 
         mCardAdapter = new CardPagerAdapter();
         mCardAdapter.addCardItem(new CardItem("R.string.title_1", "R.string.text_1"));
@@ -34,10 +34,10 @@ public class TitleStudioActivity extends AppCompatActivity {
         mCardAdapter.addCardItem(new CardItem("R.string.title_4", "R.string.text_4"));
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
                 dpToPixels(2, this));
-        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(mViewPager, pagerAdapter);
+        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mCardAdapter);
         fragmentCardShadowTransformer.enableScaling(true);
 
-        mViewPager.setAdapter(pagerAdapter);
+        mViewPager.setAdapter(mCardAdapter);
         mViewPager.setPageTransformer(false, fragmentCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(3);
     }
