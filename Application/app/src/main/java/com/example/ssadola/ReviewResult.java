@@ -53,10 +53,13 @@ public class ReviewResult extends AppCompatActivity {
         personList = new ArrayList<>();
         newRecycle = (RecyclerView) findViewById(R.id.recycle);
         newRecycle.setLayoutManager(new LinearLayoutManager(this));
-        GetData task = new GetData();
 
         newAdapter = new UsersAdapter(this, personList);
         newRecycle.setAdapter(newAdapter);
+
+        //personList.clear();
+        newAdapter.notifyDataSetChanged();
+        GetData task = new GetData();
         task.execute(pub_ip + "review_get.php");
     }
     private class GetData extends AsyncTask<String, Void, String>{
@@ -72,8 +75,12 @@ public class ReviewResult extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            progressDialog.dismiss();
+            Log.d(TAG, "response - " + result);
             if (result == null) {
             } else {
+                mJsonString = result;
+                System.out.println(mJsonString);
                 showResult();
             }
         }
