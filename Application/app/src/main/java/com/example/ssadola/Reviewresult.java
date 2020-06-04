@@ -64,6 +64,7 @@ public class ReviewResult extends AppCompatActivity {
 
             progressDialog = ProgressDialog.show(ReviewResult.this,
                     "Please Wait", null, true, true);
+            showResult();
         }
         @Override
         protected String doInBackground(String... params){
