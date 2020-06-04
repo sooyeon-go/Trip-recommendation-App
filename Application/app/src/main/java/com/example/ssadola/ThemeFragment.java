@@ -40,6 +40,7 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_theme, container, false);
+
         Button studio = rootView.findViewById(R.id.btn_studoi_set);
         studio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,23 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
                 Intent studio_title = new Intent(getActivity(),TitleStudioActivity.class);
                 startActivity(studio_title);
             }
-        });
+            }
+
+            );
+        Button season = rootView.findViewById(R.id.btn_season);
+        season.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent season_activity = new Intent(getActivity(), seasonactivity.class);
+                startActivity(season_activity);
+            }
+        }
+
+        );
+
+
+
+
         return rootView;
     }
     @Override
