@@ -1,7 +1,10 @@
 package com.example.ssadola;
 
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -13,48 +16,47 @@ import java.util.List;
 
 public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implements CardAdapter {
 
-    private List<CardFragment> fragments;
-    private float baseElevation;
+    private List<CardFragment> mFragments;
+    private float mBaseElevation;
 
     public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation) {
         super(fm);
-        fragments = new ArrayList<>();
-        this.baseElevation = baseElevation;
+        mFragments = new ArrayList<>();
+        mBaseElevation = baseElevation;
 
-        for(int i = 0; i< 8; i++){
+        for(int i = 0; i< 5; i++){
             addCardFragment(new CardFragment());
         }
     }
 
     @Override
     public float getBaseElevation() {
-        return baseElevation;
+        return mBaseElevation;
     }
 
     @Override
     public CardView getCardViewAt(int position) {
-        return fragments.get(position).getCardView();
+        return mFragments.get(position).getCardView();
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+        return mFragments.size();
     }
 
     @Override
     public Fragment getItem(int position) {
-        return CardFragment.getInstance(position);
+        return mFragments.get(position);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         Object fragment = super.instantiateItem(container, position);
-        fragments.set(position, (CardFragment) fragment);
+        mFragments.set(position, (CardFragment) fragment);
         return fragment;
     }
 
     public void addCardFragment(CardFragment fragment) {
-        fragments.add(fragment);
+        mFragments.add(fragment);
     }
-
 }
