@@ -40,16 +40,45 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_theme, container, false);
+
         Button studio = rootView.findViewById(R.id.btn_studoi_set);
         studio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent studio_activity = new Intent(getActivity(),StudioActivity.class);
+                Intent studio_activity = new Intent(getActivity(), StudioActivity.class);
                 startActivity(studio_activity);
             }
-        });
+            }
+
+            );
+        Button season = rootView.findViewById(R.id.btn_season);
+        season.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent season_activity = new Intent(getActivity(), seasonactivity.class);
+                startActivity(season_activity);
+            }
+        }
+
+        );
+
+
+
+
         return rootView;
     }
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void takeScreenShot() {
 
