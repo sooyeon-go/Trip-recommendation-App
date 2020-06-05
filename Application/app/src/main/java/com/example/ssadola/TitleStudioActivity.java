@@ -33,11 +33,9 @@ public class TitleStudioActivity extends AppCompatActivity {
 
     static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
-    //CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
 
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     private ViewPager mViewPager;
-    //private Button mButton;
     private CardPagerAdapter mCardAdapter;
     private ShadowTransformer mCardShadowTransformer;
     private CardFragmentPagerAdapter mFragmentCardAdapter;
@@ -50,7 +48,6 @@ public class TitleStudioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_studio);
 
-        //mButton = (Button) findViewById(R.id.btn_more);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
         Distinct_Studio info = new Distinct_Studio();
@@ -99,10 +96,8 @@ public class TitleStudioActivity extends AppCompatActivity {
 
                         arrayList.add(hashMap);
                         img_link[i] = i_img;
-                        title[i] = i_title;
-                        //System.out.println("arrayList : " + arrayList.get(i));
+
                     }
-                    //makeCard(arrayList);
                     getImgfromURL(img_link);
                 } catch (JSONException e) {
                     Log.d("TitleStudioActivity", "showResult : ", e);
@@ -185,7 +180,6 @@ public class TitleStudioActivity extends AppCompatActivity {
             HashMap<String, String> tmp = arrayList.get(i);
             mCardAdapter.addCardItem(new CardItem(tmp.get("work_title"),bm[i]));
         }
-        //Toast.makeText(this,"size :"+arrayList.size(),Toast.LENGTH_LONG).show();
 
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
                 dpToPixels(2, this));
