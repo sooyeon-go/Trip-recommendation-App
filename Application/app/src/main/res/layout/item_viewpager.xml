@@ -43,11 +43,11 @@
 
             <Button
                 style="@style/ButtonStyle"
-                android:id="@+id/button"
+                android:id="@+id/btn_more"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Button" />
+                android:text="더보기" />
         </LinearLayout>
 
         <ImageView
