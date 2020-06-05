@@ -1,10 +1,12 @@
 package com.example.ssadola;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -80,10 +82,20 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         TextView titleTextView = (TextView) view.findViewById(R.id.work_title);
         //TextView contentTextView = (TextView) view.findViewById(R.id.scene);
         ImageView poster = view.findViewById(R.id.img_poster);
+        Button more = view.findViewById(R.id.btn_more);
 
         titleTextView.setText(item.getTitle());
         //contentTextView.setText(item.getText());
         poster.setImageBitmap(item.getBitmap());
+
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ImageStudioActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
 
