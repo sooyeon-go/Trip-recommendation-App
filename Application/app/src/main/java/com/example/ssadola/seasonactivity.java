@@ -22,7 +22,7 @@ public class seasonactivity extends AppCompatActivity {
         spring.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent SpringActivity = new Intent(getActivity(),TitleStudioActivity.class);
+                                          Intent SpringActivity = new Intent(seasonactivity.this,TitleStudioActivity.class);
                                           startActivity(SpringActivity);
                                       }
                                   }
