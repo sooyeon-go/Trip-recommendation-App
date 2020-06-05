@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 
 public class ReviewResult extends AppCompatActivity {
@@ -36,7 +37,8 @@ public class ReviewResult extends AppCompatActivity {
     private static final String TAG_RATING = "rating";
     private static final String TAG_SPEC = "spec";
 
-    private ArrayList<PersonalData> personList;
+    //private ArrayList<PersonalData> personList;
+    private ArrayList<HashMap<String,String>> personList;
     private UsersAdapter newAdapter;
     private RecyclerView newRecycle;
 
@@ -49,16 +51,18 @@ public class ReviewResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_list);
         button = (Button) findViewById(R.id.button);
-        newAdapter = new UsersAdapter(this, personList);
+        //newAdapter = new UsersAdapter(this, personList);
         personList = new ArrayList<>();
         newRecycle = (RecyclerView) findViewById(R.id.recycle);
-        newRecycle.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(ReviewResult.this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        newRecycle.setLayoutManager(mLinearLayoutManager);
 
-        newAdapter = new UsersAdapter(this, personList);
-        newRecycle.setAdapter(newAdapter);
+        /*newAdapter = new UsersAdapter(this, personList);
+        newRecycle.setAdapter(newAdapter);*/
 
         //personList.clear();
-        newAdapter.notifyDataSetChanged();
+        //newAdapter.notifyDataSetChanged();
         GetData task = new GetData();
         task.execute(pub_ip + "review_get.php");
     }
@@ -140,19 +144,34 @@ public class ReviewResult extends AppCompatActivity {
                 String rating = item.getString(TAG_RATING);
                 String spec = item.getString(TAG_SPEC);
 
-                PersonalData personalData = new PersonalData();
+                /*PersonalData personalData = new PersonalData();
 
                 personalData.setMember_hotel(hotel);
                 personalData.setMember_sight(sight);
                 personalData.setMember_eat(eat);
                 personalData.setMember_place(place);
                 personalData.setMember_rating(rating);
-                personalData.setMember_spec(spec);
-
-                personList.add(personalData);
-                System.out.println(personList);
-                newAdapter.notifyDataSetChanged();
+                personalData.setMember_spec(spec);*/
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put(TAG_HOTEL,hotel);
+                hashMap.put(TAG_SIGHT,sight);
+                hashMap.put(TAG_EAT,eat);
+                hashMap.put(TAG_PLACE,place);
+                hashMap.put(TAG_RATING,rating);
+                hashMap.put(TAG_SPEC,spec);
+                personList.add(hashMap);
+                //System.out.println(personList);
+                //newAdapter.notifyDataSetChanged();
             }
+            /*newAdapter = new UsersAdapter(this, personList);
+            newRecycle.setAdapter(newAdapter);
+            newAdapter.notifyDataSetChanged();*/
+
+            UsersAdapter adapter = new UsersAdapter(ReviewResult.this,personList);
+            Log.e("onCreate[personList]", "" + personList.size());
+            newRecycle.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
         } catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);
         }
@@ -161,6 +180,7 @@ public class ReviewResult extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ReviewResult.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
