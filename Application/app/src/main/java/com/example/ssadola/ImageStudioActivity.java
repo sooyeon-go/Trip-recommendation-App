@@ -16,6 +16,8 @@
 
 package com.example.ssadola;
 
+import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -57,8 +59,12 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_studio);
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String title = bundle.getString("title");
+        Toast.makeText(this,title, Toast.LENGTH_LONG).show();
+        /*final Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
 
         // Fetch screen height and width, to use as our max size when loading images as this
         // activity runs full screen

@@ -54,8 +54,6 @@ public class Images {
             "https://postfiles.pstatic.net/MjAxOTEwMjRfMjQ2/MDAxNTcxODk4ODMxNTcx.ccTotCgmYnvySZse-d2kYx2ZtGyBvCOW14LgYF4l3lQg.k_9MH4qrSkMwJu2EiFuKYdydpUDA3ERz-ws7JSydpUwg.JPEG.gongjubookcamp/%EA%B3%B5%EC%A3%BC%EB%B6%81%EC%BA%A0%ED%94%84_%EC%8B%A0%EC%84%9C%EC%9C%A0%EA%B8%B07_%EC%B4%AC%EC%98%81%EC%A7%80_2.jpg?type=w773"
 
 
-
-
     };
 
     /**
@@ -89,5 +87,15 @@ public class Images {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQad2Dq28DPI7RMGJ2b7inKSjlVqazuzJbtYc90_cyekqxOQkTA&usqp=CAU",
             "https://i1.wp.com/s3-ap-northeast-2.amazonaws.com/blog.allstay.com/wp-content/uploads/2020/04/20161659/5e97f889e3a6c71e7c2b77bf-p.jpg?fit=740%2C494&ssl=1",
             "https://postfiles.pstatic.net/MjAxOTEwMjRfMjQ2/MDAxNTcxODk4ODMxNTcx.ccTotCgmYnvySZse-d2kYx2ZtGyBvCOW14LgYF4l3lQg.k_9MH4qrSkMwJu2EiFuKYdydpUDA3ERz-ws7JSydpUwg.JPEG.gongjubookcamp/%EA%B3%B5%EC%A3%BC%EB%B6%81%EC%BA%A0%ED%94%84_%EC%8B%A0%EC%84%9C%EC%9C%A0%EA%B8%B07_%EC%B4%AC%EC%98%81%EC%A7%80_2.jpg?type=w773"
+    };
+
+    public final static String[] ForcedLanding = new String[] {
+            "https://thumb-wishbeen.akamaized.net//JVqb1ksoQyD-551RrGv5GiulMmI=//880x//smart//filters:no_upscale()//img-wishbeen.akamaized.net//post//1582865198724_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.55.16.png",
+            "https://thumb-wishbeen.akamaized.net/3RaGFWUBrZU0Voy9y4_3ybOJE6g=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582865486062_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.45.43.png",
+            "https://thumb-wishbeen.akamaized.net/UW9rok1uHZlvwbcxvvdbP-y7DrQ=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582866350476_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.32.52-1.png",
+            "https://thumb-wishbeen.akamaized.net/cTRtN1ZC-x73MyZ-ydmaAqbHDIM=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582866731373_sunyeo.jpg",
+            "https://thumb-wishbeen.akamaized.net/pjWeZhH1m9ByrJICXvUIfGKiYYQ=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582868538256_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.15.58.png",
+            "https://thumb-wishbeen.akamaized.net/GmpVqCz4aR-gVSKSCEj6PP-sO8Q=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582868589789_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.10.35.png",
+            "https://thumb-wishbeen.akamaized.net/oOGVn7BoZIHYdSAcNZrH2A7BB4M=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582868729174_008.jpg"
     };
 }
