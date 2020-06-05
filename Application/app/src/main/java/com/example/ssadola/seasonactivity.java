@@ -29,6 +29,39 @@ public class seasonactivity extends AppCompatActivity {
 
         );
 
+        Button summer = (Button) findViewById(R.id.btn_summer);
+        spring.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent SummerActivity = new Intent(seasonactivity.this,SummerActivity.class);
+                                          startActivity(SummerActivity);
+                                      }
+                                  }
+
+        );
+
+        Button fall = (Button) findViewById(R.id.btn_fall);
+        spring.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent FallActivity = new Intent(seasonactivity.this, FallActivity.class);
+                                          startActivity(FallActivity);
+                                      }
+                                  }
+
+        );
+
+        Button winter = (Button) findViewById(R.id.btn_winter);
+        spring.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent WinterActivity = new Intent(seasonactivity.this, com.example.ssadola.WinterActivity.class);
+                                          startActivity(WinterActivity);
+                                      }
+                                  }
+
+        );
+
     }
 
 }
