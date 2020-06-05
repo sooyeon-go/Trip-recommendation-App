@@ -18,31 +18,17 @@ public class seasonactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_season);
 
-    }
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_season, container, false);
-
-        Button spring = rootView.findViewById(R.id.btn_spring);
+        Button spring = (Button) findViewById(R.id.btn_spring);
         spring.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent truntospring = new Intent(getActivity(),TitleStudioActivity.class);
-                                          startActivity(truntospring);
+                                          Intent SpringActivity = new Intent(getActivity(),TitleStudioActivity.class);
+                                          startActivity(SpringActivity);
                                       }
                                   }
 
         );
-        
 
-
-
-
-        return rootView;
     }
-
-
-
 
 }
