@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -49,7 +50,7 @@ public class TitleStudioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title_studio);
 
-        //mButton = (Button) findViewById(R.id.cardTypeBtn);
+        //mButton = (Button) findViewById(R.id.btn_more);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
         Distinct_Studio info = new Distinct_Studio();
@@ -99,7 +100,7 @@ public class TitleStudioActivity extends AppCompatActivity {
                         arrayList.add(hashMap);
                         img_link[i] = i_img;
                         title[i] = i_title;
-                        System.out.println("arrayList : " + arrayList.get(i));
+                        //System.out.println("arrayList : " + arrayList.get(i));
                     }
                     //makeCard(arrayList);
                     getImgfromURL(img_link);
