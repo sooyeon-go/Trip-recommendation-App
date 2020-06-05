@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/spring"
+        android:id="@+id/btn_spring"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/spring"
@@ -15,21 +15,21 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/summer"
+        android:id="@+id/btn_summer"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/summer"
         android:text="여름" />
 
     <Button
-        android:id="@+id/fall"
+        android:id="@+id/btn_fall"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/fall"
         android:text="가을" />
 
     <Button
-        android:id="@+id/winter"
+        android:id="@+id/btn_winter"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/winter"
