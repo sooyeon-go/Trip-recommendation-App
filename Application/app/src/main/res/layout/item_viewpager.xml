@@ -27,17 +27,19 @@
                 android:text="Work_title" />
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="120dp"
+                android:id="@+id/img_poster"
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/bg">
             </ImageView>
-            <TextView
+            <!--<TextView
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:id="@+id/scene"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/lorem_ipsum" />
+                android:text="@string/lorem_ipsum" />-->
 
             <Button
                 style="@style/ButtonStyle"

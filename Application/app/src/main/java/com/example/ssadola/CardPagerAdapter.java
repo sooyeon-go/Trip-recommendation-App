@@ -1,13 +1,20 @@
 package com.example.ssadola;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.PagerAdapter;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,10 +78,13 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
 
     private void bind(CardItem item, View view) {
         TextView titleTextView = (TextView) view.findViewById(R.id.work_title);
-        TextView contentTextView = (TextView) view.findViewById(R.id.scene);
+        //TextView contentTextView = (TextView) view.findViewById(R.id.scene);
+        ImageView poster = view.findViewById(R.id.img_poster);
 
         titleTextView.setText(item.getTitle());
-        contentTextView.setText(item.getText());
+        //contentTextView.setText(item.getText());
+        poster.setImageBitmap(item.getBitmap());
     }
+
 
 }
