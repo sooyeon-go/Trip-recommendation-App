@@ -22,8 +22,41 @@ public class seasonactivity extends AppCompatActivity {
         spring.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent SpringActivity = new Intent(seasonactivity.this,TitleStudioActivity.class);
+                                          Intent SpringActivity = new Intent(seasonactivity.this,SpringActivity.class);
                                           startActivity(SpringActivity);
+                                      }
+                                  }
+
+        );
+
+        Button summer = (Button) findViewById(R.id.btn_summer);
+        summer.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent SummerActivity = new Intent(seasonactivity.this,SummerActivity.class);
+                                          startActivity(SummerActivity);
+                                      }
+                                  }
+
+        );
+
+        Button fall = (Button) findViewById(R.id.btn_fall);
+        fall.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent FallActivity = new Intent(seasonactivity.this, FallActivity.class);
+                                          startActivity(FallActivity);
+                                      }
+                                  }
+
+        );
+
+        Button winter = (Button) findViewById(R.id.btn_winter);
+        winter.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent WinterActivity = new Intent(seasonactivity.this, com.example.ssadola.WinterActivity.class);
+                                          startActivity(WinterActivity);
                                       }
                                   }
 
