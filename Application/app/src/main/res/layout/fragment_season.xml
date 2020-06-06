@@ -12,12 +12,14 @@
         android:background="@drawable/spring"
         android:padding="4dp"
         android:text="봄"
+        android:fontFamily="@font/theddobak"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_summer"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:fontFamily="@font/theddobak"
         android:background="@drawable/summer"
         android:text="여름" />
 
@@ -25,6 +27,7 @@
         android:id="@+id/btn_fall"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:fontFamily="@font/theddobak"
         android:background="@drawable/fall"
         android:text="가을" />
 
@@ -32,6 +35,7 @@
         android:id="@+id/btn_winter"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:fontFamily="@font/theddobak"
         android:background="@drawable/winter"
         android:text="겨울" />
 
