@@ -17,6 +17,7 @@
         android:text="싸돌아"
         android:textSize="60dp"
         android:textStyle="bold"
+        android:fontFamily="@font/hanspunch"
         android:layout_gravity="center_horizontal|center_vertical">
     </TextView>
 </LinearLayout>
