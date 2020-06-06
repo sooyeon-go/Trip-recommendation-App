@@ -3,5 +3,9 @@
     <font
         android:fontStyle = "normal"
         android:fontWeight = "400"
-        android:font = "@font/newfont" />
+        android:font = "@font/theddobak" />
+    <font
+        android:fontStyle = "normal"
+        android:fontWeight = "400"
+        android:font = "@font/hanspunch" />
 </font-family>
