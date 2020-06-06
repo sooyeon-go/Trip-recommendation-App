@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=" 봄"
+                android:fontFamily="@font/theddobak"
                 android:textSize="60dp"
                 android:textStyle="bold"></TextView>
 
