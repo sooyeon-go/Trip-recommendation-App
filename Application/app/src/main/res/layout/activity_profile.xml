@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ll_profile"
         android:text="프로필"
+        android:fontFamily="@font/theddobak"
         android:textSize="40sp">
     </TextView>
     <Button
@@ -18,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="홈"
+        android:fontFamily="@font/theddobak"
         android:layout_below="@+id/btn_logout"
         android:layout_alignRight="@+id/tv_profile">
     </Button>
@@ -26,6 +28,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="수정"
+        android:fontFamily="@font/theddobak"
     android:layout_alignRight="@+id/tv_profile">
     </Button>
     <Button
@@ -33,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로그아웃"
+        android:fontFamily="@font/theddobak"
         android:layout_alignRight="@+id/tv_profile"
         android:layout_below="@+id/btn_edit">
     </Button>
@@ -56,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이름: "
+                android:fontFamily="@font/theddobak"
                 android:textSize="20sp">
             </TextView>
             <TextView
@@ -63,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:fontFamily="@font/theddobak"
                 android:textSize="10sp">
             </TextView>
         </LinearLayout>
@@ -74,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="나이: "
+                android:fontFamily="@font/theddobak"
                 android:textSize="20sp">
             </TextView>
             <TextView
@@ -81,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:fontFamily="@font/theddobak"
                 android:textSize="10sp">
             </TextView>
         </LinearLayout>
@@ -92,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="성별: "
+                android:fontFamily="@font/theddobak"
                 android:textSize="20sp">
             </TextView>
             <TextView
@@ -99,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:fontFamily="@font/theddobak"
                 android:textSize="10sp">
             </TextView>
         </LinearLayout>
@@ -110,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email: "
+                android:fontFamily="@font/theddobak"
                 android:textSize="20sp">
             </TextView>
             <TextView
@@ -117,6 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:fontFamily="@font/theddobak"
                 android:textSize="10sp">
             </TextView>
         </LinearLayout>
