@@ -24,7 +24,8 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Work_title" />
+                android:text="Work_title"
+                android:fontFamily="@font/theddobak"/>
 
             <ImageView
                 android:id="@+id/img_poster"
@@ -47,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/theddobak"
                 android:text="더보기" />
         </LinearLayout>
 
