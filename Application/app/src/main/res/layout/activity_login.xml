@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="Good "
                 android:textColor="#ffffff"
+                android:fontFamily="@font/theddobak"
                 android:textSize="32sp">
             </TextView>
         </LinearLayout>
@@ -49,6 +50,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:text="Morning"
+                android:fontFamily="@font/theddobak"
                 android:textColor="#ffffff"
                 android:textSize="32sp" />
             <View
@@ -144,6 +146,7 @@
                 android:drawablePadding="16dp"
                 android:drawableRight="@drawable/ic_email_white_24dp"
                 android:hint="Email"
+                android:fontFamily="@font/theddobak"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:textColor="@android:color/white"
@@ -161,6 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawablePadding="16dp"
+                android:fontFamily="@font/theddobak"
                 android:drawableRight="@drawable/ic_lock_white_24dp"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -186,6 +190,7 @@
                 android:text="회원가입"
                 android:textAllCaps="false"
                 android:textStyle="bold"
+                android:fontFamily="@font/theddobak"
                 android:textColor="#96ffffff"
                 android:textSize="16dp" />
             <Button
@@ -196,6 +201,7 @@
                 android:background="@drawable/buttonshapewhitebg"
                 android:text="로그인"
                 android:textAllCaps="false"
+                android:fontFamily="@font/theddobak"
                 android:textColor="#96ffffff"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -206,6 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="로그인 없이 둘러보기"
+            android:fontFamily="@font/theddobak"
             android:textAlignment="center"
             android:textColor="#96ffffff"
             android:textSize="16sp"
