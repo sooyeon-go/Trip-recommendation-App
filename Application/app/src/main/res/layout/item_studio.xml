@@ -22,7 +22,8 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Card title" />
+                android:text="Card title"
+                android:fontFamily="@font/theddobak"/>
             <ImageView
                 android:id="@+id/iv_studio"
                 android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/theddobak"
                 android:text="@string/lorem_ipsum" />
 
             <Button
@@ -43,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/theddobak"
                 android:text="Button" />
         </LinearLayout>
 
