@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
+        android:fontFamily="@font/theddobak"
         android:text="코스 정보">
     </TextView>
     <fragment
