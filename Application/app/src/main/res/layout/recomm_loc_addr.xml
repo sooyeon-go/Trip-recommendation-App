@@ -12,6 +12,7 @@
         android:layout_marginStart="10dp"
         android:text="Big Text"
         android:id="@+id/tv_loc"
+        android:fontFamily="@font/theddobak"
         android:textSize="19dp"
         android:textStyle="bold">
     </TextView>
