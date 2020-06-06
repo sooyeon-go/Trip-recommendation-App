@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="224dp"
                     android:background="@drawable/season"
-
+                    android:fontFamily="@font/theddobak"
                     android:text="계절별 지역 축제"
                     android:layout_marginTop="11dp"
                     android:paddingBottom="1mm"
@@ -37,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="드라마/영화   촬영 명소"
+                    android:fontFamily="@font/theddobak"
                     android:textSize="70sp">
                 </Button>
                 <Button
@@ -44,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="혼자 가기 좋은"
+                    android:fontFamily="@font/theddobak"
                     android:textSize="80sp">
                 </Button>
                 <Button
@@ -51,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="축제 탐방"
+                    android:fontFamily="@font/theddobak"
                     android:textSize="80sp">
                 </Button>
                 <Button
@@ -58,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="이색적인"
+                    android:fontFamily="@font/theddobak"
                     android:textSize="80sp">
                 </Button>
             </LinearLayout>
