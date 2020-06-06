@@ -28,7 +28,7 @@
 
                 <TextView
                     android:id="@+id/Q1"
-                    android:fontFamily="@font/fontstyle"
+                    android:fontFamily="@font/theddobak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="다녀온 숙소를 입력해주세요" />
@@ -39,12 +39,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
+                    android:fontFamily="@font/theddobak"
                     android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/Q2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
                     android:layout_marginTop="15dp"
                     android:text="다녀온 명소를 입력해주세요" />
 
@@ -54,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
+                    android:fontFamily="@font/theddobak"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -61,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/theddobak"
                     android:text="다녀온 맛집을 입력해주세요" />
 
                 <EditText
@@ -69,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="15"
+                    android:fontFamily="@font/theddobak"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -76,10 +81,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/theddobak"
                     android:text="다녀온 지역을 선택해주세요" />
 
                 <Spinner
                     android:id="@+id/spinner"
+                    android:fontFamily="@font/theddobak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp" />
@@ -89,6 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/theddobak"
                     android:text="다녀온 여행지 별점을 주세요"
                     android:visibility="visible" />
 
@@ -108,6 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/theddobak"
                     android:text="여행지 특색을 체크해주세요" />
 
                 <LinearLayout
@@ -120,30 +129,35 @@
                         android:id="@+id/check1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/theddobak"
                         android:text="호캉스" />
 
                     <CheckBox
                         android:id="@+id/check2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/theddobak"
                         android:text="유적지" />
 
                     <CheckBox
                         android:id="@+id/check3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/theddobak"
                         android:text="자연" />
 
                     <CheckBox
                         android:id="@+id/check4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/theddobak"
                         android:text="맛집" />
 
                     <CheckBox
                         android:id="@+id/check5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/theddobak"
                         android:text="애견동반" />
 
                 </LinearLayout>
@@ -158,6 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="33dp"
         android:text="완료"
+        android:fontFamily="@font/theddobak"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
