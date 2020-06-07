@@ -94,12 +94,26 @@ public class ReviewInput extends AppCompatActivity {
                 float rating = ratingBar.getRating();
                 String spec = "";
 
-                if(check1.isChecked() == true) spec += check1.getText().toString();
-                if(check2.isChecked() == true) spec += check2.getText().toString();
-                if(check3.isChecked() == true) spec += check3.getText().toString();
-                if(check4.isChecked() == true) spec += check4.getText().toString();
-                if(check5.isChecked() == true) spec += check5.getText().toString();
-
+                if(check1.isChecked() == true) {
+                    spec += check1.getText().toString();
+                    spec += " ";
+                }
+                if(check2.isChecked() == true) {
+                    spec += check2.getText().toString();
+                    spec += " ";
+                }
+                if(check3.isChecked() == true) {
+                    spec += check3.getText().toString();
+                    spec += " ";
+                }
+                if(check4.isChecked() == true) {
+                    spec += check4.getText().toString();
+                    spec += " ";
+                }
+                if(check5.isChecked() == true) {
+                    spec += check5.getText().toString();
+                    spec += " ";
+                }
                 InsertAsync task = new InsertAsync();
                 task.execute(hotel, sight, eat, place, String.valueOf(rating), spec);
 
