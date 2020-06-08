@@ -1,25 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.codetail.widget.RevealFrameLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <FrameLayout
-        android:id="@+id/container"
+    android:layout_height="match_parent"
+    android:sketchColumns = "0,1"
+    android:orientation="vertical">
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="110dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/splash"
+        android:contentDescription="banner"
+        ></ImageView>
+
+
+    <TableRow
+        android:id="@+id/column1"
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
        <!-- <ImageView
             android:id="@+id/image_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/content_theme" />-->
-        <TextView
+        <!--TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메인 화면"
             android:fontFamily="@font/theddobak"
             android:textSize="50sp"
             android:layout_gravity="center_horizontal|center_vertical">
-        </TextView>
-    </FrameLayout>
-</io.codetail.widget.RevealFrameLayout>
+        </TextView>-->
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="맞춤 추천" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="테마여행" />
+
+    </>
+
+    <TableRow
+        android:id="@+id/column2"
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="즐겨찾기" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="리뷰남기기" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/column3"
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
+
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="button5" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="button6" />
+
+    </TableRow>
+</LinearLayout>
