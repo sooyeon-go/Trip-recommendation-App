@@ -55,23 +55,20 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String title = bundle.getString("title");
-        Toast.makeText(this,title, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,title, Toast.LENGTH_LONG).show();
         switch (title){
             case "사랑의 불시착" : select = 0; break;
-            case "동백꽃 필 무렵" : select = 1; break;
-            case "도깨비" : select = 2; break;
-            case "사랑의 온도" : select = 3; break;
-            case "킹덤" : select = 4; break;
-            case "리틀 포레스트" : select = 5; break;
-            case "푸른바다의 전설" : select = 6; break;
-            case "이태원 클라쓰" : select = 7; break;
-            case "호텔 델루나" : select = 8; break;
-            case "더킹 영원의 군주" : select = 9; break;
-            case "응답하라 1988" : select = 10; break;
-            case "스토브 리그" : select = 11; break;
-            case "신서유기7" : select = 12; break;
+            case "도깨비" : select = 1; break;
+            case "사랑의 온도" : select = 2; break;
+            case "킹덤" : select = 3; break;
+            case "푸른 바다의 전설" : select = 4; break;
+            case "이태원 클라쓰" : select = 5; break;
+            case "호텔 델루나" : select = 6; break;
+            case "더킹 영원의 군주" : select = 7; break;
+            case "신서유기 7" : select = 8; break;
 
         }
+        Toast.makeText(this,title+" code: "+select, Toast.LENGTH_LONG).show();
         /*final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
 
@@ -214,7 +211,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return ImageStudioFragment.newInstance(Images.imageUrls[position]);
+            return ImageStudioFragment.newInstance(Images.all_urls[select][position]);
         }
     }
 

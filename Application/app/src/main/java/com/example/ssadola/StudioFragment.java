@@ -223,12 +223,12 @@ public class StudioFragment extends Fragment implements AdapterView.OnItemClickL
 
         @Override
         public int getCount() {
-            return Images.imageThumbUrls.length;
+            return Images.all_urls.length;
         }
 
         @Override
         public Object getItem(int position) {
-            return Images.imageThumbUrls[position];
+            return Images.all_urls[position];
         }
 
         @Override
@@ -272,7 +272,7 @@ public class StudioFragment extends Fragment implements AdapterView.OnItemClickL
 
             // Finally load the image asynchronously into the ImageView, this also takes care of
             // setting a placeholder image while the background thread runs
-            mImageFetcher.loadImage(Images.imageThumbUrls[position], imageView);
+            mImageFetcher.loadImage(Images.all_urls[position], imageView);
             return imageView;
             //END_INCLUDE(load_gridview_item)
         }
