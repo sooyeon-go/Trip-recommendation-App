@@ -93,7 +93,7 @@ public class Images {
 */
     public static String[][] all_urls = new String[][]{
             //사랑의 불시착
-            {"https://thumb-wishbeen.akamaized.net//JVqb1ksoQyD-551RrGv5GiulMmI=//880x//smart//filters:no_upscale()//img-wishbeen.akamaized.net//post//1582865198724_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.55.16.png",
+            {"https://thumb-wishbeen.akamaized.net/JVqb1ksoQyD-551RrGv5GiulMmI=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582865198724_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.55.16.png",
                     "https://thumb-wishbeen.akamaized.net/3RaGFWUBrZU0Voy9y4_3ybOJE6g=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582865486062_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.45.43.png",
                     "https://thumb-wishbeen.akamaized.net/UW9rok1uHZlvwbcxvvdbP-y7DrQ=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582866350476_%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-02-13_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.32.52-1.png",
                     "https://thumb-wishbeen.akamaized.net/cTRtN1ZC-x73MyZ-ydmaAqbHDIM=/880x/smart/filters:no_upscale()/img-wishbeen.akamaized.net/post/1582866731373_sunyeo.jpg",
