@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -38,7 +39,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
     private String mImageUrl;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
-
+    private TextView mScene;
     /**
      * Factory method to generate a new instance of the fragment given an image number.
      *
@@ -78,6 +79,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         final View v = inflater.inflate(R.layout.fragment_image_studio, container, false);
         mImageView = v.findViewById(R.id.imageView);
         mProgressBar = v.findViewById(R.id.progressbar);
+        mScene = v.findViewById(R.id.tv_scene);
         return v;
     }
 
