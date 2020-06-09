@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
             }
         });
 
-
         setActionBar();
         createMenuList();
         viewAnimator = new ViewAnimator<>(this, list, contentFragment, drawerLayout, this);
