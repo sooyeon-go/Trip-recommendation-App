@@ -50,7 +50,7 @@ public class TitleStudioActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        Distinct_Studio info = new Distinct_Studio();
+        Studio_Poster info = new Studio_Poster();
         info.execute();
 
     }
@@ -65,7 +65,7 @@ public class TitleStudioActivity extends AppCompatActivity {
         return dp * (context.getResources().getDisplayMetrics().density);
     }
 
-    class Distinct_Studio extends AsyncTask<Void,Void,String>{
+    class Studio_Poster extends AsyncTask<Void,Void,String>{
         ProgressDialog loading;
 
 
