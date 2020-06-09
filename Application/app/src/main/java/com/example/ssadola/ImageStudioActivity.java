@@ -37,13 +37,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.ssadola.BuildConfig;
-import com.example.ssadola.Images;
-import com.example.ssadola.ImageCache;
-import com.example.ssadola.Utils;
-import com.example.ssadola.R;
-import com.example.ssadola.ImageFetcher;
-import com.example.ssadola.ImageWorker;
 
 public class ImageStudioActivity extends AppCompatActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";
@@ -51,7 +44,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
 
     private ImageFetcher mImageFetcher;
     private ViewPager mPager;
-
+    int select = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {
@@ -63,6 +56,22 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         Bundle bundle = intent.getExtras();
         String title = bundle.getString("title");
         Toast.makeText(this,title, Toast.LENGTH_LONG).show();
+        switch (title){
+            case "사랑의 불시착" : select = 0; break;
+            case "동백꽃 필 무렵" : select = 1; break;
+            case "도깨비" : select = 2; break;
+            case "사랑의 온도" : select = 3; break;
+            case "킹덤" : select = 4; break;
+            case "리틀 포레스트" : select = 5; break;
+            case "푸른바다의 전설" : select = 6; break;
+            case "이태원 클라쓰" : select = 7; break;
+            case "호텔 델루나" : select = 8; break;
+            case "더킹 영원의 군주" : select = 9; break;
+            case "응답하라 1988" : select = 10; break;
+            case "스토브 리그" : select = 11; break;
+            case "신서유기7" : select = 12; break;
+
+        }
         /*final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
 
@@ -92,7 +101,8 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         // Set up ViewPager and backing adapter
         ImagePagerAdapter mAdapter = new ImagePagerAdapter(
                 getSupportFragmentManager(),
-                Images.imageUrls.length
+                //Images.HashURLS(title).size()
+                Images.all_urls[select].length
         );
         mPager = findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
