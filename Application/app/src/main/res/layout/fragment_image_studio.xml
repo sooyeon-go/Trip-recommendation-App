@@ -43,8 +43,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_scene"
+            android:id="@+id/tv_studio_scene"
             android:text="Description Scene"
+            android:textSize="20dp">
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_studio_location"
+            android:text="위"
             android:textSize="20dp">
         </TextView>
         <TextView
@@ -54,7 +61,6 @@
             android:text="주소"
             android:textSize="20dp">
         </TextView>
-
     </LinearLayout>
 
 </RelativeLayout>

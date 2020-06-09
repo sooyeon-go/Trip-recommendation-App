@@ -68,7 +68,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
             case "신서유기 7" : select = 8; break;
 
         }
-        Toast.makeText(this,title+" code: "+select, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,title+" code: "+select, Toast.LENGTH_LONG).show();
         /*final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
 

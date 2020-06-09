@@ -17,19 +17,36 @@
 package com.example.ssadola;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.ssadola.R;
 import com.example.ssadola.ImageFetcher;
 import com.example.ssadola.ImageWorker;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 /**
  * This fragment will populate the children of the ViewPager from {@link ImageStudioActivity}.
@@ -39,7 +56,10 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
     private String mImageUrl;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
-    private TextView mScene;
+    private TextView mScene,mLocation,mAddress;
+    String i_scene, i_location,i_address;
+    StringBuilder sb;
+    static String pub_ip = "http://15.165.95.187/";
     /**
      * Factory method to generate a new instance of the fragment given an image number.
      *
@@ -79,7 +99,9 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         final View v = inflater.inflate(R.layout.fragment_image_studio, container, false);
         mImageView = v.findViewById(R.id.imageView);
         mProgressBar = v.findViewById(R.id.progressbar);
-        mScene = v.findViewById(R.id.tv_scene);
+        mScene = v.findViewById(R.id.tv_studio_scene);
+        mAddress = v.findViewById(R.id.tv_studio_address);
+        mLocation = v.findViewById(R.id.tv_studio_location);
         return v;
     }
 
@@ -94,12 +116,16 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         if (activity instanceof ImageStudioActivity) {
             ImageFetcher mImageFetcher = ((ImageStudioActivity) getActivity()).getImageFetcher();
             mImageFetcher.loadImage(mImageUrl, mImageView, this);
+            //Toast.makeText(getActivity(),mImageUrl,Toast.LENGTH_LONG).show();
+            Studio_info info = new Studio_info();
+            info.execute(mImageUrl);
         }
 
         // Pass clicks on the ImageView to the parent activity to handle
         if (activity instanceof View.OnClickListener) {
             mImageView.setOnClickListener((View.OnClickListener) getActivity());
         }
+
     }
 
     @Override
@@ -117,5 +143,78 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         // Set loading spinner to gone once image has loaded. Cloud also show
         // an error view here if needed.
         mProgressBar.setVisibility(View.GONE);
+    }
+    class Studio_info extends AsyncTask<String,Void,String>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //loading = ProgressDialog.show(TitleStudioActivity.this, "Please Wait", null, true, true);
+        }
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            //loading.dismiss();
+            System.out.println("Result : " + result);
+            if(result!=null){
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("Studio_Info");
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        i_scene = item.getString("scene");
+                        i_location = item.getString("location");
+                        i_address = item.getString("address");
+
+                        /*HashMap<String,String> hashMap = new HashMap<>();
+                        hashMap.put("work_title",i_scene;
+                        hashMap.put("img",i_location);
+                        arrayList.add(hashMap);*/
+                    }
+                    mScene.setText(i_scene);
+                    mLocation.setText(i_location);
+                    mAddress.setText(i_address);
+                } catch (JSONException e) {
+                    Log.e("ImageStudioFragment", "showResult : ", e);
+
+                }
+            }else{
+                Log.e("ImageStudioFragment","result is null");
+            }
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            final String link = pub_ip + "getStudio_Info.php";
+            String imgUrl = params[0];
+            try {
+                URL url = new URL(link);
+                String data = URLEncoder.encode("img", "UTF-8") + "=" + URLEncoder.encode(imgUrl, "UTF-8");
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                wr.write(data);
+                wr.flush();
+                wr.close();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+
+
+                sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                reader.close();
+                System.out.println(sb.toString());
+                return sb.toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new String("Exception: " + e.getMessage());
+            }
+        }
     }
 }
