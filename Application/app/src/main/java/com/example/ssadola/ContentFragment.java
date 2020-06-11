@@ -1,11 +1,13 @@
 package com.example.ssadola;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -60,6 +62,24 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
         mImageView.setImageResource(res);*/
+
+        Button mainbutton1 = rootView.findViewById(R.id.mainbutton1_reco);
+        mainbutton1.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent main1_activity = new Intent(getActivity(), CustomFragment.class);
+                                          startActivity(main1_activity);
+                                      }
+                                  }
+
+        );
+
+
+
+
+
+
+
         return rootView;
     }
 

@@ -49,13 +49,13 @@
             android:scaleType="fitXY"
             android:src="@drawable/content_theme" />-->
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/mainbutton1_reco"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="맞춤 추천" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/mainbutton2"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="테마여행" />
@@ -69,13 +69,13 @@
 
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/mainbutton3"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="즐겨찾기" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/mainbutton4"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="리뷰남기기" />
@@ -90,13 +90,13 @@
 
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/mainbutton5"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="평가하기" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/mainbutton6"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="로그인 바로가기" />
