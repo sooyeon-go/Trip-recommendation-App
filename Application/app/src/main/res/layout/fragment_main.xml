@@ -52,12 +52,14 @@
             android:id="@+id/mainbutton1_reco"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="맞춤 추천" />
 
         <Button
             android:id="@+id/mainbutton2_theme"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="테마여행" />
     </TableRow>
 
@@ -72,12 +74,14 @@
             android:id="@+id/mainbutton3_bookmark"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="즐겨찾기" />
 
         <Button
             android:id="@+id/mainbutton4_review"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="리뷰남기기" />
 
     </TableRow>
@@ -93,12 +97,14 @@
             android:id="@+id/mainbutton5_judge"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="사람들의 리뷰 보기" />
 
         <Button
             android:id="@+id/mainbutton6_profile"
             android:layout_width="180dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/theddobak"
             android:text="프로필 보기" />
 
     </TableRow>
