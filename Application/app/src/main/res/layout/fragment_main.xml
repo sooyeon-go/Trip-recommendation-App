@@ -7,18 +7,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<ImageView
+    <ImageView
+        android:id="@+id/main_banner"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/splash"
+        android:background="#A9D0F5"
         android:contentDescription="banner">
-    </ImageView>-->
+    </ImageView>
+
+
+    <TextView
+        android:id="@+id/main_banner_text"
+        android:layout_width="360dp"
+        android:layout_height="120dp"
+
+        android:layout_alignLeft="@id/main_banner"
+        android:layout_alignTop="@id/main_banner"
+        android:layout_alignRight="@id/main_banner"
+        android:layout_alignBottom="@id/main_banner"
+        android:layout_margin="1dp"
+
+        android:fontFamily="@font/hanspunch"
+        android:gravity="center"
+        android:text="SSADOLA"
+        android:textColor="#000080"
+        android:textSize="55dp"
+        android:textStyle="normal">
+
+    </TextView>
 
     <TableRow
         android:id="@+id/column1"
         android:layout_width="match_parent"
-        android:layout_height="210dp">
+        android:layout_height="170dp"
+        android:layout_marginTop="115dp">
        <!-- <ImageView
             android:id="@+id/image_content"
             android:layout_width="match_parent"
@@ -27,56 +50,58 @@
             android:src="@drawable/content_theme" />-->
         <Button
             android:id="@+id/button1"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="맞춤 추천" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="테마여행" />
     </TableRow>
 
-    <!--<TableRow
+    <TableRow
         android:id="@+id/column2"
         android:layout_width="match_parent"
-        android:layout_height="210dp">
+        android:layout_height="170dp"
+        android:layout_marginTop="280dp">
 
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="즐겨찾기" />
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="리뷰남기기" />
 
-    </TableRow>-->
+    </TableRow>
 
-    <!--<TableRow
+    <TableRow
         android:id="@+id/column3"
         android:layout_width="match_parent"
-        android:layout_height="210dp">
+        android:layout_height="180dp"
+        android:layout_marginTop="445dp">
 
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="button5" />
+            android:text="평가하기" />
 
         <Button
             android:id="@+id/button6"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="button6" />
+            android:text="로그인 바로가기" />
 
-    </TableRow>-->
+    </TableRow>
 </io.codetail.widget.RevealFrameLayout>
 
     <!--<FrameLayout
