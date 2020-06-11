@@ -5,132 +5,162 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
-    <TextView
-        android:id="@+id/tv_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_profile"
-        android:text="프로필"
-        android:fontFamily="@font/theddobak"
-        android:textSize="40sp">
-    </TextView>
-    <Button
-        android:id="@+id/btn_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="홈"
-        android:fontFamily="@font/theddobak"
-        android:layout_below="@+id/btn_logout"
-        android:layout_alignRight="@+id/tv_profile">
-    </Button>
-    <Button
-    android:id="@+id/btn_edit"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="수정"
-        android:fontFamily="@font/theddobak"
-    android:layout_alignRight="@+id/tv_profile">
-    </Button>
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그아웃"
-        android:fontFamily="@font/theddobak"
-        android:layout_alignRight="@+id/tv_profile"
-        android:layout_below="@+id/btn_edit">
-    </Button>
-    <LinearLayout
-        android:id="@+id/ll_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginHorizontal="30sp"
-        android:orientation="vertical">
+
         <LinearLayout
+            android:id="@+id/ll_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="30sp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/person" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text="이름"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="35sp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text="Email"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="35sp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text="성별"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="35sp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text="나이"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:text=""
+                    android:gravity="center"
+                    android:textSize="35sp"></TextView>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="300dp">
+
+                <Button
+                    android:id="@+id/btn_home"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:textSize="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="홈"></Button>
+
+                <Button
+                    android:id="@+id/btn_edit"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/btn_home"
+                    android:fontFamily="@font/theddobak"
+                    android:text="수정"></Button>
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="200dp"
+                    android:textSize="35dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/btn_edit"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/theddobak"
+                    android:text="로그아웃"></Button>
+            </RelativeLayout>
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이름: "
-                android:fontFamily="@font/theddobak"
-                android:textSize="20sp">
-            </TextView>
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/theddobak"
-                android:textSize="10sp">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="나이: "
-                android:fontFamily="@font/theddobak"
-                android:textSize="20sp">
-            </TextView>
-            <TextView
-                android:id="@+id/tv_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/theddobak"
-                android:textSize="10sp">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="성별: "
-                android:fontFamily="@font/theddobak"
-                android:textSize="20sp">
-            </TextView>
-            <TextView
-                android:id="@+id/tv_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/theddobak"
-                android:textSize="10sp">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email: "
-                android:fontFamily="@font/theddobak"
-                android:textSize="20sp">
-            </TextView>
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/theddobak"
-                android:textSize="10sp">
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
+
 </RelativeLayout>
