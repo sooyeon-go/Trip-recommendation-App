@@ -19,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="메인으로 가기"
-            android:fontFamily="@font/theddobak"/>
+            android:fontFamily="@font/theddobak"
+            android:background="#A9D0F5"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"
