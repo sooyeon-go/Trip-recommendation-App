@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<io.codetail.widget.RevealFrameLayout
+<TableLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!--android:sketchColumns = "0,1"-->
-    <!--<ImageView
+    android:sketchColumns = "0,1">
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/splash"
+        android:background="#A9D0F5"
         android:contentDescription="banner"
-        ></ImageView>-->
+        ></ImageView>
 
 
-    <!--<TableRow
+    <TableRow
         android:id="@+id/column1"
         android:layout_width="match_parent"
-        android:layout_height="210dp">-->
+        android:layout_height="210dp" >
        <!-- <ImageView
             android:id="@+id/image_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/content_theme" />-->
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,8 +38,8 @@
             android:textSize="50sp"
             android:layout_gravity="center_horizontal|center_vertical">
         </TextView>
-    </FrameLayout>
-       <!-- <Button
+    </FrameLayout> -->
+        <Button
             android:id="@+id/button1"
             android:layout_width="230dp"
             android:layout_height="match_parent"
@@ -90,5 +91,5 @@
             android:layout_height="match_parent"
             android:text="button6" />
 
-    </TableRow>-->
-</io.codetail.widget.RevealFrameLayout>
+    </TableRow>
+</TableLayout>
