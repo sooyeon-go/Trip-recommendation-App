@@ -18,6 +18,9 @@ package com.example.ssadola;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,7 +50,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
-
+//com.google.android.apps.maps
+//com.google.android.apps.maps.MapsActivity
 /**
  * This fragment will populate the children of the ViewPager from {@link ImageStudioActivity}.
  */
@@ -124,8 +128,20 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         // Pass clicks on the ImageView to the parent activity to handle
         if (activity instanceof View.OnClickListener) {
             mImageView.setOnClickListener((View.OnClickListener) getActivity());
+            mAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //PackageManager pkgMgr = getActivity().getPackageManager();
+                    /*Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage("com.google.android.apps.maps");
+                    intent.putExtra("address",mAddress.getText());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
+                    Uri uri = Uri.parse("http://maps.google.com/maps?f=d&daddr="+mAddress.getText()+"&hl=ko");
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+                    intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+                    startActivity(intent);
+                }
+            });
         }
-
     }
 
     @Override
