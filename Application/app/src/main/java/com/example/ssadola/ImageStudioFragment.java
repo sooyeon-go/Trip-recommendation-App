@@ -108,7 +108,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         mScene = v.findViewById(R.id.tv_studio_scene);
         mAddress = v.findViewById(R.id.tv_studio_address);
         mLocation = v.findViewById(R.id.tv_studio_location);
-        mBookmark = v.findViewById(R.id.btn_bookmark);
+        mBookmark = v.findViewById(R.id.ic_bookmark_selector);
         return v;
     }
 
@@ -143,7 +143,14 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
             mBookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //bookmark_insert.php 실행
+                    if(mBookmark.isSelected()){
+                        mBookmark.setSelected(false);
+                        //bookmark_delete.php 실행
+                    }
+                    else {
+                        mBookmark.setSelected(true);
+                        //bookmark_insert.php 실행
+                    }
                 }
             });
         }
