@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -46,6 +47,7 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
     List<String> list_address = new ArrayList<>();
     int size;
     private  ListView mListView;
+    private ImageButton mBookmark_detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,17 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
         }
 
         size = course.length;
-
+        mBookmark_detail = findViewById(R.id.ic_bookmark_resultDetail);
+        mBookmark_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mBookmark_detail.isSelected()){
+                    mBookmark_detail.setSelected(false);
+                }else{
+                    mBookmark_detail.setSelected(true);
+                }
+            }
+        });
         mListView = findViewById(R.id.listView_course);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
