@@ -93,13 +93,13 @@
             android:id="@+id/button5"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="button5" />
+            android:text="평가하기" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="button6" />
+            android:text="로그인 바로가기" />
 
     </TableRow>
 </io.codetail.widget.RevealFrameLayout>
