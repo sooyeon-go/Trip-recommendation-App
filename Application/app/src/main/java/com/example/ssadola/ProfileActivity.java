@@ -79,6 +79,8 @@ public class ProfileActivity extends AppCompatActivity {
             tv_email.setText(hashMap.get(TAG_EMAIL));
         }else{
             Toast.makeText(ProfileActivity.this,"로그인 먼저 해주세요",Toast.LENGTH_LONG).show();
+            Intent login = new Intent(ProfileActivity.this, LoginActivity.class);
+            startActivity(login);
         }
     }
 

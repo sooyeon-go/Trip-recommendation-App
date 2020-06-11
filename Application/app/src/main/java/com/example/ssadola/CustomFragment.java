@@ -83,6 +83,14 @@ public class CustomFragment extends Fragment implements ScreenShotable {
                 startActivity(result);
             }
         });
+
+
+
+
+
+
+
+
         return rootView;
     }
     @Override

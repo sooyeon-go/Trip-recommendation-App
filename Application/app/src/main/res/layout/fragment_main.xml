@@ -2,7 +2,7 @@
 
 <io.codetail.widget.RevealFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
+    android:id="@+id/fragment_mainScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -55,7 +55,7 @@
             android:text="맞춤 추천" />
 
         <Button
-            android:id="@+id/mainbutton2"
+            android:id="@+id/mainbutton2_theme"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="테마여행" />
@@ -69,13 +69,13 @@
 
 
         <Button
-            android:id="@+id/mainbutton3"
+            android:id="@+id/mainbutton3_bookmark"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="즐겨찾기" />
 
         <Button
-            android:id="@+id/mainbutton4"
+            android:id="@+id/mainbutton4_review"
             android:layout_width="180dp"
             android:layout_height="match_parent"
             android:text="리뷰남기기" />
@@ -90,16 +90,16 @@
 
 
         <Button
-            android:id="@+id/mainbutton5"
+            android:id="@+id/mainbutton5_judge"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="평가하기" />
+            android:text="사람들의 리뷰 보기" />
 
         <Button
-            android:id="@+id/mainbutton6"
+            android:id="@+id/mainbutton6_profile"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:text="로그인 바로가기" />
+            android:text="프로필 보기" />
 
     </TableRow>
 </io.codetail.widget.RevealFrameLayout>

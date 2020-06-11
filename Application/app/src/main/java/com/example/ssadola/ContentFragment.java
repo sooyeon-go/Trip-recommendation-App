@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
@@ -62,20 +64,86 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
         mImageView.setImageResource(res);*/
+        final int primaryColorCanvas = R.color.colorPrimary;
+        Button main_reco = (Button) rootView.findViewById(R.id.mainbutton1_reco);
+        main_reco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getActivity(),"btn CLIKED!",Toast.LENGTH_SHORT).show();
+                //getSupportFragmentManager().findFragmentById(R.id.fragment_custom);
+                CustomFragment custom = CustomFragment.newInstance(R.id.fragment_custom);
+                replaceFragment(custom);
+            }
 
-        Button mainbutton1 = rootView.findViewById(R.id.mainbutton1_reco);
-        mainbutton1.setOnClickListener(new View.OnClickListener() {
+        });
+
+        Button main_theme = (Button) rootView.findViewById(R.id.mainbutton2_theme);
+        main_theme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getActivity(),"btn CLIKED!",Toast.LENGTH_SHORT).show();
+                //getSupportFragmentManager().findFragmentById(R.id.fragment_custom);
+                ThemeFragment theme = ThemeFragment.newInstance(R.id.fragment_theme);
+                replaceFragment(theme);
+            }
+
+        });
+
+        Button main_bookmark = (Button) rootView.findViewById(R.id.mainbutton3_bookmark);
+        main_bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getActivity(),"btn CLIKED!",Toast.LENGTH_SHORT).show();
+                //getSupportFragmentManager().findFragmentById(R.id.fragment_custom);
+                BookmarkFragment bookmark = BookmarkFragment.newInstance(R.id.fragment_bookmark);
+                replaceFragment(bookmark);
+            }
+
+        });
+        Button bookmark = rootView.findViewById(R.id.mainbutton3_bookmark);
+        bookmark.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent bookmark = new Intent(getActivity(), BookmarkActivity.class);
+                                                startActivity(bookmark);
+                                            }
+                                        }
+
+        );
+
+
+        Button review_input = rootView.findViewById(R.id.mainbutton4_review);
+        review_input.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent main1_activity = new Intent(getActivity(), CustomFragment.class);
-                                          startActivity(main1_activity);
+                                          Intent review_input_act = new Intent(getActivity(), ReviewInput.class);
+                                          startActivity(review_input_act);
                                       }
                                   }
 
         );
 
+        Button review_result = rootView.findViewById(R.id.mainbutton5_judge);
+        review_result.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent review_result_act = new Intent(getActivity(), ReviewResult.class);
+                                                startActivity(review_result_act);
+                                            }
+                                        }
 
+        );
 
+        Button profile = rootView.findViewById(R.id.mainbutton6_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+                                                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                                                 startActivity(profile);
+                                             }
+                                         }
+
+        );
 
 
 
@@ -103,5 +171,12 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     @Override
     public Bitmap getBitmap() {
         return bitmap;
+    }
+
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.container_frame,fragment);
+        ft.commit();
     }
 }
