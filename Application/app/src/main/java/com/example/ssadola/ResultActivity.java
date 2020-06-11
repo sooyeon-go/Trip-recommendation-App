@@ -35,8 +35,8 @@ public class ResultActivity extends AppCompatActivity {
     private void SetData(String result){
         Recomm_ResultAdapter resultAdapter_dupli = new Recomm_ResultAdapter();
         Recomm_ResultAdapter resultAdapter_content = new Recomm_ResultAdapter();
-        setDupli(result,resultAdapter_dupli);
-        setContentBased(result,resultAdapter_content);
+        //setDupli(result,resultAdapter_dupli);
+        //setContentBased(result,resultAdapter_content);
 
         listView.setAdapter(setDupli(result,resultAdapter_dupli));
         listView2.setAdapter(setContentBased(result,resultAdapter_content));

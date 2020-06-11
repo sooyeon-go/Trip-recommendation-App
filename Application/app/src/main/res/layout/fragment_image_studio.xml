@@ -40,6 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
         android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/ic_bookmark_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bookmark_selector">
+        </ImageButton>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_studio_location"
-            android:text="위"
+            android:text="위치"
             android:textSize="20dp">
         </TextView>
         <TextView

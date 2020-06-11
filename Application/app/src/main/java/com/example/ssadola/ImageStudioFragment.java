@@ -18,11 +18,15 @@ package com.example.ssadola;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,7 +51,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
-
+//com.google.android.apps.maps
+//com.google.android.apps.maps.MapsActivity
 /**
  * This fragment will populate the children of the ViewPager from {@link ImageStudioActivity}.
  */
@@ -57,6 +62,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private TextView mScene,mLocation,mAddress;
+    private ImageButton mBookmark;
     String i_scene, i_location,i_address;
     StringBuilder sb;
     static String pub_ip = "http://15.165.95.187/";
@@ -102,6 +108,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         mScene = v.findViewById(R.id.tv_studio_scene);
         mAddress = v.findViewById(R.id.tv_studio_address);
         mLocation = v.findViewById(R.id.tv_studio_location);
+        mBookmark = v.findViewById(R.id.ic_bookmark_selector);
         return v;
     }
 
@@ -124,8 +131,29 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         // Pass clicks on the ImageView to the parent activity to handle
         if (activity instanceof View.OnClickListener) {
             mImageView.setOnClickListener((View.OnClickListener) getActivity());
+            mAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri uri = Uri.parse("http://maps.google.com/maps?f=d&daddr="+mAddress.getText()+"&hl=ko");
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+                    intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+                    startActivity(intent);
+                }
+            });
+            mBookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mBookmark.isSelected()){
+                        mBookmark.setSelected(false);
+                        //bookmark_delete.php 실행
+                    }
+                    else {
+                        mBookmark.setSelected(true);
+                        //bookmark_insert.php 실행
+                    }
+                }
+            });
         }
-
     }
 
     @Override
