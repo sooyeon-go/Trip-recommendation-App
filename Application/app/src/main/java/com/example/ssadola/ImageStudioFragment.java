@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,6 +62,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private TextView mScene,mLocation,mAddress;
+    private ImageButton mBookmark;
     String i_scene, i_location,i_address;
     StringBuilder sb;
     static String pub_ip = "http://15.165.95.187/";
@@ -106,6 +108,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         mScene = v.findViewById(R.id.tv_studio_scene);
         mAddress = v.findViewById(R.id.tv_studio_address);
         mLocation = v.findViewById(R.id.tv_studio_location);
+        mBookmark = v.findViewById(R.id.btn_bookmark);
         return v;
     }
 
@@ -131,14 +134,16 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
             mAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //PackageManager pkgMgr = getActivity().getPackageManager();
-                    /*Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage("com.google.android.apps.maps");
-                    intent.putExtra("address",mAddress.getText());
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
                     Uri uri = Uri.parse("http://maps.google.com/maps?f=d&daddr="+mAddress.getText()+"&hl=ko");
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
                     intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
                     startActivity(intent);
+                }
+            });
+            mBookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //bookmark_insert.php 실행
                 }
             });
         }
