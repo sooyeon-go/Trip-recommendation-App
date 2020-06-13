@@ -45,7 +45,6 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
     private ImageFetcher mImageFetcher;
     private ViewPager mPager;
     int select = 0;
-    int flag = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {

@@ -78,8 +78,8 @@ public class BookmarkActivity extends AppCompatActivity {
         //String mu_name = LoginhashMap.get(TAG_NAME);
             GetBookmark getbm = new GetBookmark();
             getbm.execute(mu_email);
-            }
         }
+    }
 
 
     public ArrayList<HashMap<String, String>> GetLoginData() {
