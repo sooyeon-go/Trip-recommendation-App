@@ -202,8 +202,8 @@ public class BookmarkActivity extends AppCompatActivity {
                 try {
                     bitmap = new Bitmap[img_link.length];
                     for(int i = 0; i< img_link.length;i++){
-                        //URL url = new URL(img_link[i]);
-                        URL url = new URL(Images.all_urls[4][0]);
+                        URL url = new URL(img_link[i]);
+                        //URL url = new URL(Images.all_urls[4][0]);
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                         conn.setDoInput(true);
                         conn.connect();

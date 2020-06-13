@@ -17,14 +17,18 @@
 package com.example.ssadola;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +41,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class ImageStudioActivity extends AppCompatActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";
@@ -45,6 +63,8 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
     private ImageFetcher mImageFetcher;
     private ViewPager mPager;
     int select = 0;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {
@@ -71,6 +91,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         //Toast.makeText(this,title+" code: "+select, Toast.LENGTH_LONG).show();
         /*final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
+
 
         // Fetch screen height and width, to use as our max size when loading images as this
         // activity runs full screen
@@ -232,4 +253,5 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
             mPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
         }
     }
+
 }

@@ -156,23 +156,19 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
                         if (mBookmark.isSelected()) {
 
                             mBookmark.setSelected(false);
+                            mBookmark.setPressed(false);
+                            mBookmark.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_default_24dp));
                             //bookmark_StudioDelete.php 실행
                         } else {
                             mBookmark.setSelected(true);
+                            mBookmark.setPressed(true);
+                            mBookmark.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_24dp));
                             //bookmark_StudioInsert.php 실행
                             HashMap<String,String> hashMap = arrayList.get(0);
                             String u_email = hashMap.get("u_email");
 
                             Bookmark_insert insert = new Bookmark_insert();
                             insert.execute(u_email,i_title,i_scene,i_location,i_address,mImageUrl);
-                        /*
-                        *   u_email VARCHAR(30) NOT NULL,
-	                        scene text,
-	                        location VARCHAR(30),
-	                        address VARCHAR(150),
-	                        title VARCHAR(30),
-	                        image text
-                        * */
                         }
                     }
                 }
@@ -282,6 +278,16 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
         }
     }
     class Bookmark_insert extends AsyncTask<String, Void, String> {
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            //loading.dismiss();
+            System.out.println("Result : " + result);
+            if(result!=null){
+                Toast.makeText(getActivity(),result,Toast.LENGTH_SHORT).show();
+            }else{
+                Log.e("ImageStudioFragment","result is null");
+            }
+        }
         @Override
         protected String doInBackground(String... params) {
             try {
