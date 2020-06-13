@@ -93,6 +93,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
                 Bundle bundle = new Bundle();
 
                 bundle.putString("title", item.getTitle());
+                bundle.putInt("position",-1);
                 intent.putExtras(bundle);
 
                 v.getContext().startActivity(intent);

@@ -2,8 +2,10 @@ package com.example.ssadola;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,17 +50,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        /*final Item item = items.get(position);
-        MyCardView cardView = holder.cardView;
-        cardView.setData(item);*/
-        HashMap<String,String> BookmarkItem = bookmarkList.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        //final Item item = items.get(position);
+        //MyCardView cardView = holder.cardView;
+        //cardView.setData(item);
+        final HashMap<String,String> BookmarkItem = bookmarkList.get(position);
         holder.tv_title.setText(BookmarkItem.get(TAG_TITLE));
         holder.tv_location.setText(BookmarkItem.get(TAG_LOCATION));
         holder.tv_address.setText(BookmarkItem.get(TAG_ADDR));
         holder.imageView.setImageBitmap(bm[position]);
         //holder.tv_email.setText(BookmarkItem.get(TAG_EMAIL));
         //holder.tv_count.setText(BookmarkItem.get(TAG_COUNT));
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent move = new Intent(v.getContext(),ImageStudioActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putString("title",BookmarkItem.get(TAG_TITLE));
+                move.putExtras(bundle);
+                context.startActivity(move);
+            }
+        });
 
         /*cardView.setUserActionListener(new MyCardView.UserActionListener() {
             @Override
@@ -68,7 +82,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             @Override
             public void onTextClicked() {
-                Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, BookmarkItem.get(TAG_TITLE), Toast.LENGTH_SHORT).show();
             }
         });*/
     }
@@ -87,9 +101,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView tv_email;
         CardView cv;
         ImageView imageView;
-
         public ViewHolder(View v) {
             super(v);
+
             tv_location = (TextView) v.findViewById(R.id.tv_location);
             tv_title = (TextView) v.findViewById(R.id.tv_title);
             //tv_count = (TextView) v.findViewById(R.id.tv_count);
@@ -100,7 +114,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-        /*MyCardView cardView;
+     /*   MyCardView cardView;
 
 
         public ViewHolder(View card) {

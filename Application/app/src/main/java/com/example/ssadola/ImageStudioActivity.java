@@ -45,6 +45,7 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
     private ImageFetcher mImageFetcher;
     private ViewPager mPager;
     int select = 0;
+    int flag = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (BuildConfig.DEBUG) {
@@ -95,6 +96,8 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         mImageFetcher.addImageCache(getSupportFragmentManager(), cacheParams);
         mImageFetcher.setImageFadeIn(false);
 
+
+
         // Set up ViewPager and backing adapter
         ImagePagerAdapter mAdapter = new ImagePagerAdapter(
                 getSupportFragmentManager(),
@@ -105,6 +108,8 @@ public class ImageStudioActivity extends AppCompatActivity implements OnClickLis
         mPager.setAdapter(mAdapter);
         mPager.setPageMargin((int) getResources().getDimension(R.dimen.horizontal_page_margin));
         mPager.setOffscreenPageLimit(2);
+
+
 
         // Set up activity to go full screen
         getWindow().addFlags(LayoutParams.FLAG_FULLSCREEN);
