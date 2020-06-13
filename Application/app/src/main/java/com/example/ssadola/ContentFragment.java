@@ -89,7 +89,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
 
         });
 
-        Button main_bookmark = (Button) rootView.findViewById(R.id.mainbutton3_bookmark);
+        /*Button main_bookmark = (Button) rootView.findViewById(R.id.mainbutton3_bookmark);
         main_bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +99,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
                 replaceFragment(bookmark);
             }
 
-        });
+        });*/
         Button bookmark = rootView.findViewById(R.id.mainbutton3_bookmark);
         bookmark.setOnClickListener(new View.OnClickListener() {
                                             @Override

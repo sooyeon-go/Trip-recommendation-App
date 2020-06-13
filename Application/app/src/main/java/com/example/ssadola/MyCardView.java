@@ -59,7 +59,7 @@ public class MyCardView extends CardView {
 
         cardView = (CardView) findViewById(R.id.cardview);
         //linearLayout = (LinearLayout) findViewById(R.id.layout);
-        imageView = (ImageView) findViewById(R.id.image);
+        imageView = (ImageView) findViewById(R.id.iv_bookmark);
         textView = (TextView) findViewById(R.id.title);
 
         cardView.setOnClickListener(mOnClickListener);

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -38,14 +41,15 @@ public class BookmarkActivity extends AppCompatActivity {
     TextView test;
     String mJsonString;
     private RecyclerView rv;
-
+    Bitmap[] bitmap;
+    String[] img_link;
     static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
     private static final String TAG_EMAIL="u_email";
-    private static final String TAG_NAME = "u_name";
-    private static final String TAG_THEME = "theme";
-    private static final String TAG_ADDR = "addr";
-    private static final String TAG_WOKR = "work_nm";
+    private static final String TAG_IMAGE = "image";
+    private static final String TAG_LOCATION = "location";
+    private static final String TAG_ADDR = "address";
+    private static final String TAG_TITLE = "title";
     private static final String TAG_COUNT = "count";
 
     @Override
@@ -108,30 +112,35 @@ public class BookmarkActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray jsonArray = jsonObject.getJSONArray("BookmarkTheme");
+                    img_link = new String[jsonArray.length()];
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject item = jsonArray.getJSONObject(i);
                         String i_email = item.getString(TAG_EMAIL);
                         //System.out.println(i+" "+i_email);
-                        String i_theme = item.getString(TAG_THEME);
+                        String i_location = item.getString(TAG_LOCATION);
                         //System.out.println(i+" "+i_theme);
                         String i_addr = item.getString(TAG_ADDR);
                         //System.out.println(i+" "+i_addr);
-                        String i_worknm = item.getString(TAG_WOKR);
+                        String i_title = item.getString(TAG_TITLE);
                         //System.out.println(i+" "+i_worknm);
+                        String i_img = item.getString(TAG_IMAGE);
 
                         HashMap<String,String> hashMap = new HashMap<>();
                         hashMap.put(TAG_EMAIL,i_email);
-                        hashMap.put(TAG_THEME,i_theme);
+                        hashMap.put(TAG_LOCATION,i_location);
                         hashMap.put(TAG_ADDR,i_addr);
-                        hashMap.put(TAG_WOKR,i_worknm);
+                        hashMap.put(TAG_TITLE,i_title);
                         hashMap.put(TAG_COUNT,Integer.toString(i+1));
 
                         BookmarkList.add(hashMap);
+                        img_link[i] = i_img;
                     }
-                    RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList);
+
+                    getImgfromURL(img_link);
+                    /*RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList);
                     Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
                     rv.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();*/
 
                 } catch (JSONException e) {
                     Log.d("BookmarkActivity", "showResult : ", e);
@@ -141,7 +150,7 @@ public class BookmarkActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             //String name = param[0];
-            final String link = pub_ip + "getBookmarkTheme.php";
+            final String link = pub_ip + "getBookmarkStudio.php";
             String email = params[0];
             final String data = "u_email=" + email;
             try {
@@ -185,6 +194,37 @@ public class BookmarkActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return new String("Exception: " + e.getMessage());
             }
+        }
+    }
+    public void getImgfromURL(final String[] img_link){
+        Thread mThread = new Thread(){
+            public void run(){
+                try {
+                    bitmap = new Bitmap[img_link.length];
+                    for(int i = 0; i< img_link.length;i++){
+                        //URL url = new URL(img_link[i]);
+                        URL url = new URL(Images.all_urls[4][0]);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
+                        InputStream is = conn.getInputStream();
+                        bitmap[i] = BitmapFactory.decodeStream(is);
+                        //System.out.println("bitmap["+i+"] : "+ bitmap[i]);
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        mThread.start();
+        try {
+            mThread.join();
+            RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList,bitmap);
+            Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }catch ( InterruptedException e){
+            e.printStackTrace();
         }
     }
 }

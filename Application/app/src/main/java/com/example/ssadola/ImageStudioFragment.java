@@ -143,13 +143,22 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
             mBookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //로그인 정보 검
                     if(mBookmark.isSelected()){
                         mBookmark.setSelected(false);
-                        //bookmark_delete.php 실행
+                        //bookmark_StudioDelete.php 실행
                     }
                     else {
                         mBookmark.setSelected(true);
-                        //bookmark_insert.php 실행
+                        //bookmark_StudioInsert.php 실행
+                        /*
+                        *   u_email VARCHAR(30) NOT NULL,
+	                        scene text,
+	                        location VARCHAR(30),
+	                        address VARCHAR(150),
+	                        title VARCHAR(30),
+	                        image text
+                        * */
                     }
                 }
             });

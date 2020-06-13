@@ -67,8 +67,10 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
             public void onClick(View v) {
                 if(mBookmark_detail.isSelected()){
                     mBookmark_detail.setSelected(false);
+                    //bookmark_delete.php
                 }else{
                     mBookmark_detail.setSelected(true);
+                    //bookmark_insert.php
                 }
             }
         });
