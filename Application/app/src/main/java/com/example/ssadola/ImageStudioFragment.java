@@ -153,19 +153,21 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
                         startActivity(login);
                         //v.getContext().finish();
                     }else {
+                        HashMap<String,String> hashMap = arrayList.get(0);
+                        String u_email = hashMap.get("u_email");
                         if (mBookmark.isSelected()) {
 
                             mBookmark.setSelected(false);
                             mBookmark.setPressed(false);
                             mBookmark.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_default_24dp));
                             //bookmark_StudioDelete.php 실행
+                            Bookmark_delete delete = new Bookmark_delete();
+                            delete.execute(u_email,i_title,i_location);
                         } else {
                             mBookmark.setSelected(true);
                             mBookmark.setPressed(true);
                             mBookmark.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_24dp));
                             //bookmark_StudioInsert.php 실행
-                            HashMap<String,String> hashMap = arrayList.get(0);
-                            String u_email = hashMap.get("u_email");
 
                             Bookmark_insert insert = new Bookmark_insert();
                             insert.execute(u_email,i_title,i_scene,i_location,i_address,mImageUrl);
@@ -305,6 +307,68 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
                 String data = "u_email="+u_email+"&title="+URLEncoder.encode(title,"UTF-8")
                         + "&scene="+URLEncoder.encode(scene,"UTF-8") + "&location="+URLEncoder.encode(location,"UTF-8")
                         +"&address="+URLEncoder.encode(address,"UTF-8")+"&image="+URLEncoder.encode(image,"UTF-8");
+
+                URL url = new URL(link);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.connect();
+
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(data);
+                wr.flush();
+                wr.close();
+                int responseStatusCode = conn.getResponseCode();
+                Log.d("Bookmark_insert", "response code - " + responseStatusCode);
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream =conn.getInputStream();
+                }
+                else{
+                    inputStream = conn.getErrorStream();
+                }
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                reader.close();
+                return sb.toString();
+            } catch (Exception e) {
+                return e.toString();
+            }
+        }
+    }
+    class Bookmark_delete extends AsyncTask<String, Void, String> {
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            //loading.dismiss();
+            System.out.println("Result : " + result);
+            if(result!=null){
+                Toast.makeText(getActivity(),result,Toast.LENGTH_SHORT).show();
+            }else{
+                Log.e("ImageStudioFragment","result is null");
+            }
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                //u_email,i_title,i_scene,i_location,i_address,mImageUrl
+                String u_email = (String) params[0];
+                String title = (String) params[1];
+                String location = params[2];
+
+
+                String link = pub_ip+"Bookmark_delete.php";
+                //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
+                //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
+                String data = "u_email="+u_email+"&title="+URLEncoder.encode(title,"UTF-8")
+                        + "&location="+URLEncoder.encode(location,"UTF-8");
 
                 URL url = new URL(link);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();

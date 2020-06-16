@@ -51,7 +51,7 @@ public class BookmarkActivity extends AppCompatActivity {
     private static final String TAG_ADDR = "address";
     private static final String TAG_TITLE = "title";
     private static final String TAG_COUNT = "count";
-
+    String mu_email="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -219,7 +219,8 @@ public class BookmarkActivity extends AppCompatActivity {
         mThread.start();
         try {
             mThread.join();
-            RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList,bitmap);
+            String tmp_email = BookmarkList.get(0).get(TAG_EMAIL);
+            RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList,bitmap,tmp_email);
             Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
