@@ -63,6 +63,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="맞춤 추천" />
                 </LinearLayout>
 
@@ -89,6 +90,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="내 정보" />
                 </LinearLayout>
 
@@ -114,6 +116,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="테마 여행" />
                 </LinearLayout>
 
@@ -147,6 +150,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="즐겨찾기" />
                 </LinearLayout>
 
@@ -172,6 +176,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="리뷰 쓰기" />
                 </LinearLayout>
 
@@ -197,6 +202,7 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/theddobak"
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="리뷰 보기" />
                 </LinearLayout>
 
@@ -208,6 +214,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이번 달의 핫한 축제"
+                android:textStyle="bold"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/theddobak"
                 android:textSize="20dp"/>
@@ -220,6 +227,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView13"
+                            android:layout_width="250dp"
+                            android:scaleType="centerCrop"
+                            android:layout_height="250dp"
+                            app:srcCompat="@drawable/aorl" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="양평 메기수염축제"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="15dp"  />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="경기도 양평"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="10dp"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -242,6 +285,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="중문골프장 달빛걷기"
+                            android:textStyle="bold"
                             android:fontFamily="@font/theddobak"
                             android:textSize="15dp" />
 
@@ -277,6 +321,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="덕수궁 풍류"
+                            android:textStyle="bold"
                             android:fontFamily="@font/theddobak"
                             android:textSize="15dp" />
 
@@ -312,6 +357,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="강릉 단오제"
+                            android:textStyle="bold"
                             android:fontFamily="@font/theddobak"
                             android:textSize="15dp"/>
 
