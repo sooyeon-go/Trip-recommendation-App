@@ -29,6 +29,7 @@
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:text=" 봄"
                 android:fontFamily="@font/theddobak"
                 android:textSize="60dp"
@@ -48,7 +49,7 @@
             android:id = "@+id/TextView_spring"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:scrollbars="vertical"
             android:text="일단 테스트"
             android:fontFamily="@font/theddobak">
