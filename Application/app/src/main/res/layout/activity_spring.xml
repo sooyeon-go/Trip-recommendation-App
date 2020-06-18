@@ -44,15 +44,23 @@
                 android:textSize="30dp"></TextView>
         </LinearLayout>
 
-        <ScrollView
-            android:id = "@+id/scrollView_spring"
+        <TextView
+            android:id = "@+id/TextView_spring"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:scrollbars="vertical"
+            android:text="일단 테스트"
+            android:fontFamily="@font/theddobak">
 
 
 
 
-        </ScrollView>
+
+
+
+
+        </TextView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,9 @@ public class SpringActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spring);
 
-        TextView titleView = (TextView) findViewById(R.id.tv_springfest_title);
+
+
+        /*TextView titleView = (TextView) findViewById(R.id.tv_springfest_title);
         TextView contentView = (TextView) findViewById(R.id.tv_springfest_content);
 
         DBHelper helper = new DBHelper(this);
@@ -30,5 +32,6 @@ public class SpringActivity extends AppCompatActivity {
 
         }
         db.close();
+        DB 에서 들ㅇ고 오려고 짜놓은 쿼리문이긴 합니다만,,,,?*/
     }
 }
