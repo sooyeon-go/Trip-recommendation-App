@@ -11,13 +11,13 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="@mipmap/running">
     </ImageView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:fontFamily="@font/hanspunch"
         android:text="싸돌아"
         android:textSize="60dp"
-        android:textStyle="bold"
-        android:fontFamily="@font/hanspunch"
-        android:layout_gravity="center_horizontal|center_vertical">
-    </TextView>
+        android:textStyle="bold"></TextView>
 </LinearLayout>
