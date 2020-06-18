@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SpringActivity">
+    tools:context=".SummerActivity">
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -44,33 +45,11 @@
         </LinearLayout>
 
         <ScrollView
-            android:id="@+id/scrollView_spring"
-            android:layout_width="215dp"
-            android:layout_height="275dp">
+            android:id = "@+id/scrollView_spring"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_springfest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DB Select 결과"
 
-                ></TextView>
-
-            <TextView
-                android:id="@+id/tv_springfest_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title Result"
-
-                ></TextView>
-
-            <TextView
-                android:id="@+id/tv_springfest_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Content Result"
-
-                ></TextView>
 
 
         </ScrollView>
