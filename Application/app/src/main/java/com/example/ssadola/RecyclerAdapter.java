@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -135,7 +136,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView tv_email;
         CardView cv;
         ImageView imageView;
-        Button btn_delete;
+        ImageButton btn_delete;
 
         public ViewHolder(View v) {
             super(v);

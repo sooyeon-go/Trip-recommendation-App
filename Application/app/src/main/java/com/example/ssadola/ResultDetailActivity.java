@@ -91,13 +91,14 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
                     String u_email = hashMap.get("u_email");
                     if(mBookmark_detail.isSelected()){
                         mBookmark_detail.setSelected(false);
-                        //bookmark_delete.php
+                        mBookmark_detail.setPressed(false);
+                        mBookmark_detail.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_default_24dp));
                         Bookmark_delete delete = new Bookmark_delete();
                         delete.execute(u_email);
                     }else{
                         mBookmark_detail.setSelected(true);
-                        //bookmark_insert.php
-
+                        mBookmark_detail.setPressed(true);
+                        mBookmark_detail.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_24dp));
                         Bookmark_insert insert = new Bookmark_insert();
                         insert.execute(u_email);
                     }
@@ -217,18 +218,12 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
             try {
                 //u_email,i_title,i_scene,i_location,i_address,mImageUrl
                 String u_email = (String) params[0];
-                String title = (String) params[1];
-                String scene = params[2];
-                String location = params[3];
-                String address = params[4];
-                String image = params[5];
+                //String[] tmp = Array.toString(course);
 
-                String link = pub_ip+"Bookmark_insert.php";
+                String link = pub_ip+"BookmarkFromRecomm.php";
                 //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
                 //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
-                String data = "u_email="+u_email+"&title="+ URLEncoder.encode(title,"UTF-8")
-                        + "&scene="+URLEncoder.encode(scene,"UTF-8") + "&location="+URLEncoder.encode(location,"UTF-8")
-                        +"&address="+URLEncoder.encode(address,"UTF-8")+"&image="+URLEncoder.encode(image,"UTF-8");
+                String data = "u_email="+u_email+"&course="+ URLEncoder.encode(tmp,"UTF-8");
 
                 URL url = new URL(link);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -286,7 +281,7 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
                 String location = params[2];
 
 
-                String link = pub_ip+"Bookmark_delete.php";
+                String link = pub_ip+"Bookmark_RecommDelete.php";
                 //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
                 //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
                 String data = "u_email="+u_email+"&title="+URLEncoder.encode(title,"UTF-8")
@@ -328,4 +323,5 @@ public class ResultDetailActivity extends AppCompatActivity implements OnMapRead
             }
         }
     }
+
 }
