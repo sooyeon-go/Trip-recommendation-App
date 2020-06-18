@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -65,7 +65,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView.setFocusable(true);
         mImageView.setImageResource(res);*/
         final int primaryColorCanvas = R.color.colorPrimary;
-        Button main_reco = (Button) rootView.findViewById(R.id.mainbutton1_reco);
+        ImageButton main_reco = (ImageButton) rootView.findViewById(R.id.mainbutton1_reco);
         main_reco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
 
         });
 
-        Button main_theme = (Button) rootView.findViewById(R.id.mainbutton2_theme);
+        ImageButton main_theme = (ImageButton) rootView.findViewById(R.id.mainbutton2_theme);
         main_theme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +100,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
             }
 
         });*/
-        Button bookmark = rootView.findViewById(R.id.mainbutton3_bookmark);
+        ImageButton bookmark = rootView.findViewById(R.id.mainbutton3_bookmark);
         bookmark.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -112,7 +112,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         );
 
 
-        Button review_input = rootView.findViewById(R.id.mainbutton4_review);
+        ImageButton review_input = rootView.findViewById(R.id.mainbutton4_review);
         review_input.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
@@ -123,7 +123,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
 
         );
 
-        Button review_result = rootView.findViewById(R.id.mainbutton5_judge);
+        ImageButton review_result = rootView.findViewById(R.id.mainbutton5_judge);
         review_result.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -134,7 +134,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
 
         );
 
-        Button profile = rootView.findViewById(R.id.mainbutton6_profile);
+        ImageButton profile = rootView.findViewById(R.id.mainbutton6_profile);
         profile.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
