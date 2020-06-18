@@ -2,112 +2,338 @@
 
 <io.codetail.widget.RevealFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_mainScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/main_banner"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="5dp"
-        android:background="#A9D0F5"
-        android:contentDescription="banner">
-    </ImageView>
+        android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/main_banner_text"
-        android:layout_width="360dp"
-        android:layout_height="120dp"
-
-        android:layout_alignLeft="@id/main_banner"
-        android:layout_alignTop="@id/main_banner"
-        android:layout_alignRight="@id/main_banner"
-        android:layout_alignBottom="@id/main_banner"
-        android:layout_margin="1dp"
-
-        android:fontFamily="@font/hanspunch"
-        android:gravity="center"
-        android:text="SSADOLA"
-        android:textColor="#000080"
-        android:textSize="55dp"
-        android:textStyle="normal">
-
-    </TextView>
-
-    <TableRow
-        android:id="@+id/column1"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginTop="115dp">
-       <!-- <ImageView
-            android:id="@+id/image_content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/content_theme" />-->
-        <Button
-            android:id="@+id/mainbutton1_reco"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="맞춤 추천" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/mainbutton2_theme"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="테마여행" />
-    </TableRow>
+            <TextView
+                android:id="@+id/main_banner_text"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/hanspunch"
+                android:gravity="center"
+                android:text="SSADOLA"
+                android:textColor="#000080"
+                android:textSize="55dp"
+                android:textStyle="normal">
 
-    <TableRow
-        android:id="@+id/column2"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginTop="280dp">
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton1_reco"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="맞춤 추천" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton6_profile"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="내 정보" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton2_theme"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="테마 여행" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton3_bookmark"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="즐겨찾기" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton4_review"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="리뷰 쓰기" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/mainbutton5_judge"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        android:padding="0sp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/heart" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/theddobak"
+                        android:gravity="center"
+                        android:text="리뷰 보기" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이번 달의 핫한 축제"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/theddobak"
+                android:textSize="20dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView12"
+                            android:layout_width="250dp"
+                            android:scaleType="centerCrop"
+                            android:layout_height="250dp"
+                            app:srcCompat="@drawable/joong" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="중문골프장 달빛걷기"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="제주특별자치도 서귀포시"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="10dp"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="250dp"
+                            android:scaleType="centerCrop"
+                            android:layout_height="250dp"
+                            app:srcCompat="@drawable/dsk" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="덕수궁 풍류"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="서울특별시 중구"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="10dp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="250dp"
+                            android:scaleType="centerCrop"
+                            android:layout_height="250dp"
+                            app:srcCompat="@drawable/dano" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="강릉 단오제"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="15dp"/>
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="강원도 강릉"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/theddobak"
+                            android:textSize="10dp"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
-        <Button
-            android:id="@+id/mainbutton3_bookmark"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="즐겨찾기" />
-
-        <Button
-            android:id="@+id/mainbutton4_review"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="리뷰남기기" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/column3"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginTop="445dp">
-
-
-        <Button
-            android:id="@+id/mainbutton5_judge"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="사람들의 리뷰 보기" />
-
-        <Button
-            android:id="@+id/mainbutton6_profile"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/theddobak"
-            android:text="프로필 보기" />
-
-    </TableRow>
 </io.codetail.widget.RevealFrameLayout>
 
     <!--<FrameLayout
