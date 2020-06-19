@@ -8,7 +8,7 @@
 
         <LinearLayout
             android:id="@+id/ll_profile"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -17,14 +17,15 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/person" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="80dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -34,7 +35,7 @@
                     android:text="이름"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="18dp"></TextView>
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -43,7 +44,7 @@
                     android:fontFamily="@font/theddobak"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="15dp"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +60,7 @@
                     android:text="Email"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="18dp"></TextView>
 
                 <TextView
                     android:id="@+id/tv_email"
@@ -68,7 +69,7 @@
                     android:fontFamily="@font/theddobak"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="15dp"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -84,7 +85,7 @@
                     android:text="성별"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="18dp"></TextView>
 
                 <TextView
                     android:id="@+id/tv_sex"
@@ -93,7 +94,7 @@
                     android:fontFamily="@font/theddobak"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="15dp"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -109,7 +110,7 @@
                     android:text="나이"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="18dp"></TextView>
 
                 <TextView
                     android:id="@+id/tv_age"
@@ -118,33 +119,32 @@
                     android:fontFamily="@font/theddobak"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="15dp"></TextView>
 
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="0dp">
+                android:layout_marginTop="60dp">
 
                 <Button
                     android:id="@+id/btn_home"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:background="#A9D0F5"
                     android:layout_centerHorizontal="true"
                     android:text="홈"></Button>
 
                 <Button
                     android:id="@+id/btn_edit"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:background="#A9D0F5"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/btn_home"
@@ -153,10 +153,10 @@
 
                 <Button
                     android:id="@+id/btn_logout"
-                    android:layout_width="200dp"
-                    android:textSize="20dp"
+                    android:layout_width="150dp"
+                    android:textSize="15dp"
                     android:background="#A9D0F5"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_marginTop="10dp"
                     android:layout_below="@+id/btn_edit"
                     android:layout_centerHorizontal="true"
