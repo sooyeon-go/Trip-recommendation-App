@@ -18,7 +18,8 @@
             android:gravity="center"
             android:textSize="30dp"
             android:background="#A9D0F5"
-            android:text="여행지에 별점을 매겨주세요" />
+            android:textStyle="bold"
+            android:text="아래 여행지에 별점을 매겨주세요" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/Floating1"
