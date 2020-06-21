@@ -77,6 +77,7 @@
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="도시 야경을 보며 맛있는 음식 먹기"
+                    android:textStyle="bold"
                     android:textSize="18dp">
                 </TextView>
                 <RatingBar
@@ -130,6 +131,7 @@
                     android:fontFamily="@font/theddobak"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="호캉스 즐기기"
                     android:textSize="18dp">
                 </TextView>
@@ -183,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
+                    android:textStyle="bold"
                     android:fontFamily="@font/theddobak"
                     android:text="등산 후 감성카페와 맛집가기"
                     android:textSize="18dp">
@@ -237,6 +240,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
+                    android:textStyle="bold"
                     android:fontFamily="@font/theddobak"
                     android:text="액티비티 즐기기"
                     android:textSize="18dp">
@@ -291,6 +295,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="숲 속을 산책하며 맑은 공기 마시기"
                     android:textSize="18dp">
@@ -346,6 +351,7 @@
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
+                    android:textStyle="bold"
                     android:text="바다 근처 유적지 탐방하기"
                     android:textSize="18dp">
                 </TextView>
@@ -399,6 +405,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="바다 근처에서 맛집 투어하기"
                     android:textSize="18dp">
@@ -453,6 +460,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="드라마 세트장 직접 가보기"
                     android:textSize="18dp">
