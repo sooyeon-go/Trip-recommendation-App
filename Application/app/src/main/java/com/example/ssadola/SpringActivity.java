@@ -1,6 +1,8 @@
 package com.example.ssadola;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
@@ -21,33 +23,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SpringActivity extends AppCompatActivity {
 
-
+    private RecyclerView rv;
     static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
-
+    private static final String TAG_ADDR = "f_addr";
+    private static final String TAG_NAME = "f_name";
     ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
-    private ViewPager mViewPager;
-    private CardPagerAdapter mCardAdapter;
-    private ShadowTransformer mCardShadowTransformer;
-    private CardFragmentPagerAdapter mFragmentCardAdapter;
-    private ShadowTransformer mFragmentCardShadowTransformer;
-    private boolean mShowingFragments = false;
     String[] img_link,title;
     Bitmap[] bitmap;
-
-
-
-
-
-
-
 
 
 
@@ -56,82 +48,50 @@ public class SpringActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spring);
 
-        Studio_Poster information = new Studio_Poster();
-        information.execute();
 
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(SpringActivity.this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rv = findViewById(R.id.recyclerview_spring);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(mLinearLayoutManager);
 
+        SeasonFestival information = new SeasonFestival();
+        information.execute("봄");
 
-        /*TextView titleView = (TextView) findViewById(R.id.tv_springfest_title);
-        TextView contentView = (TextView) findViewById(R.id.tv_springfest_content);
+        /*HashMap<String,String> hashMap = new HashMap<>();
+        hashMap.put(TAG_NAME,"f_name");
+        hashMap.put(TAG_ADDR,"f_img");
 
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select title, content from tb_festival" +
-                "             order by _id desc limit 1", null);
+        arrayList.add(hashMap);
 
-        while (cursor .moveToNext()){
-            titleView.setText(cursor.getString(0));
-            contentView.setText(cursor.getString(1));
+        RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(SpringActivity.this,arrayList,R.layout.activity_spring);
+        Log.e("onCreate[arrayList]", "" + arrayList.size());
+        rv.setAdapter(adapter);*/
 
-        }
-        db.close();
-        DB 에서 들ㅇ고 오려고 짜놓은 쿼리문이긴 합니다만,,,,?*/
     }
 
 
-    class Studio_Poster extends AsyncTask<Void,Void,String>{
+    class SeasonFestival extends AsyncTask<String,Void,String>{
         ProgressDialog loading;
 
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loading = ProgressDialog.show(SpringActivity.this, "Please Wait", null, true, true);
-        }
-        @Override
-        protected void onPostExecute(String result){
-            super.onPostExecute(result);
-            loading.dismiss();
-            System.out.println("Result : " + result);
-            if(result!=null){
-                try {
-                    JSONObject jsonObject_spring = new JSONObject(result);
-                    JSONArray jsonArray_spring = jsonObject_spring.getJSONArray("Studio_Info");
-                    img_link = new String[jsonArray_spring.length()];
-                    title = new String[jsonArray_spring.length()];
-
-
-                    for(int i=0;i<jsonArray_spring.length();i++){
-                        JSONObject item = jsonArray_spring.getJSONObject(i);
-                        String festspring_title = item.getString("festspring_title");
-                        String festspring_img = item.getString("festspring_img");
-                        String festspring_name = item.getString("festspring_name");
-
-                        HashMap<String,String> hashMap = new HashMap<>();
-                        hashMap.put("work_title",festspring_title);
-                        hashMap.put("img",festspring_img);
-
-                        arrayList.add(hashMap);
-                        img_link[i] = festspring_img;
-
-                    }
-                    getImgfromURL(img_link);
-                } catch (JSONException e) {
-                    Log.d("TitleStudioActivity", "showResult : ", e);
-
-                }
-            }
-        }
-        @Override
-        protected String doInBackground(Void... voids) {
-            final String link = pub_ip + "Studio_Poster.php";
-
+        protected String doInBackground(String... strings) {
+            final String link = pub_ip + "getSeasonFestival.php";
+            String season = strings[0];
             try {
                 URL url = new URL(link);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
                 conn.connect();
+
+                String data = "season="+season;
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                wr.write(data);
+                wr.flush();
+                wr.close();
 
                 int responseStatusCode = conn.getResponseCode();
                 Log.d("TitleStudio", "response code - " + responseStatusCode);
@@ -161,7 +121,50 @@ public class SpringActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return new String("Exception: " + e.getMessage());
             }
+
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loading = ProgressDialog.show(SpringActivity.this, "Please Wait", null, true, true);
+        }
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            loading.dismiss();
+            System.out.println("Result : " + result);
+            if(result!=null){
+                try {
+                    JSONObject jsonObject_spring = new JSONObject(result);
+                    JSONArray jsonArray_spring = jsonObject_spring.getJSONArray("SeasonFesival");
+                    img_link = new String[jsonArray_spring.length()];
+                    title = new String[jsonArray_spring.length()];
+
+
+                    for(int i=0;i<jsonArray_spring.length();i++){
+                        JSONObject item = jsonArray_spring.getJSONObject(i);
+                        String f_name = item.getString("f_name");
+                        String f_img = item.getString("f_img");
+                        String f_addr = item.getString("f_addr");
+
+                        HashMap<String,String> hashMap = new HashMap<>();
+                        hashMap.put("f_name",f_name);
+                        hashMap.put("f_img",f_img);
+                        hashMap.put("f_addr",f_addr);
+
+                        arrayList.add(hashMap);
+                        img_link[i] = f_img;
+
+                    }
+                    getImgfromURL(img_link);
+                } catch (JSONException e) {
+                    Log.d("TitleStudioActivity", "showResult : ", e);
+
+                }
+            }
+        }
+
     }
     public void getImgfromURL(final String[] img_link){
         Thread mThread = new Thread(){
@@ -182,6 +185,16 @@ public class SpringActivity extends AppCompatActivity {
                 }
             }
         };
+        mThread.start();
+        try {
+            mThread.join();
+            RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(SpringActivity.this,arrayList,bitmap,R.layout.activity_spring);
+            Log.e("onCreate[arrayList]", "" + arrayList.size());
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }catch ( InterruptedException e){
+            e.printStackTrace();
+        }
 
     }
 
