@@ -18,13 +18,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
+         <!--   <TextView
                 android:id="@+id/tv_classfi"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:fontFamily="@font/theddobak"
                 android:text="classfication"/>
-
+-->
             <TextView
                 android:id="@+id/tv_course"
                 android:layout_width="match_parent"

@@ -41,8 +41,8 @@ public class BookmarkActivity extends AppCompatActivity {
     TextView test;
     String mJsonString;
     private RecyclerView rv;
-    Bitmap[] bitmap;
-    String[] img_link;
+    Bitmap[] bitmap, bitmap2;
+    String[] img_link, img_link2;
     static String pub_ip = "http://15.165.95.187/";
     StringBuilder sb;
     private static final String TAG_EMAIL="u_email";
@@ -135,7 +135,19 @@ public class BookmarkActivity extends AppCompatActivity {
                         BookmarkList.add(hashMap);
                         img_link[i] = i_img;
                     }
+                    /*JSONArray jsonArray_Recomm = jsonObject.getJSONArray("BookmarkRecomm");
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject item = jsonArray_Recomm.getJSONObject(i);
+                        String i_course = item.getString("course");
 
+
+                        HashMap<String,String> hashMap = new HashMap<>();
+                        hashMap.put("course",i_course);
+
+                        BookmarkList.add(hashMap);
+
+                    }
+*/
                     getImgfromURL(img_link);
                     /*RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList);
                     Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
@@ -220,7 +232,7 @@ public class BookmarkActivity extends AppCompatActivity {
         try {
             mThread.join();
             String tmp_email = BookmarkList.get(0).get(TAG_EMAIL);
-            RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList,bitmap,tmp_email);
+            RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList,bitmap,tmp_email,R.layout.activity_bookmark);
             Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();

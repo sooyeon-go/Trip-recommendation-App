@@ -301,7 +301,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
                 String address = params[4];
                 String image = params[5];
 
-                String link = pub_ip+"Bookmark_insert.php";
+                String link = pub_ip+"BookmarkFromStudio.php";
                 //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
                 //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
                 String data = "u_email="+u_email+"&title="+URLEncoder.encode(title,"UTF-8")
@@ -364,7 +364,7 @@ public class ImageStudioFragment extends Fragment implements ImageWorker.OnImage
                 String location = params[2];
 
 
-                String link = pub_ip+"BookmarkFromStudio.php";
+                String link = pub_ip+"Bookmark_deleteStudio.php";
                 //String data = URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
                 //data += "&" + URLEncoder.encode("Pw", "UTF-8") + "=" + URLEncoder.encode(Pw, "UTF-8");
                 String data = "u_email="+u_email+"&title="+URLEncoder.encode(title,"UTF-8")

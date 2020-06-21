@@ -31,6 +31,7 @@ public class FallActivity extends AppCompatActivity {
     StringBuilder sb;
     private static final String TAG_ADDR = "f_addr";
     private static final String TAG_NAME = "f_name";
+    private static final String TAG_SEASON = "가을";
     ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
     String[] img_link,title;
     Bitmap[] bitmap;
@@ -182,7 +183,7 @@ public class FallActivity extends AppCompatActivity {
         mThread.start();
         try {
             mThread.join();
-            RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(FallActivity.this,arrayList,bitmap,R.layout.activity_fall);
+            RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(FallActivity.this,arrayList,bitmap,R.layout.activity_fall,TAG_SEASON);
             Log.e("onCreate[arrayList]", "" + arrayList.size());
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();

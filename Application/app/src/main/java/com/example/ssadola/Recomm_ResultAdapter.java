@@ -45,7 +45,7 @@ public class Recomm_ResultAdapter extends BaseAdapter {
 
         /* 'listview_recomm'에 정의된 위젯에 대한 참조 획득 */
         //ImageView iv_img = (ImageView) convertView.findViewById(R.id.iv_img) ;
-        final TextView tv_class = (TextView) convertView.findViewById(R.id.tv_classfi) ;
+       // final TextView tv_class = (TextView) convertView.findViewById(R.id.tv_classfi) ;
         final TextView tv_course = (TextView) convertView.findViewById(R.id.tv_course) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
@@ -53,7 +53,7 @@ public class Recomm_ResultAdapter extends BaseAdapter {
 
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
         //iv_img.setImageDrawable(myItem.getIcon());
-        tv_class.setText(myItem.getCalssfi());
+        //tv_class.setText(myItem.getCalssfi());
         tv_course.setText(myItem.getCourse());
 
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
@@ -99,4 +99,6 @@ public class Recomm_ResultAdapter extends BaseAdapter {
         mItems.add(mItem);
 
     }
+
+
 }

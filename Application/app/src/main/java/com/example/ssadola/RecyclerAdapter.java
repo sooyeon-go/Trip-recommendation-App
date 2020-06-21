@@ -43,6 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     List<Item> items;
     ArrayList<HashMap<String,String>> bookmarkList;
     Bitmap[] bm;
+    int item_layout;
     private static final String TAG_EMAIL="u_email";
     private static final String TAG_IMAGE = "image";
     private static final String TAG_LOCATION = "location";
@@ -52,12 +53,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     static String pub_ip = "http://15.165.95.187/";
     String u_email;
 
-    public RecyclerAdapter(Context context, ArrayList<HashMap<String,String>> bookmarkList,Bitmap[] bitmaps,String email) {
+    public RecyclerAdapter(Context context, ArrayList<HashMap<String,String>> bookmarkList,Bitmap[] bitmaps,String email,int item_layout) {
         this.context = context;
         this.bookmarkList = bookmarkList;
         this.bm = bitmaps;
         this.u_email = email;
-        //this.item_layout = item_layout;
+        this.item_layout = item_layout;
+    }
+    public RecyclerAdapter(Context context, ArrayList<HashMap<String,String>> bookmarkList,int item_layout) {
+        this.context = context;
+        this.bookmarkList = bookmarkList;
+        //this.bm = bitmaps;
+        this.item_layout = item_layout;
     }
 
     @Override

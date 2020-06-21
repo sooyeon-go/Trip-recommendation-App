@@ -37,6 +37,7 @@ public class SpringActivity extends AppCompatActivity {
     StringBuilder sb;
     private static final String TAG_ADDR = "f_addr";
     private static final String TAG_NAME = "f_name";
+    private static final String TAG_SEASON = "봄";
     ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
     String[] img_link,title;
     Bitmap[] bitmap;
@@ -188,7 +189,7 @@ public class SpringActivity extends AppCompatActivity {
         mThread.start();
         try {
             mThread.join();
-            RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(SpringActivity.this,arrayList,bitmap,R.layout.activity_spring);
+            RecyclerAdapterSeason adapter = new RecyclerAdapterSeason(SpringActivity.this,arrayList,bitmap,R.layout.activity_spring,TAG_SEASON);
             Log.e("onCreate[arrayList]", "" + arrayList.size());
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
