@@ -60,6 +60,12 @@ public class RecyclerAdapterSeason extends RecyclerView.Adapter<RecyclerAdapterS
         this.item_layout = item_layout;
         this.tag_season = season;
     }
+    public RecyclerAdapterSeason (Context context, ArrayList<HashMap<String,String>> List,Bitmap[] bitmaps,int item_layout) {
+        this.context = context;
+        this.festivalList = List;
+        this.bm = bitmaps;
+        this.item_layout = item_layout;
+    }
     public RecyclerAdapterSeason (Context context, ArrayList<HashMap<String,String>> List,int item_layout) {
         this.context = context;
         this.festivalList = List;

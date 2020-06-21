@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +13,14 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.JsonReader;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -38,9 +42,11 @@ import java.util.HashMap;
 public class BookmarkActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> arrayList;
     ArrayList<HashMap<String,String>> BookmarkList;
+    ArrayList<HashMap<String,String>> BookmarkList_Recomm;
+    ArrayList<HashMap<String,String>> BookmarkList_Season;
     TextView test;
     String mJsonString;
-    private RecyclerView rv;
+    private RecyclerView rv, rv2, rv3;
     Bitmap[] bitmap, bitmap2;
     String[] img_link, img_link2;
     static String pub_ip = "http://15.165.95.187/";
@@ -57,11 +63,23 @@ public class BookmarkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
         BookmarkList = new ArrayList<>();
+        BookmarkList_Recomm = new ArrayList<>();
+        BookmarkList_Season = new ArrayList<>();
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(BookmarkActivity.this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager mLinearLayoutManager2 = new LinearLayoutManager(BookmarkActivity.this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        LinearLayoutManager mLinearLayoutManager3 = new LinearLayoutManager(BookmarkActivity.this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rv = findViewById(R.id.recyclerview);
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(mLinearLayoutManager);
+        rv.setLayoutManager(mLinearLayoutManager2);
+        rv2 = findViewById(R.id.recyclerview2);
+        rv2.setHasFixedSize(true);
+        rv2.setLayoutManager(mLinearLayoutManager);
+        rv3 = findViewById(R.id.recyclerview3);
+        rv3.setHasFixedSize(true);
+        rv3.setLayoutManager(mLinearLayoutManager3);
         arrayList = GetLoginData();
 
         if(arrayList == null){
@@ -103,14 +121,18 @@ public class BookmarkActivity extends AppCompatActivity {
             super.onPreExecute();
             loading = ProgressDialog.show(BookmarkActivity.this, "Please Wait", null, true, true);
         }
+        @SuppressLint("LongLogTag")
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             loading.dismiss();
             if(result == null){
             }else{
+                //Toast.makeText(BookmarkActivity.this,result,Toast.LENGTH_LONG).show();
                 try {
+
                     JSONObject jsonObject = new JSONObject(result);
+                    //Toast.makeText(BookmarkActivity.this,jsonObject.toString(),Toast.LENGTH_LONG).show();
                     JSONArray jsonArray = jsonObject.getJSONArray("BookmarkTheme");
                     img_link = new String[jsonArray.length()];
                     for(int i=0;i<jsonArray.length();i++){
@@ -135,7 +157,7 @@ public class BookmarkActivity extends AppCompatActivity {
                         BookmarkList.add(hashMap);
                         img_link[i] = i_img;
                     }
-                    /*JSONArray jsonArray_Recomm = jsonObject.getJSONArray("BookmarkRecomm");
+                    JSONArray jsonArray_Recomm = jsonObject.getJSONArray("BookmarkRecomm");
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject item = jsonArray_Recomm.getJSONObject(i);
                         String i_course = item.getString("course");
@@ -144,15 +166,32 @@ public class BookmarkActivity extends AppCompatActivity {
                         HashMap<String,String> hashMap = new HashMap<>();
                         hashMap.put("course",i_course);
 
-                        BookmarkList.add(hashMap);
+                        BookmarkList_Recomm.add(hashMap);
 
                     }
-*/
-                    getImgfromURL(img_link);
-                    /*RecyclerAdapter adapter = new RecyclerAdapter(BookmarkActivity.this,BookmarkList);
-                    Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
-                    rv.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();*/
+                    RecyclerAdapter_Recomm adapter2 = new RecyclerAdapter_Recomm(BookmarkActivity.this,BookmarkList_Recomm);
+                    Log.e("onCreate[BookmarkList_Recomm]", "" + BookmarkList.size());
+                    rv.setAdapter(adapter2);
+                    adapter2.notifyDataSetChanged();
+                    JSONArray jsonArray_Season= jsonObject.getJSONArray("BookmarkSeason");
+                    img_link2 = new String[jsonArray_Season.length()];
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject item = jsonArray_Season.getJSONObject(i);
+                        String i_season = item.getString("f_season");
+                        String i_name = item.getString("f_name");
+                        String i_addr = item.getString("f_addr");
+                        String i_img = item.getString("f_img");
+
+                        HashMap<String,String> hashMap = new HashMap<>();
+                        hashMap.put("f_season",i_season);
+                        hashMap.put("f_name",i_name);
+                        hashMap.put("f_addr",i_addr);
+                        img_link2[i] = i_img;
+                        BookmarkList_Season.add(hashMap);
+
+                    }
+                    getImgfromURL1(img_link);
+                    getImgfromURL2(img_link2);
 
                 } catch (JSONException e) {
                     Log.d("BookmarkActivity", "showResult : ", e);
@@ -162,7 +201,7 @@ public class BookmarkActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             //String name = param[0];
-            final String link = pub_ip + "getBookmarkStudio.php";
+            final String link = pub_ip + "getBookmark.php";
             String email = params[0];
             final String data = "u_email=" + email;
             try {
@@ -208,7 +247,7 @@ public class BookmarkActivity extends AppCompatActivity {
             }
         }
     }
-    public void getImgfromURL(final String[] img_link){
+    public void getImgfromURL1(final String[] img_link){
         Thread mThread = new Thread(){
             public void run(){
                 try {
@@ -236,6 +275,40 @@ public class BookmarkActivity extends AppCompatActivity {
             Log.e("onCreate[BookmarkList]", "" + BookmarkList.size());
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+
+        }catch ( InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+    @SuppressLint("LongLogTag")
+    public void getImgfromURL2(final String[] img_link){
+        Thread mThread = new Thread(){
+            public void run(){
+                try {
+                    bitmap = new Bitmap[img_link.length];
+                    for(int i = 0; i< img_link.length;i++){
+                        URL url = new URL(img_link[i]);
+                        //URL url = new URL(Images.all_urls[4][0]);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
+                        InputStream is = conn.getInputStream();
+                        bitmap[i] = BitmapFactory.decodeStream(is);
+                        //System.out.println("bitmap["+i+"] : "+ bitmap[i]);
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        mThread.start();
+        try {
+            mThread.join();
+
+            RecyclerAdapterSeason adapter_season = new RecyclerAdapterSeason(BookmarkActivity.this,BookmarkList,bitmap,R.layout.activity_bookmark);
+            Log.e("onCreate[BookmarkList_Season]", "" + BookmarkList_Season.size());
+            rv3.setAdapter(adapter_season);
+            adapter_season.notifyDataSetChanged();
         }catch ( InterruptedException e){
             e.printStackTrace();
         }
