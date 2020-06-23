@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,6 +30,13 @@
                 android:textSize="19dp"
                 android:textStyle="bold">
             </TextView>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/btn_delete_re"
+                android:layout_height="wrap_content"
+                android:background="@drawable/delete">
+            </ImageButton>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
