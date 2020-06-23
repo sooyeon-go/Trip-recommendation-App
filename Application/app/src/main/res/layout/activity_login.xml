@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/theddobak"
             android:layout_marginTop="80dp"
+            android:id="@+id/textView"
             android:text="LOGIN "
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"
