@@ -1,46 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_spring"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/spring"
-        android:padding="4dp"
-        android:text="봄"
-        android:fontFamily="@font/theddobak"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_summer"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_spring"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="200dp"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:background="#00ff0000"
+                app:srcCompat="@drawable/cherry_blossom" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/theddobak"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:text="봄" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_summer"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="200dp"
+                android:background="#00ff0000"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/trip" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="@font/theddobak"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:text="여름" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:textSize="20dp"
-        android:fontFamily="@font/theddobak"
-        android:background="@drawable/summer"
-        android:text="여름" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_fall"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:textSize="20dp"
-        android:fontFamily="@font/theddobak"
-        android:background="@drawable/fall"
-        android:text="가을" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_winter"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:textSize="20dp"
-        android:fontFamily="@font/theddobak"
-        android:background="@drawable/winter"
-        android:text="겨울" />
+            <ImageButton
+                android:id="@+id/btn_fall"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:scaleType="centerCrop"
+                android:background="#00ff0000"
+                app:srcCompat="@drawable/autumn" />
 
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/theddobak"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:text="가을" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_winter"
+                android:layout_width="100dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:background="#00ff0000"
+                app:srcCompat="@drawable/winter" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="@font/theddobak"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:text="겨울" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
