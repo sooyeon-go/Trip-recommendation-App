@@ -129,9 +129,10 @@ def def_final(*d):
     matrix_factorization = pd.read_csv('matrix_factorization.csv', encoding = 'utf-8')
     dupli = item_based[item_based['course'].isin(matrix_factorization['course'].tolist())]
     dupli = dupli.reset_index(drop = True)
-    dupli.course.to_csv("dupli.csv",mode="w",header=False)
-    return dupli, fi_result
+    #dupli.course.to_csv("dupli.csv",mode="w",header=False)
+    matrix_factorization.course.to_csv("matrix_course.csv",mode="w",header=False)
+    return matrix_factorization, fi_result
 
-dupli, fi_result = def_final(*(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]))
-print(dupli.course)
+matrix_factorization, fi_result = def_final(*(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],sys.argv[7],sys.argv[8]))
+print(matrix_factorization.course)
 print(fi_result.course)
