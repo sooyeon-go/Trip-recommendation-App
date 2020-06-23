@@ -41,30 +41,6 @@
                     android:fontFamily="@font/theddobak"
                     android:textSize="70sp">
                 </Button>
-                <Button
-                    android:id="@+id/btn_sol"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="혼자 가기 좋은"
-                    android:fontFamily="@font/theddobak"
-                    android:textSize="80sp">
-                </Button>
-                <Button
-                    android:id="@+id/btn_festival"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="축제 탐방"
-                    android:fontFamily="@font/theddobak"
-                    android:textSize="80sp">
-                </Button>
-                <Button
-                    android:id="@+id/btn_special"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="이색적인"
-                    android:fontFamily="@font/theddobak"
-                    android:textSize="80sp">
-                </Button>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
