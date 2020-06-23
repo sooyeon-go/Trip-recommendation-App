@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -41,7 +41,7 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_theme, container, false);
 
-        Button studio = rootView.findViewById(R.id.btn_studoi_set);
+        ImageButton studio = rootView.findViewById(R.id.btn_studoi_set);
         studio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,7 @@ public class ThemeFragment  extends Fragment implements ScreenShotable {
             }
 
             );
-        Button season = rootView.findViewById(R.id.btn_season);
+        ImageButton season = rootView.findViewById(R.id.btn_season);
         season.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
