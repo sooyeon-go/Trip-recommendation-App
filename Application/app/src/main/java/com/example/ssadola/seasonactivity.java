@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -18,7 +18,7 @@ public class seasonactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_season);
 
-        Button spring = (Button) findViewById(R.id.btn_spring);
+        ImageButton spring = (ImageButton) findViewById(R.id.btn_spring);
         spring.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
@@ -29,7 +29,7 @@ public class seasonactivity extends AppCompatActivity {
 
         );
 
-        Button summer = (Button) findViewById(R.id.btn_summer);
+        ImageButton summer = (ImageButton) findViewById(R.id.btn_summer);
         summer.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
@@ -40,7 +40,7 @@ public class seasonactivity extends AppCompatActivity {
 
         );
 
-        Button fall = (Button) findViewById(R.id.btn_fall);
+        ImageButton fall = (ImageButton) findViewById(R.id.btn_fall);
         fall.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
@@ -51,7 +51,7 @@ public class seasonactivity extends AppCompatActivity {
 
         );
 
-        Button winter = (Button) findViewById(R.id.btn_winter);
+        ImageButton winter = (ImageButton) findViewById(R.id.btn_winter);
         winter.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
