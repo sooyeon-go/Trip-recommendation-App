@@ -222,12 +222,10 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -239,7 +237,7 @@
                             android:id="@+id/imageView14"
                             android:layout_width="250dp"
                             android:scaleType="centerCrop"
-                            android:layout_height="250dp"
+                            android:layout_height="220dp"
                             app:srcCompat="@drawable/cheese" />
 
                         <TextView
@@ -275,7 +273,7 @@
                             android:id="@+id/imageView13"
                             android:layout_width="250dp"
                             android:scaleType="centerCrop"
-                            android:layout_height="250dp"
+                            android:layout_height="220dp"
                             app:srcCompat="@drawable/aorl" />
 
                         <TextView
@@ -311,7 +309,7 @@
                             android:id="@+id/imageView12"
                             android:layout_width="250dp"
                             android:scaleType="centerCrop"
-                            android:layout_height="250dp"
+                            android:layout_height="220dp"
                             app:srcCompat="@drawable/joong" />
 
                         <TextView
@@ -347,7 +345,7 @@
                             android:id="@+id/imageView11"
                             android:layout_width="250dp"
                             android:scaleType="centerCrop"
-                            android:layout_height="250dp"
+                            android:layout_height="220dp"
                             app:srcCompat="@drawable/dsk" />
 
                         <TextView
@@ -383,7 +381,7 @@
                             android:id="@+id/imageView10"
                             android:layout_width="250dp"
                             android:scaleType="centerCrop"
-                            android:layout_height="250dp"
+                            android:layout_height="220dp"
                             app:srcCompat="@drawable/dano" />
 
                         <TextView
