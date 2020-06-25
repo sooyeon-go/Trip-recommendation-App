@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                         SaveLoginData(mArrayList);
                         /*Intent profile = new Intent(LoginActivity.this,ProfileActivity.class);
                         startActivity(profile);*/
+                        Toast.makeText(LoginActivity.this, "환영합니다.", Toast.LENGTH_LONG).show();
                         finish();
                     }else{
                         //fail to login
