@@ -33,6 +33,7 @@ public class RecommActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recomm);
 
+        setRatingBar();
         FloatingActionButton fab = findViewById(R.id.Floating1);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,15 +47,15 @@ public class RecommActivity extends AppCompatActivity {
 
     }
 
-    public void setRatingBar(View view){
-        q1_rating = view.findViewById(R.id.Q1_rating);
-        q2_rating = view.findViewById(R.id.Q2_rating);
-        q3_rating = view.findViewById(R.id.Q3_rating);
-        q4_rating = view.findViewById(R.id.Q4_rating);
-        q5_rating = view.findViewById(R.id.Q5_rating);
-        q6_rating = view.findViewById(R.id.Q6_rating);
-        q7_rating = view.findViewById(R.id.Q7_rating);
-        q8_rating = view.findViewById(R.id.Q8_rating);
+    public void setRatingBar(){
+        q1_rating = findViewById(R.id.Q1_rating);
+        q2_rating = findViewById(R.id.Q2_rating);
+        q3_rating = findViewById(R.id.Q3_rating);
+        q4_rating = findViewById(R.id.Q4_rating);
+        q5_rating = findViewById(R.id.Q5_rating);
+        q6_rating = findViewById(R.id.Q6_rating);
+        q7_rating = findViewById(R.id.Q7_rating);
+        q8_rating = findViewById(R.id.Q8_rating);
     }
     public void GetRating(){
         CheckRating();
