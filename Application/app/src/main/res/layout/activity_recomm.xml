@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/theddobak"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:background="#A9D0F5"
+            android:textStyle="bold"
+            android:text="아래 여행지에 별점을 매겨주세요" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Floating1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            app:elevation="4dp"
+            android:src="@drawable/ic_search"
+            android:clickable="true"
+            app:backgroundTint="@color/design_default_color_primary"
+            android:focusable="true">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_below="@+id/textView24">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/dirud1" />
+
+                    <ImageView
+                        android:id="@+id/imageView16"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/dirud2" />
+
+                    <ImageView
+                        android:id="@+id/imageView17"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/dirud3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="도시 야경을 보며 맛있는 음식 먹기"
+                    android:textStyle="bold"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q1_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    style="@style/customRatingBar"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false">
+                </RatingBar>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView18"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/hotel1" />
+
+                    <ImageView
+                        android:id="@+id/imageView19"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/hotel2" />
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/hotel3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="호캉스 즐기기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q2_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView21"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/mountain" />
+
+                    <ImageView
+                        android:id="@+id/imageView22"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/moun" />
+
+                    <ImageView
+                        android:id="@+id/imageView23"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/moun2" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/theddobak"
+                    android:text="등산 후 감성카페와 맛집가기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q3_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView24"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/act1" />
+
+                    <ImageView
+                        android:id="@+id/imageView25"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/act2" />
+
+                    <ImageView
+                        android:id="@+id/imageView26"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/act3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/theddobak"
+                    android:text="액티비티 즐기기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q4_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView27"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/walk1" />
+
+                    <ImageView
+                        android:id="@+id/imageView28"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/walk2" />
+
+                    <ImageView
+                        android:id="@+id/imageView29"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/walk3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="숲 속을 산책하며 맑은 공기 마시기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q5_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView30"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/qkek1" />
+
+                    <ImageView
+                        android:id="@+id/imageView31"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/qkek2" />
+
+                    <ImageView
+                        android:id="@+id/imageView32"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/qkek3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:text="바다 근처 유적지 탐방하기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q6_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView33"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/beach1" />
+
+                    <ImageView
+                        android:id="@+id/imageView34"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/beach2" />
+
+                    <ImageView
+                        android:id="@+id/imageView35"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/beach3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="바다 근처에서 맛집 투어하기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q7_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar">
+                </RatingBar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView36"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/drama1" />
+
+                    <ImageView
+                        android:id="@+id/imageView37"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/drama2" />
+
+                    <ImageView
+                        android:id="@+id/imageView38"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/drama3" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/theddobak"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="드라마 세트장 직접 가보기"
+                    android:textSize="18dp">
+                </TextView>
+                <RatingBar
+                    android:id="@+id/Q8_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="0.5"
+                    android:stepSize="0.5"
+                    android:max="10"
+                    android:isIndicator="false"
+                    style="@style/customRatingBar"
+                    android:layout_marginBottom="50dp">
+                </RatingBar>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

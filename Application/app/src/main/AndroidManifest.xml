@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WinterActivity"></activity>
+        <activity android:name=".ThemeActivity"></activity>
+        <activity android:name=".RecommActivity" />
+        <activity android:name=".WinterActivity" />
         <activity android:name=".FallActivity" />
         <activity android:name=".SummerActivity" />
         <activity android:name=".TitleStudioActivity" />
@@ -29,7 +31,6 @@
         <activity android:name=".ReviewResult" />
         <activity android:name=".seasonactivity" />
         <activity android:name=".SpringActivity" />
-
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

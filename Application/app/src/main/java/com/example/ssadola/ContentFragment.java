@@ -71,8 +71,10 @@ public class ContentFragment extends Fragment implements ScreenShotable {
             public void onClick(View v) {
                 //Toast.makeText(getActivity(),"btn CLIKED!",Toast.LENGTH_SHORT).show();
                 //getSupportFragmentManager().findFragmentById(R.id.fragment_custom);
-                CustomFragment custom = CustomFragment.newInstance(R.id.fragment_custom);
-                replaceFragment(custom);
+//                CustomFragment custom = CustomFragment.newInstance(R.id.fragment_custom);
+//                replaceFragment(custom);
+                Intent recomm = new Intent(getActivity(), RecommActivity.class);
+                startActivity(recomm);
             }
 
         });
@@ -83,8 +85,8 @@ public class ContentFragment extends Fragment implements ScreenShotable {
             public void onClick(View v) {
                 //Toast.makeText(getActivity(),"btn CLIKED!",Toast.LENGTH_SHORT).show();
                 //getSupportFragmentManager().findFragmentById(R.id.fragment_custom);
-                ThemeFragment theme = ThemeFragment.newInstance(R.id.fragment_theme);
-                replaceFragment(theme);
+                Intent theme = new Intent(getActivity(), ThemeActivity.class);
+                startActivity(theme);
             }
 
         });
