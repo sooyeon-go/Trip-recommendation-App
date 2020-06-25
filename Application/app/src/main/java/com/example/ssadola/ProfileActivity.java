@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -44,6 +45,8 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //추후에 추가
                 Toast.makeText(ProfileActivity.this,"추후에 추가예정",Toast.LENGTH_LONG).show();
+                //updateProfile update = new updateProfile();
+                //update.execute();
             }
         });
         btn_logout = findViewById(R.id.btn_logout);
@@ -96,5 +99,14 @@ public class ProfileActivity extends AppCompatActivity {
         Type type = new TypeToken<ArrayList<HashMap<String, String>>>() {
         }.getType();
         return gson.fromJson(json, type);
+    }
+
+    class updateProfile extends AsyncTask<String, Void, String>
+    {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
     }
 }
