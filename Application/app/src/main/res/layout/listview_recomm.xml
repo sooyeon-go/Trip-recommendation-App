@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:fontFamily="@font/theddobak"
+                android:background="@drawable/click_selector"
                 android:text="contents.." />
 
         </LinearLayout>

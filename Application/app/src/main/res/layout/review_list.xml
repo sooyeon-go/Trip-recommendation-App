@@ -21,9 +21,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:text="메인으로 가기"
+            android:background="@drawable/click_selector"
             android:fontFamily="@font/theddobak"
-            android:background="#A9D0F5"/>
-
+            />
+<!--android:background="#A9D0F5"-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"
             android:layout_width="match_parent"

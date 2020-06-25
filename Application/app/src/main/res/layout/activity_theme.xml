@@ -31,7 +31,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:scaleType="centerCrop"
-                    android:background="#00ff0000"
+                    android:background="@drawable/click_selector"
                     android:layout_marginTop="100dp"
                     app:srcCompat="@drawable/palm_tree" />
 
@@ -54,7 +54,7 @@
                     android:layout_gravity="center_horizontal"
                     android:scaleType="centerCrop"
                     android:layout_marginTop="130dp"
-                    android:background="#00ff0000"
+                    android:background="@drawable/click_selector"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/cinema" />
 

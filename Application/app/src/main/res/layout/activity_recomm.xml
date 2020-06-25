@@ -30,6 +30,7 @@
             android:layout_marginRight="16dp"
             app:elevation="4dp"
             android:src="@drawable/ic_search"
+            android:background="@drawable/click_selector"
             android:clickable="true"
             app:backgroundTint="@color/design_default_color_primary"
             android:focusable="true">

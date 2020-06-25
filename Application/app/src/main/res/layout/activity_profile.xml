@@ -135,7 +135,7 @@
                     android:fontFamily="@font/theddobak"
                     android:gravity="center"
                     android:textSize="15dp"
-                    android:background="#A9D0F5"
+                    android:background="@drawable/click_selector"
                     android:layout_centerHorizontal="true"
                     android:text="홈"></Button>
 
@@ -145,7 +145,7 @@
                     android:layout_height="35dp"
                     android:layout_marginTop="10dp"
                     android:textSize="15dp"
-                    android:background="#A9D0F5"
+                    android:background="@drawable/click_selector"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/btn_home"
                     android:fontFamily="@font/theddobak"
@@ -155,7 +155,7 @@
                     android:id="@+id/btn_logout"
                     android:layout_width="150dp"
                     android:textSize="15dp"
-                    android:background="#A9D0F5"
+                    android:background="@drawable/click_selector"
                     android:layout_height="35dp"
                     android:layout_marginTop="10dp"
                     android:layout_below="@+id/btn_edit"

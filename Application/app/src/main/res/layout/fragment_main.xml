@@ -51,7 +51,7 @@
                         android:id="@+id/mainbutton1_reco"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />
@@ -77,7 +77,7 @@
                         android:id="@+id/mainbutton6_profile"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />
@@ -104,7 +104,7 @@
                         android:id="@+id/mainbutton2_theme"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />
@@ -138,7 +138,7 @@
                         android:id="@+id/mainbutton3_bookmark"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />
@@ -164,7 +164,7 @@
                         android:id="@+id/mainbutton4_review"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />
@@ -190,7 +190,7 @@
                         android:id="@+id/mainbutton5_judge"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@android:color/transparent"
+                        android:background="@drawable/click_selector"
                         android:padding="0sp"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/heart" />

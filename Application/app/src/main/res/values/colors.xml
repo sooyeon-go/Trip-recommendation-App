@@ -8,4 +8,6 @@
     <color name="menu">#A9D0F5</color>
     <color name="grid_state_pressed">#1Affffff</color>
     <color name="grid_state_focused">#80000000</color>
+    <drawable name="bg_select">#2196F3</drawable>
+    <drawable name="bg_color">#00ff0000</drawable>
 </resources>
