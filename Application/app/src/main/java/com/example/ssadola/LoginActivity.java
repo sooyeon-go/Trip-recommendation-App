@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             loading.dismiss();
+
             //Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
 
             if (result == null){
@@ -161,8 +162,9 @@ public class LoginActivity extends AppCompatActivity {
                         mArrayList.add(hashMap);
 
                         SaveLoginData(mArrayList);
-                        Intent profile = new Intent(LoginActivity.this,ProfileActivity.class);
-                        startActivity(profile);
+                        /*Intent profile = new Intent(LoginActivity.this,ProfileActivity.class);
+                        startActivity(profile);*/
+                        finish();
                     }else{
                         //fail to login
                         Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_LONG).show();

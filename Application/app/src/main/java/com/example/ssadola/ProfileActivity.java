@@ -59,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this,"로그아웃",Toast.LENGTH_SHORT).show();
                 Intent BackToMain = new Intent(ProfileActivity.this,MainActivity.class);
                 startActivity(BackToMain);
-
+                finish();
             }
         });
 

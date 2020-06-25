@@ -67,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
             super.onPostExecute(s);
             loading.dismiss();
             Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+            finish();
         }
 
         @Override
